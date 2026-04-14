@@ -51,3 +51,4 @@ chroma/
 
 # Test 파일
 **/test/**
+**/test*
