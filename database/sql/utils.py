@@ -94,8 +94,48 @@ def get_detailed_restaurants(code_list: Union[str, list]) -> list:
         cat_df = query_sender(f"SELECT c.name FROM category c JOIN rel_restaurant_category rel ON c.category_code = rel.category_code WHERE rel.restaurant_code = '{res_code}'")
         tag_df = query_sender(f"SELECT t.name FROM tag t JOIN rel_restaurant_tag rel ON t.tag_code = rel.tag_code WHERE rel.restaurant_code = '{res_code}'")
         menu_df = query_sender(f"SELECT name, price, description FROM menu WHERE restaurant_code = '{res_code}'")
-        review_df = query_sender(f"SELECT score, content, taste_level, price_level, service_level FROM review WHERE restaurant_code = '{res_code}'")
+        # 리뷰 작성자 조회(user 정보와 조인)
+        review_query = f"""
+            SELECT 
+                u.name, u.avg_score, u.review_cnt, u.follower_cnt,
+                r.review_code, r.score, r.taste_level, r.price_level, r.service_level, r.content, r.menu
+            FROM review r
+            JOIN users u ON r.user_code = u.user_code
+            WHERE r.restaurant_code = '{res_code}'
+        """
+        review_df = query_sender(review_query)
 
+        processed_reviews = []
+        if not review_df.empty:
+            for _, rev_row in review_df.iterrows():
+                rev_code = rev_row["review_code"]
+
+                # 각 리뷰에 달린 태그 조회(rel_rev_tag와 조인)
+                rev_tag_query = f"""
+                    SELECT t.name
+                    FROM tag t
+                    JOIN rel_review_tag rel ON t.tag_code = rel.tag_code
+                    WHERE rel.review_code = '{rev_code}'
+                    """
+                rev_tags_df = query_sender(rev_tag_query)
+                rev_tags = rev_tags_df["name"].tolist() if not rev_tags_df.empty else []
+                
+                # 리뷰 딕셔너리 구조
+                processed_reviews.append({
+                    "name": rev_row["name"],
+                    "avg_score": rev_row["avg_score"],
+                    "review_cnt": rev_row["review_cnt"],
+                    "follower_cnt": rev_row["follower_cnt"],
+                    "score": rev_row["score"],
+                    "taste_level": rev_row["taste_level"],
+                    "price_level": rev_row["price_level"],
+                    "service_level": rev_row["service_level"],
+                    "tags": rev_tags,
+                    "content": rev_row["content"],
+                    "menu": rev_row["menu"]
+
+                })
+        # 결과 값 반환 딕셔너리 구조
         results.append({
             "restaurant_code": res_code,
             "name": row["name"],
@@ -110,6 +150,6 @@ def get_detailed_restaurants(code_list: Union[str, list]) -> list:
             "category": cat_df["name"].tolist() if not cat_df.empty else [],  
             "tags": tag_df["name"].tolist() if not tag_df.empty else [],            
             "menus": menu_df.to_dict('records') if not menu_df.empty else [],
-            "reviews": review_df.to_dict('records') if not review_df.empty else []
+            "reviews": processed_reviews
         })
     return results
