@@ -1,8 +1,9 @@
-"""슬롯 추출(Slot Extractor).
+"""
+슬롯 추출(Slot Extractor).
 
-사용자 입력 문장에서 {restaurant, menu, user} 슬롯을 추출한다.
-두 라우트(`embedding` / `fixed`) 가 있으며, 프롬프트와 JSON schema name만 다르고
-클라이언트/파싱 로직은 동일하므로 한 파일에서 관리한다.
+사용자 입력 문장에서 슬롯을 추출한다.
+두 라우트(`embedding` / `fixed`) 가 있으며,
+프롬프트와 JSON schema name만 다르고 클라이언트/파싱 로직은 동일하므로 한 파일에서 관리한다.
 
 - `embedding_slot_extract` (@tool): 분위기/취향 중심 검색 경로의 슬롯 추출
 - `fixed_search`            (@tool): 엔티티 직접 지칭 검색 경로의 슬롯 추출
@@ -31,18 +32,53 @@ def _parse_slot_json(raw_json: str) -> Dict[str, str]:
     if not isinstance(data, dict):
         raise ValueError("모델 응답이 JSON object가 아닙니다.")
 
-    restaurant = data.get("restaurant", "") or ""
-    menu = data.get("menu", "") or ""
-    user = data.get("user", "") or ""
+    # embedding 슬롯 구조
+    embedding_keys = {"category", "tag", "menu", "food", "review"}
 
-    if not isinstance(restaurant, str) or not isinstance(menu, str) or not isinstance(user, str):
-        raise ValueError("restaurant, menu, user 값은 문자열이어야 합니다.")
+    # fixed 슬롯 구조
+    fixed_keys = {"restaurant", "menu", "user"}
 
-    return {
-        "restaurant": restaurant.strip(),
-        "menu": menu.strip(),
-        "user": user.strip(),
-    }
+    data_keys = set(data.keys())
+
+    # 1) embedding 응답인 경우
+    if embedding_keys.issubset(data_keys):
+        category = data.get("category", "") or ""
+        tag = data.get("tag", "") or ""
+        menu = data.get("menu", "") or ""
+        food = data.get("food", "") or ""
+        review = data.get("review", "") or ""
+
+        if not all(isinstance(v, str) for v in [category, tag, menu, food, review]):
+            raise ValueError("category, tag, menu, food, review 값은 문자열이어야 합니다.")
+
+        return {
+            "category": category.strip(),
+            "tag": tag.strip(),
+            "menu": menu.strip(),
+            "food": food.strip(),
+            "review": review.strip(),
+        }
+
+    # 2) fixed 응답인 경우
+    if fixed_keys.issubset(data_keys):
+        restaurant = data.get("restaurant", "") or ""
+        menu = data.get("menu", "") or ""
+        user = data.get("user", "") or ""
+
+        if not all(isinstance(v, str) for v in [restaurant, menu, user]):
+            raise ValueError("restaurant, menu, user 값은 문자열이어야 합니다.")
+
+        return {
+            "restaurant": restaurant.strip(),
+            "menu": menu.strip(),
+            "user": user.strip(),
+        }
+
+    raise ValueError(
+        "알 수 없는 슬롯 JSON 구조입니다. "
+        "embedding(category/tag/menu/food/review) 또는 "
+        "fixed(restaurant/menu/user) 구조여야 합니다."
+    )
 
 
 def _make_embedding_slot_json(
@@ -65,11 +101,13 @@ def _make_embedding_slot_json(
                 "schema": {
                     "type": "object",
                     "properties": {
-                        "restaurant": {"type": "string"},
+                        "category": {"type": "string"},
+                        "tag": {"type": "string"},
                         "menu": {"type": "string"},
-                        "user": {"type": "string"},
+                        "food": {"type": "string"},
+                        "review": {"type": "string"},
                     },
-                    "required": ["restaurant", "menu", "user"],
+                    "required": ["category", "tag", "menu", "food", "review"],
                     "additionalProperties": False,
                 },
             },
@@ -85,7 +123,10 @@ def _make_embedding_slot_json(
     return content
 
 
-def _make_fixed_search_json(instr: str, model: str = DEFAULT_FIXED_SEARCH_MODEL) -> str:
+def _make_fixed_search_json(
+    instr: str,
+    model: str = DEFAULT_FIXED_SEARCH_MODEL,
+) -> str:
     completion = get_openai_client().chat.completions.create(
         model=model,
         messages=[
@@ -123,14 +164,26 @@ def _make_fixed_search_json(instr: str, model: str = DEFAULT_FIXED_SEARCH_MODEL)
 @tool("embedding_slot_extract")
 def embedding_slot_extract(instr: str) -> Dict[str, str]:
     """
-    사용자 입력을 restaurant/menu/user 슬롯 구조로 1차 반환한다.
+    사용자 입력을 category/tag/menu/food/review 슬롯 구조로 1차 반환한다.
 
     Returns:
-        {"restaurant": "...", "menu": "...", "user": "..."}
+        {
+            "category": "...",
+            "tag": "...",
+            "menu": "...",
+            "food": "...",
+            "review": "..."
+        }
     """
     instr = (instr or "").strip()
     if not instr:
-        return {"restaurant": "", "menu": "", "user": ""}
+        return {
+            "category": "",
+            "tag": "",
+            "menu": "",
+            "food": "",
+            "review": "",
+        }
 
     raw_json = _make_embedding_slot_json(instr)
     return _parse_slot_json(raw_json)
@@ -150,8 +203,8 @@ def fixed_search(instr: str) -> Dict[str, str]:
 
 
 if __name__ == "__main__":
-    test_input = "초밥천사 집에 우동 팔아?"
+    test_input = "조용하고 가성비 좋은 곳에서 먹을 만한 초밥집 추천해줘"
     print("[embedding]", embedding_slot_extract.invoke(test_input))
 
-    test_input2 = "신대방삼거리 근처 곱창전골 맛집"
+    test_input2 = "초밥천사 집에 우동 팔아?"
     print("[fixed]", fixed_search.invoke(test_input2))
