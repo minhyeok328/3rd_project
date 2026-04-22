@@ -42,16 +42,18 @@ def query_sender(query: str, db_path: str = DB_PATH):
         conn.close()
 
 # 3. 핵심 검색 로직
-def search_embedding(query_text: str, table_name: str = "review", top_n: int = 5):
+def search_embedding(table_name: str, query_text: str, top_n: int = 5):
+    t_name = table_name if table_name != "users" else table_name[:-1]
+
     query_vec = get_embedding(query_text)
     
     # 임베딩이 존재하는 review 테이블에서 데이터 로드
-    rows_df = query_sender("SELECT restaurant_code, embedding FROM review")
+    rows_df = query_sender(f"SELECT {t_name}_code, embedding FROM {table_name}")
     if rows_df.empty:
         return []
 
     rows_df = rows_df.dropna(subset=['embedding'])
-    codes = rows_df["restaurant_code"].tolist()
+    codes = rows_df[t_name + "_code"].tolist()
     embs = [decode_embedding(b) for b in rows_df["embedding"].tolist()]
     
     valid_indices = [i for i, v in enumerate(embs) if v is not None]
@@ -72,7 +74,7 @@ def search_embedding(query_text: str, table_name: str = "review", top_n: int = 5
             unique_codes.append(c)
         if len(unique_codes) >= top_n:
             break
-            
+
     return unique_codes
 
 # 4. 상세 정보 조회
