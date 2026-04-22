@@ -3,6 +3,10 @@ import streamlit.components.v1 as components
 
 import database.sql.utils as dbconnector
 
+######################################################################
+# 변수 설정
+######################################################################
+
 st.set_page_config(layout="wide")
 
 KAKAO_KEY = None
@@ -12,31 +16,40 @@ search_height = 100
 selectbox_height = 50
 left_sidebar, map_field = st.columns([3.5, 6.5])
 
+######################################################################
 # session_state 초기화
-open_restaurant = "open_restaurant"
-if open_restaurant not in st.session_state:
-    st.session_state[open_restaurant] = None
+######################################################################
 
+# 채팅창인지 검색창인지
 open_chat = "open_chat"
 if open_chat not in st.session_state:
     st.session_state[open_chat] = False
 
+# 레스토랑 페이지 표기할지,  여부
+open_restaurant = "open_restaurant"
+if open_restaurant not in st.session_state:
+    st.session_state[open_restaurant] = None
+
+# 채팅 기록
 session_chat = "session_chat"
 if session_chat not in st.session_state:
     st.session_state[session_chat] = []
 
+# 검색 결과 restaurant dictionary list
 search_result = "search_result"
 if search_result not in st.session_state:
     st.session_state[search_result] = []
 
-    #<test> 테스트용 코드
-    from test_mockup import restaurant_list as rlist
-    st.session_state[search_result] = rlist
+# 지도 마커 위치 지정
+search_coordinates = "search_coordinates"
+if search_coordinates not in st.session_state:
+    st.session_state[search_coordinates] = []
 
+# 지도 중심 위치 지정
 lat = "lat"
 lng = "lng"
 if lat not in st.session_state:
-    # 신대방 삼거리역 위치
+    # 초기 위치는 신대방 삼거리역 위치
     st.session_state[lat] = 37.4997
     st.session_state[lng] = 126.9281
 
@@ -44,13 +57,31 @@ if lat not in st.session_state:
 # 함수 선언
 ######################################################################
 
+# 검색 결과 세션 저장
+def update_search_result(rlist:list[dict]):
+    st.session_state[search_result] = rlist
+
+    #<test> 지도 데이터 갱신
+    # 지도 마커 위치 갱신
+    st.session_state[search_coordinates] = [(r["lat"], r["lng"]) for r in rlist]
+
+    # 지도 위치 갱신
+    coord_cnt = len(rlist)
+    st.session_state[lat] = sum([c[0] for c in st.session_state[search_coordinates]]) / coord_cnt
+    st.session_state[lng] = sum([c[1] for c in st.session_state[search_coordinates]]) / coord_cnt
+
+    # 지도 갱신
+    st.rerun()
+
 # 레스토랑 표기 함수
 def open_restaurant_page(restaurant_data:dict):
     st.session_state[open_restaurant] = restaurant_data
 
+# 레스토랑 페이지 닫기
 def close_restaurant_page():
     st.session_state[open_restaurant] = None
 
+# 레스토랑 메뉴 표기 html
 def menu_card(menu_data:dict) -> str:
     html_code = f"""<div class="menu_card">
     <p style="margin: 0">{menu_data["name"]}</p>
@@ -59,6 +90,7 @@ def menu_card(menu_data:dict) -> str:
 </div>"""
     return html_code
 
+# 레스토랑 메뉴 표기 html
 def review_card(review_data:dict) -> str:
     html_code = f"""<div class="review_card">
     <p style="margin: 0">{review_data["name"]}</p>
@@ -73,6 +105,7 @@ def review_card(review_data:dict) -> str:
 </div>"""
     return html_code
 
+# 레스토랑 페이지 html
 def restaurant_page(restaurant_data:dict):
     html_code = f"""
 <style>
@@ -144,10 +177,6 @@ def restaurant_page(restaurant_data:dict):
 """
     return html_code
 
-# 검색창 < > 팝업 버튼 함수
-def switch_sidebar():
-    st.session_state[open_chat] = not st.session_state[open_chat]
-
 st.markdown("""
 <style>
 .st-key-switch_btn button {
@@ -159,6 +188,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# 검색창 < > 팝업 버튼 출력 함수
+def switch_sidebar():
+    st.session_state[open_chat] = not st.session_state[open_chat]
+
 def switch_button(to_chat:bool):
     st.button("💬" if to_chat else "🔎", key="switch_btn", on_click=switch_sidebar)
 
@@ -168,6 +201,7 @@ def print_search():
         #<test> 식당 카드 출력
         st.button(f"{s["name"]}", on_click=open_restaurant_page, args=[s,])
 
+# fixed_search 활용
 fixed_search_options = ["식당이름", "메뉴", "유저명"]
 fixed_search_data_keys = ["restaurant", "menu", "user"]
 def add_search(intype:str, instr:str):
@@ -183,11 +217,7 @@ def add_search(intype:str, instr:str):
 
     indict[target_key] = instr
 
-    #<test> 검색 함수
-    #st.session_state[search_result] = dbconnector.fixed_search(indict)
-
-    # 지도 갱신
-    st.rerun()
+    update_search_result(dbconnector.fixed_search(indict))
 
 # 채팅창 함수
 def print_chat():
@@ -198,13 +228,16 @@ def print_chat():
         with st.chat_message(role):
             st.write(content)
 
+# 새 채팅 출력 함수
 def add_chat(instr:str):
     st.session_state[session_chat].append({"role":"user", "content":instr})
     
     #<test> 답변 받아오기
     st.session_state[session_chat].append({"role":"assistant", "content":"AI 반응"})
 
-# 지도 함수
+    # update_search_result 호출
+
+# 지도 출력 함수
 def render_kakao_map(lat, lon, markers=None):
     """카카오 지도를 렌더링하고 마커를 표시하는 함수"""
     if not KAKAO_KEY:
