@@ -208,3 +208,51 @@ def _compress_list(ls:list) -> list:
         if line not in buff:
             buff.append(line)
     return buff
+
+fixed_search_keys = ["restaurant", "menu", "user"]
+def fixed_search(indict:dict):
+    if not all(k in indict for k in fixed_search_keys):
+        return []
+    
+    buff = []
+    for k in fixed_search_keys:
+        table_name = k if k != "user" else k + "s"
+        if indict[k] == "":
+            continue
+        codes = query_sender(f"SELECT {k}_code FROM {table_name} WHERE name LIKE '%{indict[k]}%'")[k + "_code"].tolist()
+        buff.extend(search_table(table_name, codes))
+    buff = _compress_list(buff)
+
+    return get_detailed_restaurants(buff)
+
+embedding_search_keys = ["category", "tag", "menu", "food", "review"]
+def embedding_search(indict:dict):
+    if not all(k in indict for k in embedding_search_keys):
+        return []
+    
+    buff = []
+    for k in embedding_search_keys:
+        if indict[k] == "":
+            continue
+        
+        codes = search_embedding(k, indict[k], 8)
+        rcodes = search_table(k, codes)
+        if not rcodes:
+            continue
+        buff.append(rcodes)
+    
+    if not buff:
+        return []
+    
+    common = set(buff[0])
+    
+    if 1 < len(buff):
+        common = common.intersection(*buff[1:])
+
+    cnt_space = [5, 3, 2, 1, 1]
+    if common:
+        rlist = [x for x in buff[0] if x in common]
+    else:
+        rlist = [sub[min(len(sub), cnt_space[len(buff) - 1])] for sub in buff if sub]
+
+    return get_detailed_restaurants(rlist)
