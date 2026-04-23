@@ -4,12 +4,32 @@
 - FIXED_SEARCH_PROMPT: 고정 검색(엔티티 직접 지정) 라우트의 슬롯 추출 프롬프트
 - ROUTER_PROMPT: embedding / fixed 라우팅 판정 프롬프트
 - load_system_prompt(): prompts/system_prompt.txt 를 읽어오는 헬퍼
-"""
-from __future__ import annotations
 
+─────────────────────────────────────────────────────────────────────────────
+이 파일이 하는 일
+
+LLM 에 "무엇을 해달라"고 지시할 때 사용할 문장(프롬프트)들을 전부 모아둔 곳이다.
+코드 안에 프롬프트를 흩뿌려두면 수정하기도 관리하기도 어렵기 때문에
+이렇게 한 파일에 상수로 정리해둔다.
+
+어디에서 쓰이나?
+    - ROUTER_PROMPT:        router.py 에서 "이 질문은 embedding 이야? fixed 야?" 를 판단할 때
+    - EMBEDDING_SLOT_PROMPT: slot_extractor.py 에서 category/tag/menu/food/review 슬롯 뽑을 때
+    - FIXED_SEARCH_PROMPT:   slot_extractor.py 에서 restaurant/menu/user 슬롯 뽑을 때
+    - load_system_prompt():  generator.py 에서 최종 답변 생성용 system prompt 로 읽어 들일 때
+─────────────────────────────────────────────────────────────────────────────
+"""
+
+from __future__ import annotations
 from .config import SETTINGS
 
 
+# ===========================================================================
+# EMBEDDING_SLOT_PROMPT
+#   - "임베딩 기반 검색" 경로에서 사용.
+#   - 사용자의 자연어 문장에서 category/tag/menu/food/review 5가지 슬롯을
+#     JSON 형태로 뽑아내도록 LLM 에 지시하는 프롬프트.
+# ===========================================================================
 EMBEDDING_SLOT_PROMPT = """너는 사용자의 음식점 검색 문장을 분석하여
 검색에 필요한 핵심 정보를 구조화하는 정보 추출기다.
 
@@ -78,6 +98,12 @@ EMBEDDING_SLOT_PROMPT = """너는 사용자의 음식점 검색 문장을 분석
 """
 
 
+# ===========================================================================
+# FIXED_SEARCH_PROMPT
+#   - "고정(엔티티 지정) 검색" 경로에서 사용.
+#   - 상호명 / 메뉴명 / 유저명처럼 "직접 지칭된" 값만 골라
+#     restaurant/menu/user 3개의 슬롯 JSON 으로 반환하도록 지시.
+# ===========================================================================
 FIXED_SEARCH_PROMPT = """너는 사용자의 식당 검색 문장에서 restaurant, menu, user 슬롯을 추출하는 정보 추출기다.
 반드시 JSON 객체만 반환해.
 출력 형식은 정확히 {"restaurant": "...", "menu": "...", "user": "..."} 이어야 한다.
@@ -114,6 +140,13 @@ FIXED_SEARCH_PROMPT = """너는 사용자의 식당 검색 문장에서 restaura
 출력: {"restaurant": "", "menu": "곱창", "user": ""}"""
 
 
+# ===========================================================================
+# ROUTER_PROMPT
+#   - 사용자 질문을 보고 "embedding 경로 / fixed 경로" 중 하나를 선택하도록
+#     LLM 에 지시하는 판정용 프롬프트.
+#   - {question} 자리에 실제 사용자 질문이 치환되어 삽입된다.
+#     (router.py 에서 .replace("{question}", question) 로 처리)
+# ===========================================================================
 ROUTER_PROMPT = """
 너는 식당 검색 라우터다.
 사용자 질문을 보고 반드시 아래 둘 중 하나만 반환해.
@@ -135,6 +168,25 @@ ROUTER_PROMPT = """
 
 
 def load_system_prompt() -> str:
+    """
+    프로젝트 루트의 `prompts/system_prompt.txt` 파일을 읽어 문자열로 반환한다.
+
+    Returns:
+        str: system prompt 전체 텍스트
+
+    Raises:
+        FileNotFoundError: prompt 파일이 존재하지 않으면 발생.
+
+    전체 흐름 속 위치:
+        generator.generate_response() 에서 최종 답변 생성 직전,
+        이 함수를 호출해 system prompt 를 읽어 LLM 에 전달한다.
+
+    왜 파일로 분리했나?
+        - 프롬프트가 매우 길고 자주 튜닝되는 영역이라 코드와 분리해 관리하면 편하다.
+    """
+    # prompts/system_prompt.txt 파일이 실제로 존재하는지 먼저 검사.
     if not SETTINGS.prompt_path.exists():
+        # 파일이 없으면 바로 친절한 에러 메시지와 함께 실패.
         raise FileNotFoundError(f"Prompt file not found: {SETTINGS.prompt_path}")
+    # UTF-8 인코딩으로 텍스트 파일 읽어서 전체 내용 반환.
     return SETTINGS.prompt_path.read_text(encoding="utf-8")
