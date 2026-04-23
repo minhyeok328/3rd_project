@@ -261,7 +261,7 @@ def add_search(intype:str, instr:str):
 
     indict[target_key] = instr
 
-    update_search_result(dbconnector.fixed_search(indict))
+    update_search_result(dbconnector.db_fixed_search(indict))
 
 # 채팅창 함수
 def print_chat():
