@@ -1,0 +1,1742 @@
+{
+  "summary": {
+    "dataset_name": "pickle_llm_eval_goldset_50",
+    "dataset_version": "2026-04-24",
+    "ran_at": "20260424_093827",
+    "total_cases": 50,
+    "route_accuracy": 1.0,
+    "slot_exact_accuracy": 0.22,
+    "restaurant_hit_accuracy": 0.56,
+    "actual_route_distribution": {
+      "embedding": 27,
+      "fixed": 23
+    }
+  },
+  "details": [
+    {
+      "id": 1,
+      "question": "혼자 가볍게 먹기 좋은 우동집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "혼밥",
+        "menu": "",
+        "food": "우동",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "일식",
+        "tag": "혼밥",
+        "menu": "",
+        "food": "우동",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "기계우동"
+      ],
+      "actual_candidates": [
+        "마포갈비",
+        "네모오징어 신대방삼거리역점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "혼밥+우동 조합을 embedding으로 해석하는지 확인",
+      "answer_preview": "혼자 가볍게 먹기 좋은 우동집을 찾으셨는데, 주어진 후보 중에 우동이나 일식 우동 관련 메뉴가 있는 곳이 없네요. 그래서 딱 맞는 우동집 추천은 어려워요.\n\n대신 혼밥하기 좋은 분위기와 가볍게 한 끼 하기 좋은 식당 중에서 가장 근접한 곳으로는 신대방삼거리역 근처에 있는 **네모오징어 신대방삼거리역점**을 추천드릴게요! 이곳은 혼밥 태그도 있고, 서민적이고 깔끔한 분위기라 혼자 가볍게 식사하기 좋아요. 실제로 한 리뷰어분도 \"둘이 먹기에 양도 괜찮았네요\"라고 하셨고, \"개업한지 얼마 안 된 곳인데 깔끔하고 맛도 먹을 만했어요\"라고 "
+    },
+    {
+      "id": 2,
+      "question": "저녁에 간단히 한잔하기 좋은 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "술집",
+        "tag": "간단히한잔",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "술집",
+        "tag": "간단한",
+        "menu": "",
+        "food": "",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "달맥 신대방삼거리역점",
+        "단길",
+        "심야식당중도"
+      ],
+      "actual_candidates": [
+        "듀윗",
+        "황금수산",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "직접 식당명을 언급하지 않은 분위기형 질의 처리",
+      "answer_preview": "저녁에 간단히 한잔하기 좋은 곳으로는 신대방삼거리역 근처에 있는 **소문난포장마차**를 추천드려요! 간단히 한잔하기 좋은 술집을 찾으신다고 하셨는데, 이곳은 서민적인 분위기에 야외자리도 있어서 편하게 술모임 하시기 딱 좋아요. 실제로 한 리뷰어분도 \"간단하게 3차 정도에 오기 좋은 포차\"라고 하셨고, 또 다른 분은 \"비 오는 날 한잔 하려고 방문했는데 음식도 저렴하고 맛있어서 엄청 시켜먹었다\"며 추천했어요. 대표 메뉴로는 매운닭발(11,000원)과 조개탕(12,000원)이 있고, 위치는 서울 동작구 여의대방로24차길 48이에요. 편"
+    },
+    {
+      "id": 3,
+      "question": "데이트하기 좋은 예쁜 디저트 카페 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "디저트",
+        "tag": "데이트",
+        "menu": "",
+        "food": "",
+        "review": "예쁜"
+      },
+      "actual_slots": {
+        "category": "카페",
+        "tag": "데이트",
+        "menu": "",
+        "food": "",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.3333,
+      "expected_candidates": [
+        "듀윗"
+      ],
+      "actual_candidates": [
+        "듀윗",
+        "오다 신대방삼거리점",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "듀윗"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "데이트/예쁜/디저트 조합 grounding",
+      "answer_preview": "데이트하기 좋은 예쁜 디저트 카페를 찾으신다면 신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! \"데이트하기 좋은 예쁜 디저트 카페\"를 원하신다고 하셨는데, 듀윗은 \"데이트\", \"예쁜\", \"깔끔한\" 태그가 모두 있고, 실제로 리뷰에서도 \"6년 연속 블루리본을 받은 디저트카페\"라며 인테리어와 디저트 비주얼이 예쁘고 분위기가 좋아 촬영 욕구가 생긴다는 평이 많아요. 한 리뷰어분은 \"창가에 앉아 망중한 즐기기에 최적인 곳\"이라고도 하셨답니다.\n\n대표 메뉴로는 프레지에(10,500원)와 마카롱(2,500원)이 있고, 위치는 서울 동작구"
+    },
+    {
+      "id": 4,
+      "question": "가족이랑 가기 좋은 생선구이 집 찾아줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "가족외식",
+        "menu": "",
+        "food": "생선구이",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "한식",
+        "tag": "가족이랑",
+        "menu": "",
+        "food": "생선",
+        "review": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "돌솥밥 & 생선구이"
+      ],
+      "actual_candidates": [
+        "심야식당중도"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "가족외식 태그와 음식 키워드 결합",
+      "answer_preview": "가족이랑 가기 좋은 생선구이 집을 찾으신다면 신대방삼거리역 근처에 있는 **심야식당중도**를 추천드려요! 가족 외식하기 좋은 분위기라는 리뷰 태그가 있고, 생선구이와 비슷한 생선 요리인 '구운대삼치와 쪽파치미추리'(18,000원) 같은 메뉴도 있어 생선구이 느낌을 충분히 즐기실 수 있어요. 실제로 한 리뷰어분도 '가족외식하기 좋고 깔끔하다'고 하셨고, 사장님도 친절하다고 해 편안한 식사 시간 보내시기 좋아요. 위치는 서울 동작구 여의대방로22길 121 상가동 1층이고, 대표 메뉴로는 구운대삼치와 쪽파치미추리 외에도 계절 모듬 사시미"
+    },
+    {
+      "id": 5,
+      "question": "술 마신 다음에 해장하기 좋은 국물 있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "해장",
+        "menu": "",
+        "food": "",
+        "review": "국물"
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "해장",
+        "menu": "",
+        "food": "국물",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "노량진 수제비",
+        "동화장",
+        "육전국밥 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "서민준밀밭",
+        "달맥 신대방삼거리역점",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "해장 수요를 리뷰/태그 중심으로 회수하는지 확인",
+      "answer_preview": "술 마신 다음 해장용으로 국물이 있는 곳을 찾으신다면, 신대방삼거리역 근처에 있는 **서민준밀밭**을 추천드려요! 해장하실 때 국물이 꼭 필요하시다고 하셨는데, 이곳은 콩국수와 칼국수 등 고소하고 깔끔한 국물 요리가 많아서 딱이에요. 실제로 한 리뷰어분도 \"검은콩국수는 짜지 않고 맛있고 콩칼국수는 콩스프 먹는 맛\"이라고 하셨을 만큼 국물 맛이 좋다고 해요.\n\n대표 메뉴로는 검정콩국수(12,000원)와 바지락칼국수(10,000원)가 있고, 위치는 서울 동작구 상도로12길 7, 신대방삼거리역 근처예요. 부담 없이 혼밥도 가능하고 서민적"
+    },
+    {
+      "id": 6,
+      "question": "가성비 좋은 곱창집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "곱창",
+        "tag": "가성비좋은",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "가성비",
+        "menu": "",
+        "food": "곱창",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "대포곱창",
+        "소곱창 클라쓰",
+        "인생곱창"
+      ],
+      "actual_candidates": [
+        "우니꾸",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "카테고리와 태그 교집합 검색",
+      "answer_preview": "가성비 좋은 곱창집을 찾으신다면 신대방삼거리역 근처에 있는 **우니꾸**를 추천드려요! 가성비 좋은 곱창집을 원하신다고 하셨는데, 이곳은 신대방삼거리 지역주민들이 많이 찾는 숨은 맛집으로, 리뷰에서도 고기가 신선하고 맛있다는 평이 많아요. 특히 \"혼자 가볍게 고기에 소주 때리기 좋은 곳\"이라는 후기도 있어 혼술이나 가성비 좋은 식사에 딱 맞는 곳이에요.\n\n대표 메뉴로는 토시살(15,900원)과 닭목살(10,900원)이 있고, 위치는 서울 동작구 국사봉1길 4에 있어요. 아담하고 조용한 분위기라 편안하게 식사하시기 좋을 거예요. 가성"
+    },
+    {
+      "id": 7,
+      "question": "단체로 가기 좋고 테라스 느낌 있는 곳 있어?",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "단체모임",
+        "menu": "",
+        "food": "",
+        "review": "테라스"
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "단체",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "계림원",
+        "네모오징어 신대방삼거리역점",
+        "달맥 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "듀윗",
+        "계림원",
+        "프로스퍼",
+        "유태우스시",
+        "신정닭발"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "계림원"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "테라스/단체모임 같은 분위기성 조건 조합",
+      "answer_preview": "단체 모임에 테라스 느낌까지 원하신다면, 신대방삼거리역 근처에 있는 **계림원**을 추천드려요! 단체모임, 야외테라스, 넓은 공간, 모임장소 같은 태그가 확실히 있어서 단체로 가기 좋은 곳이고, 리뷰에서도 \"야외좌석(테라스)\"가 있다고 명시되어 있어요. 실제로 한 리뷰어분도 \"누룽지가 맛있고, 야외좌석(테라스)도 있어서 좋다\"고 하셨답니다.\n\n대표 메뉴는 누룽지통닭이고, 위치는 서울 동작구 상도로12길 13이에요. 단체로 편하게 모임 가지시면서 테라스 느낌도 즐기기 딱 좋은 곳이라 마음에 드실 거예요!"
+    },
+    {
+      "id": 8,
+      "question": "혼술하기 좋은 안주 맛집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "이자카야",
+        "tag": "혼술",
+        "menu": "",
+        "food": "",
+        "review": "안주"
+      },
+      "actual_slots": {
+        "category": "술집",
+        "tag": "혼술",
+        "menu": "",
+        "food": "안주",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.3333,
+      "expected_candidates": [
+        "단길",
+        "심야식당중도"
+      ],
+      "actual_candidates": [
+        "숲",
+        "마포갈비",
+        "먹거리장터",
+        "한울전집"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "혼술/안주/이자카야 라우팅과 retrieval",
+      "answer_preview": "혼술하기 좋은 안주 맛집으로는 신대방삼거리역 근처에 있는 **숲**을 추천드려요! 혼술하신다고 하셨는데, 이곳은 '혼술', '안주', '가성비좋은' 태그가 모두 있어서 딱 맞아요. 실제로 한 리뷰어분도 \"혼자가셔도 사장님이 말동무도 해주실꺼에요\"라고 하셨고, 다양한 안주 메뉴가 준비되어 있어 혼자 술 한잔하기에 편안한 분위기라고 해요. 대표 메뉴로는 고추장찌개(18,000원)와 모듬튀김(23,000원)이 있고, 위치는 서울 동작구 여의대방로22길 121 상가동1층 1431호예요. 조용하면서도 편안한 분위기에서 맛있는 안주와 함께 혼"
+    },
+    {
+      "id": 9,
+      "question": "테이크아웃하기 좋은 저렴한 간식 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "",
+        "review": "간식"
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "저렴한",
+        "menu": "",
+        "food": "간식",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "경성 찹쌀꽈배기",
+        "와플대학 신대방삼거리캠퍼스"
+      ],
+      "actual_candidates": [
+        "듀윗",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "간식/테이크아웃형 추천",
+      "answer_preview": "테이크아웃하기 좋은 저렴한 간식을 찾으신다면 신대방삼거리역에 있는 **듀윗**을 추천드려요! 테이크아웃이 가능한 디저트 카페로, 깔끔하고 예쁜 분위기라서 간식으로 딱이에요. 실제로 리뷰어분들도 ‘케이크와 까눌레가 아주 맛있다’고 하셨고, ‘기본에 충실한 디저트’라는 평이 많아요. 가격도 마카롱이 2,500원, 페르디셔 압펠이나 루이보스 스트로베리 크림이 6,000원대로 부담 없답니다. 위치는 서울 동작구 대방동1길 10 1층이에요. 간단하게 테이크아웃해서 맛있는 간식 즐기시기에 마음에 드실 거예요!"
+    },
+    {
+      "id": 10,
+      "question": "점심에 배달시키기 좋고 메뉴가 다양한 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "배달",
+        "menu": "",
+        "food": "",
+        "review": "다양한메뉴"
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "배달",
+        "menu": "",
+        "food": "",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "라밥 신대방삼거리점",
+        "고유부"
+      ],
+      "actual_candidates": [
+        "유태우스시"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "배달/다양한메뉴 태그 기반 추천",
+      "answer_preview": "신대방삼거리역 근처에 있는 **유태우스시**를 추천드려요! 점심에 배달시키기 좋고 메뉴가 다양한 곳을 찾으신다고 하셨는데, 이곳은 회전초밥을 중심으로 다양한 초밥 메뉴가 있어서 여러 가지 골라 먹기 딱 좋아요. 실제로 한 리뷰어분도 \"1500원이라 가성비 좋고 다양하게 먹을 수 있어서 좋아요\"라고 하셨을 만큼 메뉴 선택 폭이 넓고 가성비도 뛰어나요. 대표 메뉴로는 회전초밥과 장어초밥이 있고, 위치는 서울 동작구 보라매로 113 1층 유태우스시예요. 점심시간에 간편하게 배달로 즐기기에도 무리 없으니 마음에 드실 거예요!"
+    },
+    {
+      "id": 11,
+      "question": "기념일에 갈 만한 케이크 맛집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "케이크",
+        "tag": "기념일",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "기념일",
+        "menu": "",
+        "food": "케이크",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "듀윗"
+      ],
+      "actual_candidates": [
+        "소문난포장마차",
+        "미르양 피자",
+        "카페아에 동작점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "기념일/케이크 결합",
+      "answer_preview": "기념일에 가기 좋은 케이크 맛집으로는 서울 동작구 신대방삼거리역에 있는 **카페아에 동작점**을 추천드려요! 기념일에 갈 만한 케이크를 찾으신다고 하셨는데, 이곳은 \"말렌카 꿀케이크(호두)\"와 \"떠먹는 뉴욕치즈 케이크\" 같은 다양한 케이크 메뉴가 준비되어 있어요. 실제로 리뷰에서도 깔끔하고 숨은 맛집으로 평가받고 있답니다. 위치는 서울 동작구 상도로 55 1층이에요. 달콤한 케이크와 함께 기념일 분위기 내기 딱 좋으실 거예요. 마음에 드실 것 같아요!"
+    },
+    {
+      "id": 12,
+      "question": "갑오징어 요리 맛있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "갑오징어",
+        "tag": "",
+        "menu": "",
+        "food": "갑오징어",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "",
+        "food": "갑오징어",
+        "review": "맛있는"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "네모오징어 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "동대문곱창볶음전문"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "음식명 기반 embedding 검색",
+      "answer_preview": "갑오징어 요리 맛집을 찾으셨는데, 아쉽게도 이번 후보 리스트에는 갑오징어 요리를 전문으로 하거나 대표 메뉴에 포함한 식당이 없네요. 대신 현재 리스트에 있는 식당들은 곱창볶음 전문점이라 갑오징어와는 다른 메뉴를 주로 다루고 있어요.\n\n혹시 갑오징어 요리만 따로 다시 찾아보시거나, 다른 음식 종류로 추천 원하시면 알려주세요. 도움이 될 만한 식당을 다시 찾아볼게요!"
+    },
+    {
+      "id": 13,
+      "question": "노포 느낌 나고 해장하기 좋은 집 있을까?",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "노포",
+        "menu": "",
+        "food": "",
+        "review": "해장"
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "해장하기 좋은",
+        "menu": "",
+        "food": "",
+        "review": "노포 느낌"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "기계우동",
+        "동화장",
+        "노량진 수제비"
+      ],
+      "actual_candidates": [
+        "달맥 신대방삼거리역점",
+        "회가대표초밥24 신대방삼거리점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "노포+해장 복합 조건",
+      "answer_preview": "노포 느낌과 해장하기 좋은 집을 찾으신다면, 신대방에 있는 **달맥 신대방삼거리역점**을 추천드려요! 노포 느낌은 후보 식당 중에 명확히 드러나진 않지만, 달맥은 서민적이고 캐주얼한 분위기에 술모임과 저녁식사에 좋은 곳으로 리뷰에서 '서민적인', '캐주얼한', '지역주민이 찾는' 태그가 많아 편안한 옛날 느낌을 어느 정도 느낄 수 있어요. 그리고 해장하기 좋은 메뉴로는 달맥 부대찌개(17,000원)와 달맥 어묵탕(16,000원)이 있어 해장 메뉴로 딱 맞습니다. 위치는 서울 동작구 보라매로 98-1 1층, 2층이에요. 가볍게 해장하"
+    },
+    {
+      "id": 14,
+      "question": "반려동물이랑 같이 갈 수 있는 치맥집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "치킨",
+        "tag": "반려동물동반",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "반려동물 동반",
+        "menu": "치킨",
+        "food": "치킨",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "달맥 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "마포갈비",
+        "달맥 신대방삼거리역점",
+        "춘리마라탕 신대방삼거리점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "달맥 신대방삼거리역점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "희소 태그 반려동물동반 처리",
+      "answer_preview": "신대방에 있는 **달맥 신대방삼거리역점**을 추천드려요! 반려동물과 함께 갈 수 있는 치맥집 찾으신다고 하셨는데, 이곳은 \"반려동물동반\" 태그가 분명히 있어서 반려동물과 편하게 방문할 수 있어요. 게다가 생맥주와 치킨을 주력으로 하는 곳이라 치맥 조합도 딱 맞고요. 실제로 리뷰에서도 \"맥주도 너무 가성비 좋고 안주도 예쁘고 맛있게 나온다\"며 만족도가 높았어요. 대표 메뉴로는 순살 양념치킨(20,900원)과 A set(반반치킨+더블페퍼로니피자, 39,000원)이 있고, 위치는 서울 동작구 보라매로 98-1 1층, 2층이에요. 반려동물"
+    },
+    {
+      "id": 15,
+      "question": "예쁘고 깔끔한 카페에서 커피 마시고 싶어.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "카페",
+        "tag": "깔끔한",
+        "menu": "",
+        "food": "커피",
+        "review": "예쁜"
+      },
+      "actual_slots": {
+        "category": "카페",
+        "tag": "예쁜",
+        "menu": "커피",
+        "food": "커피",
+        "review": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "듀윗",
+        "카페 알코브",
+        "투썸플레이스 신대방삼거리점"
+      ],
+      "actual_candidates": [
+        "프로스퍼",
+        "듀윗",
+        "뿌루밀리 신대방삼거리역점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "듀윗"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "카페류 일반 질의에서 과도한 환각 없이 후보 제한",
+      "answer_preview": "예쁘고 깔끔한 카페에서 커피 마시고 싶으시다면 신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! 예쁘고 깔끔한 분위기 찾으신다고 하셨는데, 이곳은 \"예쁜\", \"깔끔한\", \"조용한\" 태그가 많고, 실제로 리뷰어분들도 \"인테리어도 예쁘고 디저트도 맛있다\", \"화이트톤 인테리어와 고대유럽 느낌의 분위기가 멋지다\"라고 평가했어요. 커피도 다양하고 맛있다는 평이 많아서 커피 마시기 딱 좋답니다.\n\n대표 메뉴로는 아메리카노(4,500원)와 프레지에(10,500원) 케이크가 있고요, 위치는 서울 동작구 대방동1길 10 1층이에요. 조용하고 "
+    },
+    {
+      "id": 16,
+      "question": "늦게까지 하는 치킨이랑 피자 같이 먹을 수 있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "치킨",
+        "tag": "연중무휴",
+        "menu": "피자",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "",
+        "food": "치킨, 피자",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "달맥 신대방삼거리역점",
+        "피맥 신대방점"
+      ],
+      "actual_candidates": [
+        "모리식탁"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "카테고리+메뉴 결합형 검색",
+      "answer_preview": "늦게까지 영업하는 신대방삼거리역 근처의 **모리식탁**을 추천드려요! 치킨과 피자를 같이 드시고 싶다고 하셨는데, 이곳은 치킨 가라아게 메뉴가 있고 분위기도 캐주얼하면서 저녁식사와 술모임에 딱 맞는 곳이에요. 실제로 리뷰에서도 \"숙성회가 너무 맛있고 직원들도 친절하다\"는 평이 많고, 치킨 가라아게도 메뉴에 있어 치킨을 즐기기 좋아요. 피자는 없지만 치즈 불닭게티, 치즈 짜파구리 같은 치즈 메뉴도 있어서 치즈 좋아하시면 만족하실 거예요. 대표 메뉴로는 치킨 가라아게(18,000원)와 치즈 불닭게티(9,000원)가 있고, 위치는 서울 "
+    },
+    {
+      "id": 17,
+      "question": "푸짐하게 한식 먹을 수 있는 집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "한식",
+        "tag": "푸짐한",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "한식",
+        "tag": "푸짐한",
+        "menu": "",
+        "food": "",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "한솔웰빙쌈밥시골보리밥",
+        "돌솥밥 & 생선구이",
+        "고유부"
+      ],
+      "actual_candidates": [
+        "오다 신대방삼거리점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "한식류 넓은 질의에서 plausible candidates 회수",
+      "answer_preview": "푸짐하게 한식 드시고 싶으시다면 신대방삼거리에 있는 **오다 신대방삼거리점**을 추천드려요! 푸짐한 한식 느낌의 메뉴와 함께 고급스러운 분위기에서 식사하실 수 있는 곳인데요, 실제로 한 리뷰어분도 \"푸짐한\"과 \"가성비 좋은\" 태그로 많이 언급하며 만족감을 표현하셨어요. 대표 메뉴로는 한우육회가 듬뿍 들어간 육토마끼(23,000원)와 매콤하게 볶은 묵은지 삼겹살 김치볶음밥(9,000원)이 있고, 위치는 서울 동작구 보라매로 96 1층이에요. 푸짐하고 맛있는 한식으로 기분 좋은 식사 되실 거예요!"
+    },
+    {
+      "id": 18,
+      "question": "매콤한 닭발 먹고 싶은데 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "닭발",
+        "tag": "매콤한",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "매운",
+        "menu": "",
+        "food": "닭발",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "신정닭발",
+        "선아닭발",
+        "삼거리닭발 신대방점"
+      ],
+      "actual_candidates": [
+        "매콤달콤떡볶이 성대시장점",
+        "유가네닭갈비 신대방삼거리점",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "동일 카테고리 다중 후보 회수",
+      "answer_preview": "매콤한 닭발 드시고 싶으시다면 신대방삼거리에 있는 **소문난포장마차**를 추천드려요! 매콤한 닭발을 원하신다고 하셨는데, 이곳 메뉴에 '매운닭발'(11,000원)이 있어서 딱 맞아요. 실제로 한 리뷰어분도 \"신대방삼거리 근처 오시면 강추합니당\"이라며 맛있게 매운닭발을 즐기셨다고 해요. 분위기도 서민적이고 술모임하기 좋은 포차 스타일이라 편안하게 매콤한 안주를 즐기기 좋아요. 위치는 서울 동작구 여의대방로24차길 48에 있으니 참고하세요. 매콤한 닭발 생각날 때 가보시면 후회 없으실 거예요!"
+    },
+    {
+      "id": 19,
+      "question": "스시로 데이트하기 좋은 곳 찾아줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "스시",
+        "tag": "데이트",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "일식",
+        "tag": "데이트",
+        "menu": "",
+        "food": "초밥",
+        "review": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "유태우스시",
+        "회가대표초밥24 신대방삼거리점"
+      ],
+      "actual_candidates": [
+        "듀윗",
+        "우니꾸",
+        "원조부안집 신대방삼거리역점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "스시 계열 데이트 수요",
+      "answer_preview": "스시로 데이트하기 좋은 곳을 찾으셨는데, 주어진 후보 식당 중에는 스시나 초밥을 전문으로 하는 곳이 없네요. 대신 일식 초밥과 데이트 분위기에 딱 맞는 식당은 데이터에 없어서 추천이 어려워요.\n\n혹시 디저트 카페나 분위기 좋은 카페에서 데이트를 원하시면, 신대방삼거리역 근처에 있는 **듀윗**을 추천드릴 수 있어요. 이곳은 \"데이트\", \"예쁜\", \"깔끔한\", \"조용한\" 태그가 많고, 실제로 리뷰어분들도 분위기가 좋다고 평가하셨어요. 대표 메뉴로는 프레지에 케이크(10,500원)와 아메리카노(4,500원)가 있고, 위치는 서울 동작구"
+    },
+    {
+      "id": 20,
+      "question": "테이크아웃 가능한 커피집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "커피",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "카페",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "커피",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "투썸플레이스 신대방삼거리점",
+        "듀윗",
+        "카페 알코브"
+      ],
+      "actual_candidates": [
+        "먹거리장터",
+        "타코야끼&CAFE 신대방삼거리역점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "일반 커피류 질의에서 DB 내 후보만 제시하는지 확인",
+      "answer_preview": "테이크아웃 가능한 커피집을 찾으신다면 신대방삼거리역에 있는 **타코야끼&CAFE 신대방삼거리역점**을 추천드려요! 커피집을 원하셨는데, 이곳은 카페 메뉴도 다양하게 준비되어 있고, 특히 리뷰에 '포장' 태그가 있어 테이크아웃이 가능한 점이 확실해요. 대표 메뉴로는 아메리카노(3,000원)와 카페 라떼(3,500원)가 있고, 위치는 서울 동작구 신대방동 347-27이에요. 타코야끼도 함께 즐길 수 있어서 간식과 커피를 같이 테이크아웃하기 좋아요. 가보시면 후회 없으실 거예요~"
+    },
+    {
+      "id": 21,
+      "question": "콩국수 맛있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "콩국수",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "콩국수",
+        "food": "국수",
+        "review": "맛있는"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "노량진 수제비",
+        "태화네칼국수"
+      ],
+      "actual_candidates": [
+        "서민준밀밭",
+        "태화네칼국수"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "태화네칼국수"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "메뉴명만 주어진 embedding 검색",
+      "answer_preview": "콩국수 맛있게 드시고 싶으시다면 신대방삼거리역 근처에 있는 **서민준밀밭**을 추천드려요! 콩국수 맛집 찾으신다고 하셨는데, 이곳은 검정콩국수와 콩국수를 전문으로 하면서 콩국물이 아주 크리미하고 국내산 콩을 사용해 맛이 뛰어나다고 해요. 실제로 한 리뷰어분도 \"검은콩국수는 짜지 않고 맛있고 콩칼국수는 콩스프 먹는 맛이라고나 할까요? 왠만한 콩국수와는 수준이 다릅니다.\"라고 하셨답니다. 대표 메뉴로는 콩국수(11,000원)와 검정콩국수(12,000원)가 있고, 위치는 서울 동작구 상도로12길 7이에요. 깔끔하고 서민적인 분위기라 혼밥"
+    },
+    {
+      "id": 22,
+      "question": "혼자 가기 좋은 돈까스집 있어?",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "돈까스",
+        "tag": "혼밥",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "일식",
+        "tag": "혼밥",
+        "menu": "",
+        "food": "돈까스",
+        "review": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "카츠디나인 본점"
+      ],
+      "actual_candidates": [
+        "카츠디나인 본점",
+        "우니꾸",
+        "유태우스시"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "카츠디나인 본점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "돈까스 카테고리와 혼밥 태그의 조합",
+      "answer_preview": "신대방삼거리역 근처에 있는 **카츠디나인 본점**을 추천드려요! 혼자 가기 좋은 돈까스집을 찾으신다고 하셨는데, 이곳은 '혼밥' 태그가 명확히 있고 바테이블 좌석도 있어서 혼자 방문하기 딱 좋아요. 실제로 여러 리뷰어분들이 \"히레카츠가 부드럽고 바삭하다\", \"모둠카츠는 가성비 최고\"라며 만족감을 표현하셨고, \"분위기가 깔끔하고 조용하다\"는 평도 많아서 혼자 조용히 식사하기 좋은 분위기예요.\n\n대표 메뉴로는 등심과 안심을 동시에 즐길 수 있는 모둠 돈카츠(16,500원)와 치즈롤 돈카츠(14,000원)가 있고, 위치는 서울 동작구 국"
+    },
+    {
+      "id": 23,
+      "question": "회식하기 좋은 고깃집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "고깃집",
+        "tag": "회식",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "한식",
+        "tag": "회식하기 좋은",
+        "menu": "",
+        "food": "고기",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "마포갈비",
+        "원조부안집 신대방삼거리역점",
+        "네모오징어 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "마포갈비"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "마포갈비"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "회식성 수요에서 고깃집/구이류 우선 추천",
+      "answer_preview": "회식하기 좋은 고깃집을 찾으신다면 신대방삼거리역 근처에 있는 **마포갈비**를 추천드려요! 회식하기 좋은 분위기와 고기 맛집을 원하신다고 하셨는데, 이곳은 '회식', '식사모임', '시끌벅적한' 같은 태그가 많아서 단체 모임에 딱 맞는 곳이에요. 실제로 한 리뷰어분도 \"동생 추천으로 방문했는데 너무 맛있게 잘 먹었어요~ 재방문의사 있습니다!\"라고 하셨답니다. 대표 메뉴로는 돼지갈비 250g(17,000원)과 한우주물럭 150g(44,000원)이 있고, 위치는 서울특별시 동작구 보라매로 112 마포갈비예요. 넓고 예약도 가능해서 회식"
+    },
+    {
+      "id": 24,
+      "question": "점심에 먹기 좋은 마라탕집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "마라탕",
+        "tag": "점심식사",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "점심",
+        "menu": "",
+        "food": "마라탕",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "마라홀릭 마라탕 신대방점",
+        "춘리마라탕 신대방삼거리점",
+        "탕화쿵푸마라탕 대방점"
+      ],
+      "actual_candidates": [
+        "숲",
+        "소문난포장마차",
+        "심야식당중도"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "동일 카테고리 다점포 후보군 추천",
+      "answer_preview": "점심에 먹기 좋은 마라탕집은 아쉽게도 이번 후보 리스트에 없네요. 마라탕 관련 메뉴나 태그가 포함된 식당이 없고, 영업시간도 점심 시간대에 맞는 곳이 없어서요.\n\n대신 점심에 가볍게 드시기 좋은 신대방삼거리역 근처 식당 중에서는 **숲**을 추천드릴게요! 이곳은 가성비 좋고 조용한 분위기에서 다양한 일식과 안주류를 즐길 수 있어요. 실제로 한 리뷰어분도 “사장님 센스 좋으시고 다 맛나요”라고 하셨고, 혼술이나 저녁식사뿐 아니라 식사 모임에도 적합하다고 해요. 대표 메뉴로는 우삼겹야끼소바(18,000원)와 김치볶음밥(10,000원)이"
+    },
+    {
+      "id": 25,
+      "question": "빵 포장하기 좋은 곳 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "빵",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "",
+        "food": "",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "상도제빵소",
+        "찰찰보리식빵 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "유태우스시",
+        "모리식탁",
+        "우이락 신대방삼거리점",
+        "소문난포장마차"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "베이커리류 후보 검색",
+      "answer_preview": "빵 포장하기 좋은 곳은 아쉽게도 이번 후보 식당 리스트에 딱 맞는 곳이 없네요. 빵이나 베이커리 관련 메뉴나 태그가 포함된 식당이 없어서 추천드리기 어려워요. \n\n혹시 빵 말고 다른 종류의 포장 음식이나 간단한 간식류를 찾으신다면 알려주세요. 아니면 빵집 정보가 포함된 다른 데이터가 있으면 다시 찾아드릴 수 있어요!"
+    },
+    {
+      "id": 26,
+      "question": "듀윗에서 프레지에 먹을 수 있어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "듀윗",
+        "menu": "프레지에",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "듀윗",
+        "menu": "프레지에",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "듀윗"
+      ],
+      "actual_candidates": [
+        "듀윗"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "듀윗"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "식당명+메뉴명 직접 지시 fixed 검색",
+      "answer_preview": "신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! \"듀윗에서 프레지에 먹을 수 있어?\"라고 물어보셨는데, 이곳 메뉴에 프레지에가 분명히 있어요. 실제로 여러 리뷰에서도 프레지에 맛있다는 평이 많고, 한 리뷰어분은 \"프리지에도 가격이 좀 나가긴 하지만 맛있어요!\"라고 하셨답니다. 대표 메뉴로는 프레지에(10,500원)와 프레지에 1호 홀케이크(50,000원)가 있고, 위치는 서울 동작구 대방동1길 10 1층이에요. 깔끔하고 예쁜 분위기에 데이트나 기념일에도 좋은 곳이라 마음에 드실 거예요!"
+    },
+    {
+      "id": 27,
+      "question": "계림원 누룽지통닭 궁금한데 여기 맞아?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "계림원",
+        "menu": "누룽지통닭",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "계림원",
+        "menu": "누룽지통닭",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "계림원"
+      ],
+      "actual_candidates": [
+        "계림원"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "계림원"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "대표 메뉴와 식당명 direct match",
+      "answer_preview": "신대방삼거리역 근처에 있는 **계림원**을 추천드려요! 계림원 누룽지통닭 궁금하다고 하셨는데, 여기 맞아요. 이곳은 누룽지통닭이 대표 메뉴로, 실제로 한 리뷰어분도 \"누룽지통닭 꼬소하니 맛있네요! 누룽지도 맛있고 닭도 구운 거라 건강에도 좋을 듯해요\"라고 하셨을 만큼 누룽지통닭 맛집으로 유명해요. 대표 메뉴로는 누룽지통닭이 있고, 위치는 서울 동작구 상도로12길 13에 있어요. 점심이나 저녁 식사로도 좋고, 야외 테라스도 있어서 분위기도 편안해요. 가보시면 후회 없으실 거예요~"
+    },
+    {
+      "id": 28,
+      "question": "네모오징어에서 갑오징어불고기백반 파는지 찾아줘.",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "네모오징어",
+        "menu": "갑오징어불고기백반",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "네모오징어",
+        "menu": "갑오징어불고기백반",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "네모오징어 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "네모오징어 신대방삼거리역점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "네모오징어 신대방삼거리역점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "부분 식당명 + 구체 메뉴명 검색",
+      "answer_preview": "신대방삼거리역 근처에 있는 **네모오징어 신대방삼거리역점**을 추천드려요! 네모오징어에서 갑오징어불고기백반을 찾으신다고 하셨는데, 이곳 메뉴에 정확히 \"갑오징어불고기백반\"(13,000원)이 있어요. 매콤달콤한 볶음소스와 각종 야채가 어우러진 맛으로, 실제로 한 리뷰어분도 \"오랜만에 동생과 오징어 백반 맛나게 먹었어요\"라고 하셨을 만큼 인기 메뉴입니다. 위치는 서울 동작구 여의대방로24길 107 1층이에요. 깔끔하고 서민적인 분위기라 편하게 식사하시기 좋을 거예요. 가보시면 후회 없으실 거예요~"
+    },
+    {
+      "id": 29,
+      "question": "고유부에서 라볶이 세트 먹을 수 있어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "고유부",
+        "menu": "라볶이",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "고유부",
+        "menu": "라볶이 세트",
+        "user": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "고유부"
+      ],
+      "actual_candidates": [
+        "고유부"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "고유부"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "세트 메뉴를 핵심 메뉴명으로 정규화하는지 확인",
+      "answer_preview": "신대방삼거리에 있는 **고유부**를 추천드려요! 고유부에서 라볶이 세트를 찾으신다고 하셨는데, 여기 메뉴에 \"라볶이 set 1 기본2알+라볶이\", \"라볶이 set 2 꼬마스팸+라볶이\", \"라볶이 set 3 꼬마야채김밥+라볶이\" 이렇게 라볶이 세트가 다양하게 준비되어 있어요. 실제로 리뷰에서도 맛있다는 평이 많고, 푸짐한 양으로 배부르게 즐길 수 있다고 하네요. 대표 메뉴로는 라볶이 세트(10,000원)와 매콤한 라볶이(7,500원)가 있고, 위치는 서울 동작구 국사봉길 33 1층이에요. 매콤달콤한 라볶이와 함께 김밥도 같이 즐기기 "
+    },
+    {
+      "id": 30,
+      "question": "라밥 신대방삼거리점에 뚝배기 떡볶이 있어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "라밥 신대방삼거리점",
+        "menu": "뚝배기 떡볶이",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "라밥 신대방삼거리점",
+        "menu": "뚝배기 떡볶이",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "라밥 신대방삼거리점"
+      ],
+      "actual_candidates": [
+        "라밥 신대방삼거리점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "라밥 신대방삼거리점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "정확 식당명 fixed match",
+      "answer_preview": "신대방삼거리역 근처에 있는 **라밥 신대방삼거리점**을 추천드려요! 뚝배기 떡볶이가 있는지 궁금하셨는데, 메뉴에 뚝배기 떡볶이가 분명히 등록되어 있네요. 이곳은 김밥과 밥집 카테고리에 속해 있고, 배달도 가능하며 점심식사로도 인기가 많아요. 실제로 리뷰에서도 점심식사로 많이 찾는다는 평이 있어요. 대표 메뉴로는 참치김밥(5,300원)과 더블치즈김밥(4,800원)이 있고, 위치는 서울 동작구 보라매로 106 1층이에요. 뚝배기 떡볶이도 있으니 한 번 맛보시면 좋을 것 같아요!"
+    },
+    {
+      "id": 31,
+      "question": "마라홀릭 마라탕 신대방점에서 꿔바로우도 팔아?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "마라홀릭 마라탕 신대방점",
+        "menu": "꿔바로우",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "마라홀릭 마라탕 신대방점",
+        "menu": "꿔바로우",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "마라홀릭 마라탕 신대방점"
+      ],
+      "actual_candidates": [
+        "마라홀릭 마라탕 신대방점",
+        "춘리마라탕 신대방삼거리점",
+        "탕화쿵푸마라탕 대방점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "마라홀릭 마라탕 신대방점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "마라탕집의 사이드 메뉴 direct 확인",
+      "answer_preview": "신대방삼거리에 있는 **마라홀릭 마라탕 신대방점**을 추천드려요! \"마라홀릭 마라탕 신대방점에서 꿔바로우도 팔아?\"라고 물어보셨는데, 이곳 메뉴에 꿔바로우가 분명히 있어요. 메뉴판에 \"꿔바로우(소 11,900원 / 대 18,000원)\"로 나와 있고, 실제로 방문한 분들도 마라탕과 함께 다양한 메뉴를 즐기셨다는 후기가 있어요. 대표 메뉴로는 마라탕(7,000원부터)과 꿔바로우(11,900원부터)가 있고, 위치는 서울 동작구 여의대방로22길 121 보라매자이아파트 상가 2층 2431호예요. 마라탕과 함께 꿔바로우도 맛보고 싶으시다면 이"
+    },
+    {
+      "id": 32,
+      "question": "돌솥밥 & 생선구이에 모둠생선구이 있나?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "돌솥밥 & 생선구이",
+        "menu": "모둠생선구이",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "",
+        "menu": "모둠생선구이",
+        "user": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "돌솥밥 & 생선구이"
+      ],
+      "actual_candidates": [],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "특수문자 포함 식당명 처리",
+      "answer_preview": "죄송하지만 지금 가진 데이터에서는 돌솥밥과 모둠생선구이를 함께 제공하는 식당을 찾기 어려워요. 다른 메뉴나 지역, 분위기 조건을 알려주시면 다시 찾아볼게요!"
+    },
+    {
+      "id": 33,
+      "question": "대포곱창 메뉴에 한우소곱창 있어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "대포곱창",
+        "menu": "한우소곱창",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "대포곱창",
+        "menu": "한우소곱창",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "대포곱창"
+      ],
+      "actual_candidates": [
+        "대포곱창"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "대포곱창"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "곱창류 대표 메뉴 확인",
+      "answer_preview": "신대방삼거리역 근처에 있는 **대포곱창**을 추천드려요! \"대포곱창 메뉴에 한우소곱창 있어?\"라고 물어보셨는데, 여기 메뉴에 국내산 한우 고소한 곱맛이 일품인 한우소곱창이 분명히 있답니다. 실제로 한우소곱창(20,000원)이 대표 메뉴 중 하나로 자리 잡고 있어요. 위치는 서울 동작구 국사봉1길 18 1층 1001호예요. 저렴하고 가성비 좋은 곱창집이라 저녁식사로도 딱이고, 혼밥이나 데이트하기에도 무난한 분위기라서 마음에 드실 거예요!"
+    },
+    {
+      "id": 34,
+      "question": "동대문곱창볶음전문에서 곱창볶음이 대표 메뉴야?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "동대문곱창볶음전문",
+        "menu": "곱창볶음",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "동대문곱창볶음전문",
+        "menu": "곱창볶음",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "동대문곱창볶음전문"
+      ],
+      "actual_candidates": [
+        "동대문곱창볶음전문"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "동대문곱창볶음전문"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "식당명과 메뉴명이 거의 동일한 경우 처리",
+      "answer_preview": "동작구 신대방삼거리역 근처에 있는 **동대문곱창볶음전문**을 추천드려요! 동대문곱창볶음전문은 이름처럼 곱창볶음이 대표 메뉴로, 실제로 메뉴판에도 곱창볶음이 가장 먼저 올라와 있고요. 한 리뷰어분도 \"볶음밥에 곱창까지 싹싹 먹었어요~~ 늘 정겨운 동대문곱창!!!\"이라고 하실 만큼 곱창볶음이 인기 메뉴임을 알 수 있어요. 대표 메뉴로는 곱창볶음(12,000원)과 알곱창(12,000원)이 있고, 위치는 서울 동작구 국사봉1길 31에 있어요. 곱창볶음 맛있게 드시고 싶으시면 이곳이 딱일 거예요!"
+    },
+    {
+      "id": 35,
+      "question": "기계우동에 짜장밥 있나?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "기계우동",
+        "menu": "짜장밥",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "기계우동",
+        "menu": "짜장밥",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "기계우동"
+      ],
+      "actual_candidates": [
+        "기계우동"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "기계우동"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "짧은 식당명 + 메뉴명 direct match",
+      "answer_preview": "신대방삼거리역 근처에 있는 **기계우동**을 추천드려요! 기계우동에서 짜장밥이 있는지 궁금하셨죠? 여기 메뉴에 짜장밥이 분명히 있어서 걱정하지 않으셔도 돼요. 실제로 메뉴에 \"짜장밥\"(6,000원)이 있고, 우동과 짜장도 함께 판매 중이에요. 리뷰에서도 가성비 좋고 서민적인 분위기라 혼밥하기에도 편하다는 평이 많답니다. 위치는 서울 동작구 여의대방로24길 140에 있으니 찾아가시기 편할 거예요. 부담 없이 한 끼 하시기 딱 좋은 곳이라 마음에 드실 거예요!"
+    },
+    {
+      "id": 36,
+      "question": "Fraise가 리뷰 남긴 곳 찾아줘.",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Fraise"
+      },
+      "actual_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Fraise"
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "듀윗"
+      ],
+      "actual_candidates": [
+        "듀윗"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "듀윗"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 기반 fixed 검색",
+      "answer_preview": "신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! Fraise님이 직접 리뷰를 남기신 곳이라 찾으신 거라면 이곳이 딱 맞을 거예요. Fraise님은 이 카페를 \"연남동의 유명한 디저트 맛집\"이라며 \"하나하나 정성이 들어가 있고 좋은 재료들로만 사용한 게 느껴져요~ 재방문의사 100%\"라고 극찬하셨답니다. 분위기도 데이트, 기념일, 혼카페, 조용한 분위기 등 다양한 태그로 고급스럽고 깔끔한 느낌을 주는 곳이에요. 대표 메뉴로는 프레지에(10,500원)와 가토 오 쇼콜라가 있고, 위치는 서울특별시 동작구 대방동1길 10 1층이에요."
+    },
+    {
+      "id": 37,
+      "question": "Jens day가 간 김밥집 어디였지?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Jens day"
+      },
+      "actual_slots": {
+        "restaurant": "김밥집",
+        "menu": "",
+        "user": "Jens day"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "라밥 신대방삼거리점"
+      ],
+      "actual_candidates": [],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 기반 검색 후 맥락상 적절한 식당을 답하는지 확인",
+      "answer_preview": "죄송하지만 지금 가진 데이터에서는 Jens day나 관련된 김밥집 정보를 찾기 어려워요. 다른 지역이나 음식 종류로 다시 알려주시면 도움 드릴 수 있을 것 같아요!"
+    },
+    {
+      "id": 38,
+      "question": "SSONG이 리뷰한 매운 음식집 뭐였어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "SSONG"
+      },
+      "actual_slots": {
+        "restaurant": "",
+        "menu": "매운 음식",
+        "user": "SSONG"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "일진아구찜"
+      ],
+      "actual_candidates": [
+        "일진아구찜"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "일진아구찜"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 리뷰 기반 direct retrieval",
+      "answer_preview": "신대방삼거리역 근처에 있는 **일진아구찜**을 추천드려요! SSONG님이 매운 음식집을 찾으셨는데, 이곳은 아구찜 전문점으로 \"보통 맛으로 먹으면 맵지 않고 딱 맛있다\"라고 SSONG님 본인도 리뷰하셨을 만큼 매운 음식 중에서도 적당한 매운맛을 즐길 수 있는 곳이에요. 실제로 \"적당히 맵고 맛있어요~\"라는 리뷰도 많고, \"아구찜 유명하잖아요 유명한곳은 딱 한가지만하는 역시 맛이 좋네요\"라는 평도 있답니다. 대표 메뉴로는 아귀찜 소(40,000원), 중(53,000원), 대(65,000원)가 있고, 위치는 서울 동작구 여의대방로24길"
+    },
+    {
+      "id": 39,
+      "question": "Kiikk가 좋아한 부타동 집 알려줘.",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Kiikk"
+      },
+      "actual_slots": {
+        "restaurant": "부타동 집",
+        "menu": "",
+        "user": "Kiikk"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "스미비부타동 신대방삼거리역점"
+      ],
+      "actual_candidates": [
+        "스미비부타동 신대방삼거리역점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "스미비부타동 신대방삼거리역점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰어 기반 검색과 식당명 grounding",
+      "answer_preview": "신대방삼거리역 근처에 있는 **스미비부타동 신대방삼거리역점**을 추천드려요! Kiikk님이 이 부타동 집을 정말 좋아하신다고 하셨는데, 실제로 Kiikk님 리뷰에도 \"여러 지점을 찾을 정도로 좋아한다\"며 포장과 매장 모두 만족한다고 하셨어요. 부타동, 즉 돼지고기 덮밥이 대표 메뉴인데, 깔끔하고 아담한 분위기에서 혼밥하기도 좋고 데이트하기에도 괜찮은 곳이에요. 대표 메뉴로는 부타동(10,500원)과 토리동(닭다리살 덮밥, 10,500원)이 있고, 위치는 서울 동작구 국사봉1길 4에 있어요. 맛도 분위기도 만족스러우니 마음에 드실 거"
+    },
+    {
+      "id": 40,
+      "question": "aa주야aa가 추천한 양은이네 세트 파는 곳 찾아줘.",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "양은이네 세트",
+        "user": "aa주야aa"
+      },
+      "actual_slots": {
+        "restaurant": "양은이네",
+        "menu": "세트",
+        "user": "aa주야aa"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [
+        "양은이네 신대방삼거리역직영점"
+      ],
+      "actual_candidates": [
+        "양은이네 신대방삼거리역직영점",
+        "치킨89 신대방점",
+        "모리식탁",
+        "쌍둥이네풍천장어",
+        "매콤달콤떡볶이 성대시장점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "양은이네 신대방삼거리역직영점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "menu+user 결합 fixed 검색",
+      "answer_preview": "신대방삼거리에 있는 **양은이네 신대방삼거리역직영점**을 추천드려요! aa주야aa님이 직접 추천하신 양은이네 세트 메뉴를 찾으신다고 하셨는데, 이곳이 딱 맞는 곳이에요. 실제로 aa주야aa님도 \"양은이네 세트를 3명이서 먹었는데 정말 배부르게 먹었어요~ 동태탕에 고니와 알이 엄청 많이 들어서 강추!\"라고 리뷰를 남기셨답니다. 이 식당은 동태탕과 오징어보쌈, 냉면이 포함된 푸짐한 세트 메뉴가 48,000원에 제공되고, 회식이나 점심, 저녁 식사로도 인기가 많아요. 위치는 서울 동작구 보라매로 93 1층이고요. 가시면 든든하고 맛있는 "
+    },
+    {
+      "id": 41,
+      "question": "ChocoJelly가 추천한 갈비집 있어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "ChocoJelly"
+      },
+      "actual_slots": {
+        "restaurant": "갈비집",
+        "menu": "",
+        "user": "ChocoJelly"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "마포갈비"
+      ],
+      "actual_candidates": [
+        "마포갈비"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "마포갈비"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 중심 검색 후 대표 후보 선택",
+      "answer_preview": "신대방삼거리역 근처에 있는 **마포갈비**를 추천드려요! ChocoJelly님이 직접 다녀오셔서 \"너무 맛있게 잘 먹었어요~ 재방문의사 있습니다!!\"라고 하셨을 만큼 신뢰할 수 있는 갈비집이에요. 돼지갈비가 대표 메뉴인데, 실제로 돼지갈비 250g과 물냉면을 함께 즐기신 후기가 많아서 고기와 냉면 조합이 잘 맞는 곳이에요. 위치는 서울 동작구 보라매로 112에 있어서 찾기도 편하실 거예요. 가족 외식이나 식사 모임으로도 좋은 넓고 서민적인 분위기라 부담 없이 가보시면 후회 없으실 거예요~"
+    },
+    {
+      "id": 42,
+      "question": "anne33이 맛있다고 한 마라탕집 뭐야?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "anne33"
+      },
+      "actual_slots": {
+        "restaurant": "",
+        "menu": "마라탕",
+        "user": "anne33"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "탕화쿵푸마라탕 대방점"
+      ],
+      "actual_candidates": [
+        "마라홀릭 마라탕 신대방점",
+        "춘리마라탕 신대방삼거리점",
+        "탕화쿵푸마라탕 대방점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "탕화쿵푸마라탕 대방점"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰어 기반 회수 정확도",
+      "answer_preview": "신대방삼거리에 있는 **탕화쿵푸마라탕 대방점**을 추천드려요! anne33님이 맛있다고 하신 마라탕집을 찾으신다고 하셨는데, 이곳 리뷰에 anne33님이 직접 \"직원들이 한국어 조금 할 줄 아는 중국인들인 듯하지만 주문에 어려움은 없었고 맛있다\"며 5점 만점을 주셨더라고요. 혼밥도 가능하고 점심, 저녁 식사 모두 좋은 캐주얼한 분위기라 편하게 다녀오실 수 있을 거예요. 대표 메뉴로는 [주문폭발] 셀프마라탕(중, 2~3인분, 18,000원)과 꿔바로우(소, 12,900원)가 있고, 위치는 서울 동작구 보라매로 113 203호예요. a"
+    },
+    {
+      "id": 43,
+      "question": "MarkJacob 리뷰 있는 디저트카페 찾아줘.",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "MarkJacob"
+      },
+      "actual_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "MarkJacob"
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "듀윗"
+      ],
+      "actual_candidates": [
+        "듀윗"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "듀윗"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "긴 리뷰를 남긴 특정 유저의 식당 회수",
+      "answer_preview": "신대방삼거리역 근처에 있는 디저트카페 **듀윗**을 추천드려요! MarkJacob님 리뷰가 있는 디저트카페를 찾으신다고 하셨는데, 듀윗은 MarkJacob님께서 6년 연속 블루리본을 받은 곳으로, 인테리어와 디저트 디스플레이가 예뻐서 사진 찍기 좋다고 하셨어요. 특히 바닐라 커스터드 디저트인 생토로레와 아인슈패너가 인위적인 단맛 없이 진정한 맛을 느낄 수 있다고 극찬하셨답니다. 대표 메뉴로는 프레지에(10,500원)와 마카롱(2,500원)이 있고, 위치는 서울 동작구 대방동1길 10 1층이에요. 조용하고 깔끔한 분위기에서 맛있는 디"
+    },
+    {
+      "id": 44,
+      "question": "Sang Jin Hong이 술 마시고 아쉬울 때 갔다고 한 곳 어디야?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Sang Jin Hong"
+      },
+      "actual_slots": {
+        "restaurant": "",
+        "menu": "술",
+        "user": "Sang Jin Hong"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "기계우동"
+      ],
+      "actual_candidates": [
+        "기계우동"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "기계우동"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰 내용 기억 없이 user만으로 식당 회수",
+      "answer_preview": "신대방삼거리역 근처에 있는 **기계우동**을 추천드려요! Sang Jin Hong님이 \"술 마시고 집에 들어가기 아쉬울 때\" 갔다고 하신 곳인데, 실제로 리뷰에도 술 마신 후 해장이나 간단히 한 끼 하기에 좋다는 평이 많아요. 이곳은 혼밥하기도 편하고 서민적인 분위기라 부담 없이 들르기 좋아요. 대표 메뉴로는 우동(6,000원)과 짜장(6,000원)이 있고, 위치는 서울 동작구 여의대방로24길 140이에요. 가볍게 한 끼 하시면서 술 마신 뒤 아쉬운 마음 달래기에 딱일 거예요!"
+    },
+    {
+      "id": 45,
+      "question": "Jens day가 딸기라떼 먹었다고 한 카페 찾아줘.",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Jens day"
+      },
+      "actual_slots": {
+        "restaurant": "Jens day",
+        "menu": "딸기라떼",
+        "user": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "투썸플레이스 신대방삼거리점"
+      ],
+      "actual_candidates": [
+        "카페 알코브",
+        "코랄밸리",
+        "타코야끼&CAFE 신대방삼거리역점",
+        "카페아에 동작점"
+      ],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "동일 유저의 여러 방문처 중 맥락에 맞는 후보를 내는지 확인",
+      "answer_preview": "신대방삼거리역 근처에 있는 **타코야끼&CAFE 신대방삼거리역점**을 추천드려요! Jens day가 딸기라떼를 먹었다고 한 카페를 찾으신다고 하셨는데, 이곳 메뉴에 \"직접 담은 수제청 딸기라떼\"가 있어서 딱 맞아요. 리뷰에도 딸기라떼에 대한 직접 언급은 없지만, 메뉴 설명에 \"직접 담은 수제 딸기청을 듬뿍 넣은 딸기라떼\"라고 적혀 있어 신선한 딸기 맛을 기대할 수 있답니다. 위치는 서울 동작구 신대방동 347-27이고요, 대표 메뉴로는 이 딸기라떼(5,500원)와 함께 타코야끼도 즐길 수 있어요. 분위기는 혼자 먹기 좋은 간식집 느"
+    },
+    {
+      "id": 46,
+      "question": "BR이 양 푸짐하고 조용하다고 한 곳 뭐였지?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "BR"
+      },
+      "actual_slots": {
+        "restaurant": "BR",
+        "menu": "",
+        "user": ""
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [
+        "미분당 신대방삼거리점"
+      ],
+      "actual_candidates": [],
+      "restaurant_ok": false,
+      "restaurant_overlap": [],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰어 단서 기반 고정 검색",
+      "answer_preview": "죄송하지만 지금 가진 데이터에서는 BR이라는 이름에 양이 푸짐하고 조용한 분위기인 식당을 찾기 어려워요. 다른 조건이나 지역, 음식 종류를 알려주시면 다시 찾아볼게요!"
+    },
+    {
+      "id": 47,
+      "question": "Jisu Pyo가 홍차가 아쉽다고 한 디저트카페 뭐야?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Jisu Pyo"
+      },
+      "actual_slots": {
+        "restaurant": "디저트카페",
+        "menu": "홍차",
+        "user": "Jisu Pyo"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [
+        "듀윗"
+      ],
+      "actual_candidates": [
+        "듀윗"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [
+        "듀윗"
+      ],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "부정적 리뷰를 남긴 user 기준 회수",
+      "answer_preview": "신대방삼거리역 근처에 있는 디저트카페 **듀윗**을 추천드려요! Jisu Pyo님께서 \"디저트는 나쁘지 않은데 홍차가 아주 별로였어요. 포트에 잎을 너무 적게 넣어주어서 맹물인줄 알았어요. 가급적 커피 시키시길..\"이라고 직접 리뷰하신 곳이에요. 그래서 홍차가 아쉽다고 하신 디저트카페를 찾으신다면 이곳이 딱 맞아요.\n\n듀윗은 깔끔하고 예쁜 분위기에 데이트나 차모임으로도 좋고, 케이크와 까눌레가 맛있다는 평이 많아요. 대표 메뉴로는 프레지에(10,500원)와 임페리얼 얼그레이(홍차, 6,000원)가 있고, 위치는 서울 동작구 대방동1"
+    },
+    {
+      "id": 48,
+      "question": "듀윗에 돈까스 메뉴 있어?",
+      "expected_route": "fixed",
+      "actual_route": "fixed",
+      "route_ok": true,
+      "expected_slots": {
+        "restaurant": "듀윗",
+        "menu": "돈까스",
+        "user": ""
+      },
+      "actual_slots": {
+        "restaurant": "듀윗",
+        "menu": "돈까스",
+        "user": ""
+      },
+      "slot_exact_ok": true,
+      "slot_filled_key_accuracy": 1.0,
+      "expected_candidates": [],
+      "actual_candidates": [
+        "정송숙12년전통 오렌지김밥 상도동점",
+        "듀윗",
+        "라밥 신대방삼거리점"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [],
+      "expected_behavior": "no_match_or_low_confidence",
+      "evaluation_focus": "비존재 메뉴를 환각하지 않고 없다고 말하는지 확인",
+      "answer_preview": "듀윗에 돈까스 메뉴는 없어요. 듀윗은 케이크와 디저트, 음료를 주로 판매하는 카페로, 메뉴에 돈까스는 포함되어 있지 않습니다. 대신 신대방삼거리역 근처에 있는 다른 식당인 \"라밥 신대방삼거리점\"에서는 왕돈까스 메뉴가 있어요. 이곳은 김밥과 밥집 카테고리로 다양한 메뉴를 제공하며, 깔끔한 분위기와 점심식사로도 인기 있는 곳입니다. 위치는 서울 동작구 보라매로 106 1층이에요. 듀윗에서 돈까스를 찾으신다면 아쉽지만, 근처 라밥 신대방삼거리점을 한번 고려해보시는 걸 추천드려요!"
+    },
+    {
+      "id": 49,
+      "question": "개별룸 있는 오마카세집 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "오마카세",
+        "tag": "개별룸",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "일식",
+        "tag": "개별룸",
+        "menu": "",
+        "food": "초밥",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.5,
+      "expected_candidates": [],
+      "actual_candidates": [
+        "일진아구찜",
+        "신정닭발"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [],
+      "expected_behavior": "no_match_or_low_confidence",
+      "evaluation_focus": "DB 밖 카테고리 요청에서 과감히 매치 부족을 말하는지 확인",
+      "answer_preview": "개별룸이 있는 오마카세집을 찾으셨는데, 주어진 후보 중에는 오마카세 전문점이 없네요. 다만 개별룸이 있다는 후기가 있는 곳은 신대방삼거리역 근처의 **일진아구찜**이에요. 이곳은 아구찜 전문점으로, 리뷰에 '개별룸' 태그가 있고 가족외식이나 저녁식사에 적합하다고 해요. 실제로 한 리뷰어분도 \"메뉴가 아주 맛있고 직원분도 친절하셨어요\"라고 하셨답니다. 대표 메뉴로는 아귀찜 중(53,000원)과 아귀찜 대(65,000원)가 있고, 위치는 서울 동작구 여의대방로24길 93 1층이에요. 오마카세는 아니지만 조용한 개별룸에서 편안하게 식사하"
+    },
+    {
+      "id": 50,
+      "question": "비건 샐러드 전문점 추천해줘.",
+      "expected_route": "embedding",
+      "actual_route": "embedding",
+      "route_ok": true,
+      "expected_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "샐러드",
+        "food": "비건",
+        "review": ""
+      },
+      "actual_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "",
+        "food": "",
+        "review": "추천"
+      },
+      "slot_exact_ok": false,
+      "slot_filled_key_accuracy": 0.0,
+      "expected_candidates": [],
+      "actual_candidates": [
+        "모리식탁"
+      ],
+      "restaurant_ok": true,
+      "restaurant_overlap": [],
+      "expected_behavior": "no_match_or_low_confidence",
+      "evaluation_focus": "비존재 도메인 요청에 대한 hallucination 억제",
+      "answer_preview": "비건 샐러드 전문점은 이번 후보 중에 딱 맞는 곳이 없네요. 다만 신대방삼거리역 근처에 있는 **모리식탁**을 추천드릴게요! 이곳은 숙성회와 이자카야 스타일의 가게라 비건 전문은 아니지만, 메뉴에 샐러드가 포함되어 있고 분위기도 깔끔하고 조용해서 편안하게 식사하기 좋아요. 대표 메뉴로는 대방어 회 한상(53,000원)과 모리 특선 초밥 11p(16,000원)가 있고, 위치는 서울 동작구 국사봉1길 31 2층이에요. 비건 샐러드 전문점은 아니지만, 깔끔한 분위기와 신선한 메뉴를 원하신다면 한 번 고려해보셔도 좋을 것 같아요!"
+    }
+  ]
+}

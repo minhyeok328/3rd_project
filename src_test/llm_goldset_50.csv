@@ -1,0 +1,51 @@
+﻿id,question,expected_route,expected_category,expected_tag,expected_menu,expected_food,expected_review,expected_restaurant,expected_user,expected_restaurant_candidates,expected_behavior,evaluation_focus
+1,혼자 가볍게 먹기 좋은 우동집 추천해줘.,embedding,,혼밥,,우동,,,,기계우동,positive_match,혼밥+우동 조합을 embedding으로 해석하는지 확인
+2,저녁에 간단히 한잔하기 좋은 곳 추천해줘.,embedding,술집,간단히한잔,,,,,,달맥 신대방삼거리역점 | 단길 | 심야식당중도,positive_match,직접 식당명을 언급하지 않은 분위기형 질의 처리
+3,데이트하기 좋은 예쁜 디저트 카페 추천해줘.,embedding,디저트,데이트,,,예쁜,,,듀윗,positive_match,데이트/예쁜/디저트 조합 grounding
+4,가족이랑 가기 좋은 생선구이 집 찾아줘.,embedding,,가족외식,,생선구이,,,,돌솥밥 & 생선구이,positive_match,가족외식 태그와 음식 키워드 결합
+5,술 마신 다음에 해장하기 좋은 국물 있는 곳 추천해줘.,embedding,,해장,,,국물,,,노량진 수제비 | 동화장 | 육전국밥 신대방삼거리역점,positive_match,해장 수요를 리뷰/태그 중심으로 회수하는지 확인
+6,가성비 좋은 곱창집 추천해줘.,embedding,곱창,가성비좋은,,,,,,대포곱창 | 소곱창 클라쓰 | 인생곱창,positive_match,카테고리와 태그 교집합 검색
+7,단체로 가기 좋고 테라스 느낌 있는 곳 있어?,embedding,,단체모임,,,테라스,,,계림원 | 네모오징어 신대방삼거리역점 | 달맥 신대방삼거리역점,positive_match,테라스/단체모임 같은 분위기성 조건 조합
+8,혼술하기 좋은 안주 맛집 추천해줘.,embedding,이자카야,혼술,,,안주,,,단길 | 심야식당중도,positive_match,혼술/안주/이자카야 라우팅과 retrieval
+9,테이크아웃하기 좋은 저렴한 간식 추천해줘.,embedding,,테이크아웃,,,간식,,,경성 찹쌀꽈배기 | 와플대학 신대방삼거리캠퍼스,positive_match,간식/테이크아웃형 추천
+10,점심에 배달시키기 좋고 메뉴가 다양한 곳 추천해줘.,embedding,,배달,,,다양한메뉴,,,라밥 신대방삼거리점 | 고유부,positive_match,배달/다양한메뉴 태그 기반 추천
+11,기념일에 갈 만한 케이크 맛집 추천해줘.,embedding,케이크,기념일,,,,,,듀윗,positive_match,기념일/케이크 결합
+12,갑오징어 요리 맛있는 곳 추천해줘.,embedding,갑오징어,,,갑오징어,,,,네모오징어 신대방삼거리역점,positive_match,음식명 기반 embedding 검색
+13,노포 느낌 나고 해장하기 좋은 집 있을까?,embedding,,노포,,,해장,,,기계우동 | 동화장 | 노량진 수제비,positive_match,노포+해장 복합 조건
+14,반려동물이랑 같이 갈 수 있는 치맥집 추천해줘.,embedding,치킨,반려동물동반,,,,,,달맥 신대방삼거리역점,positive_match,희소 태그 반려동물동반 처리
+15,예쁘고 깔끔한 카페에서 커피 마시고 싶어.,embedding,카페,깔끔한,,커피,예쁜,,,듀윗 | 카페 알코브 | 투썸플레이스 신대방삼거리점,positive_match,카페류 일반 질의에서 과도한 환각 없이 후보 제한
+16,늦게까지 하는 치킨이랑 피자 같이 먹을 수 있는 곳 추천해줘.,embedding,치킨,연중무휴,피자,,,,,달맥 신대방삼거리역점 | 피맥 신대방점,positive_match,카테고리+메뉴 결합형 검색
+17,푸짐하게 한식 먹을 수 있는 집 추천해줘.,embedding,한식,푸짐한,,,,,,한솔웰빙쌈밥시골보리밥 | 돌솥밥 & 생선구이 | 고유부,positive_match,한식류 넓은 질의에서 plausible candidates 회수
+18,매콤한 닭발 먹고 싶은데 추천해줘.,embedding,닭발,매콤한,,,,,,신정닭발 | 선아닭발 | 삼거리닭발 신대방점,positive_match,동일 카테고리 다중 후보 회수
+19,스시로 데이트하기 좋은 곳 찾아줘.,embedding,스시,데이트,,,,,,유태우스시 | 회가대표초밥24 신대방삼거리점,positive_match,스시 계열 데이트 수요
+20,테이크아웃 가능한 커피집 추천해줘.,embedding,커피,테이크아웃,,,,,,투썸플레이스 신대방삼거리점 | 듀윗 | 카페 알코브,positive_match,일반 커피류 질의에서 DB 내 후보만 제시하는지 확인
+21,콩국수 맛있는 곳 추천해줘.,embedding,,,콩국수,,,,,노량진 수제비 | 태화네칼국수,positive_match,메뉴명만 주어진 embedding 검색
+22,혼자 가기 좋은 돈까스집 있어?,embedding,돈까스,혼밥,,,,,,카츠디나인 본점,positive_match,돈까스 카테고리와 혼밥 태그의 조합
+23,회식하기 좋은 고깃집 추천해줘.,embedding,고깃집,회식,,,,,,마포갈비 | 원조부안집 신대방삼거리역점 | 네모오징어 신대방삼거리역점,positive_match,회식성 수요에서 고깃집/구이류 우선 추천
+24,점심에 먹기 좋은 마라탕집 추천해줘.,embedding,마라탕,점심식사,,,,,,마라홀릭 마라탕 신대방점 | 춘리마라탕 신대방삼거리점 | 탕화쿵푸마라탕 대방점,positive_match,동일 카테고리 다점포 후보군 추천
+25,빵 포장하기 좋은 곳 추천해줘.,embedding,빵,테이크아웃,,,,,,상도제빵소 | 찰찰보리식빵 신대방삼거리역점,positive_match,베이커리류 후보 검색
+26,듀윗에서 프레지에 먹을 수 있어?,fixed,,,프레지에,,,듀윗,,듀윗,positive_match,식당명+메뉴명 직접 지시 fixed 검색
+27,계림원 누룽지통닭 궁금한데 여기 맞아?,fixed,,,누룽지통닭,,,계림원,,계림원,positive_match,대표 메뉴와 식당명 direct match
+28,네모오징어에서 갑오징어불고기백반 파는지 찾아줘.,fixed,,,갑오징어불고기백반,,,네모오징어,,네모오징어 신대방삼거리역점,positive_match,부분 식당명 + 구체 메뉴명 검색
+29,고유부에서 라볶이 세트 먹을 수 있어?,fixed,,,라볶이,,,고유부,,고유부,positive_match,세트 메뉴를 핵심 메뉴명으로 정규화하는지 확인
+30,라밥 신대방삼거리점에 뚝배기 떡볶이 있어?,fixed,,,뚝배기 떡볶이,,,라밥 신대방삼거리점,,라밥 신대방삼거리점,positive_match,정확 식당명 fixed match
+31,마라홀릭 마라탕 신대방점에서 꿔바로우도 팔아?,fixed,,,꿔바로우,,,마라홀릭 마라탕 신대방점,,마라홀릭 마라탕 신대방점,positive_match,마라탕집의 사이드 메뉴 direct 확인
+32,돌솥밥 & 생선구이에 모둠생선구이 있나?,fixed,,,모둠생선구이,,,돌솥밥 & 생선구이,,돌솥밥 & 생선구이,positive_match,특수문자 포함 식당명 처리
+33,대포곱창 메뉴에 한우소곱창 있어?,fixed,,,한우소곱창,,,대포곱창,,대포곱창,positive_match,곱창류 대표 메뉴 확인
+34,동대문곱창볶음전문에서 곱창볶음이 대표 메뉴야?,fixed,,,곱창볶음,,,동대문곱창볶음전문,,동대문곱창볶음전문,positive_match,식당명과 메뉴명이 거의 동일한 경우 처리
+35,기계우동에 짜장밥 있나?,fixed,,,짜장밥,,,기계우동,,기계우동,positive_match,짧은 식당명 + 메뉴명 direct match
+36,Fraise가 리뷰 남긴 곳 찾아줘.,fixed,,,,,,,Fraise,듀윗,positive_match,user 기반 fixed 검색
+37,Jens day가 간 김밥집 어디였지?,fixed,,,,,,,Jens day,라밥 신대방삼거리점,positive_match,user 기반 검색 후 맥락상 적절한 식당을 답하는지 확인
+38,SSONG이 리뷰한 매운 음식집 뭐였어?,fixed,,,,,,,SSONG,일진아구찜,positive_match,user 리뷰 기반 direct retrieval
+39,Kiikk가 좋아한 부타동 집 알려줘.,fixed,,,,,,,Kiikk,스미비부타동 신대방삼거리역점,positive_match,리뷰어 기반 검색과 식당명 grounding
+40,aa주야aa가 추천한 양은이네 세트 파는 곳 찾아줘.,fixed,,,양은이네 세트,,,,aa주야aa,양은이네 신대방삼거리역직영점,positive_match,menu+user 결합 fixed 검색
+41,ChocoJelly가 추천한 갈비집 있어?,fixed,,,,,,,ChocoJelly,마포갈비,positive_match,user 중심 검색 후 대표 후보 선택
+42,anne33이 맛있다고 한 마라탕집 뭐야?,fixed,,,,,,,anne33,탕화쿵푸마라탕 대방점,positive_match,리뷰어 기반 회수 정확도
+43,MarkJacob 리뷰 있는 디저트카페 찾아줘.,fixed,,,,,,,MarkJacob,듀윗,positive_match,긴 리뷰를 남긴 특정 유저의 식당 회수
+44,Sang Jin Hong이 술 마시고 아쉬울 때 갔다고 한 곳 어디야?,fixed,,,,,,,Sang Jin Hong,기계우동,positive_match,리뷰 내용 기억 없이 user만으로 식당 회수
+45,Jens day가 딸기라떼 먹었다고 한 카페 찾아줘.,fixed,,,,,,,Jens day,투썸플레이스 신대방삼거리점,positive_match,동일 유저의 여러 방문처 중 맥락에 맞는 후보를 내는지 확인
+46,BR이 양 푸짐하고 조용하다고 한 곳 뭐였지?,fixed,,,,,,,BR,미분당 신대방삼거리점,positive_match,리뷰어 단서 기반 고정 검색
+47,Jisu Pyo가 홍차가 아쉽다고 한 디저트카페 뭐야?,fixed,,,,,,,Jisu Pyo,듀윗,positive_match,부정적 리뷰를 남긴 user 기준 회수
+48,듀윗에 돈까스 메뉴 있어?,fixed,,,돈까스,,,듀윗,,,no_match_or_low_confidence,비존재 메뉴를 환각하지 않고 없다고 말하는지 확인
+49,개별룸 있는 오마카세집 추천해줘.,embedding,오마카세,개별룸,,,,,,,no_match_or_low_confidence,DB 밖 카테고리 요청에서 과감히 매치 부족을 말하는지 확인
+50,비건 샐러드 전문점 추천해줘.,embedding,,,샐러드,비건,,,,,no_match_or_low_confidence,비존재 도메인 요청에 대한 hallucination 억제

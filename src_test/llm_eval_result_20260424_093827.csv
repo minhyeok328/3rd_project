@@ -1,0 +1,51 @@
+﻿id,question,expected_route,actual_route,route_ok,slot_exact_ok,slot_filled_key_accuracy,restaurant_ok,expected_candidates,actual_candidates,restaurant_overlap,expected_behavior
+1,혼자 가볍게 먹기 좋은 우동집 추천해줘.,embedding,embedding,True,False,1.0,False,기계우동,마포갈비 | 네모오징어 신대방삼거리역점,,positive_match
+2,저녁에 간단히 한잔하기 좋은 곳 추천해줘.,embedding,embedding,True,False,0.5,False,달맥 신대방삼거리역점 | 단길 | 심야식당중도,듀윗 | 황금수산 | 소문난포장마차,,positive_match
+3,데이트하기 좋은 예쁜 디저트 카페 추천해줘.,embedding,embedding,True,False,0.3333,True,듀윗,듀윗 | 오다 신대방삼거리점 | 소문난포장마차,듀윗,positive_match
+4,가족이랑 가기 좋은 생선구이 집 찾아줘.,embedding,embedding,True,False,0.0,False,돌솥밥 & 생선구이,심야식당중도,,positive_match
+5,술 마신 다음에 해장하기 좋은 국물 있는 곳 추천해줘.,embedding,embedding,True,False,0.5,False,노량진 수제비 | 동화장 | 육전국밥 신대방삼거리역점,서민준밀밭 | 달맥 신대방삼거리역점 | 소문난포장마차,,positive_match
+6,가성비 좋은 곱창집 추천해줘.,embedding,embedding,True,False,0.0,False,대포곱창 | 소곱창 클라쓰 | 인생곱창,우니꾸 | 소문난포장마차,,positive_match
+7,단체로 가기 좋고 테라스 느낌 있는 곳 있어?,embedding,embedding,True,False,0.0,True,계림원 | 네모오징어 신대방삼거리역점 | 달맥 신대방삼거리역점,듀윗 | 계림원 | 프로스퍼 | 유태우스시 | 신정닭발,계림원,positive_match
+8,혼술하기 좋은 안주 맛집 추천해줘.,embedding,embedding,True,False,0.3333,False,단길 | 심야식당중도,숲 | 마포갈비 | 먹거리장터 | 한울전집,,positive_match
+9,테이크아웃하기 좋은 저렴한 간식 추천해줘.,embedding,embedding,True,False,0.0,False,경성 찹쌀꽈배기 | 와플대학 신대방삼거리캠퍼스,듀윗 | 소문난포장마차,,positive_match
+10,점심에 배달시키기 좋고 메뉴가 다양한 곳 추천해줘.,embedding,embedding,True,False,0.5,False,라밥 신대방삼거리점 | 고유부,유태우스시,,positive_match
+11,기념일에 갈 만한 케이크 맛집 추천해줘.,embedding,embedding,True,False,0.5,False,듀윗,소문난포장마차 | 미르양 피자 | 카페아에 동작점,,positive_match
+12,갑오징어 요리 맛있는 곳 추천해줘.,embedding,embedding,True,False,0.5,False,네모오징어 신대방삼거리역점,동대문곱창볶음전문,,positive_match
+13,노포 느낌 나고 해장하기 좋은 집 있을까?,embedding,embedding,True,False,0.0,False,기계우동 | 동화장 | 노량진 수제비,달맥 신대방삼거리역점 | 회가대표초밥24 신대방삼거리점,,positive_match
+14,반려동물이랑 같이 갈 수 있는 치맥집 추천해줘.,embedding,embedding,True,False,0.0,True,달맥 신대방삼거리역점,마포갈비 | 달맥 신대방삼거리역점 | 춘리마라탕 신대방삼거리점,달맥 신대방삼거리역점,positive_match
+15,예쁘고 깔끔한 카페에서 커피 마시고 싶어.,embedding,embedding,True,False,0.5,True,듀윗 | 카페 알코브 | 투썸플레이스 신대방삼거리점,프로스퍼 | 듀윗 | 뿌루밀리 신대방삼거리역점,듀윗,positive_match
+16,늦게까지 하는 치킨이랑 피자 같이 먹을 수 있는 곳 추천해줘.,embedding,embedding,True,False,0.0,False,달맥 신대방삼거리역점 | 피맥 신대방점,모리식탁,,positive_match
+17,푸짐하게 한식 먹을 수 있는 집 추천해줘.,embedding,embedding,True,False,1.0,False,한솔웰빙쌈밥시골보리밥 | 돌솥밥 & 생선구이 | 고유부,오다 신대방삼거리점,,positive_match
+18,매콤한 닭발 먹고 싶은데 추천해줘.,embedding,embedding,True,False,0.0,False,신정닭발 | 선아닭발 | 삼거리닭발 신대방점,매콤달콤떡볶이 성대시장점 | 유가네닭갈비 신대방삼거리점 | 소문난포장마차,,positive_match
+19,스시로 데이트하기 좋은 곳 찾아줘.,embedding,embedding,True,False,0.5,False,유태우스시 | 회가대표초밥24 신대방삼거리점,듀윗 | 우니꾸 | 원조부안집 신대방삼거리역점,,positive_match
+20,테이크아웃 가능한 커피집 추천해줘.,embedding,embedding,True,False,0.5,False,투썸플레이스 신대방삼거리점 | 듀윗 | 카페 알코브,먹거리장터 | 타코야끼&CAFE 신대방삼거리역점,,positive_match
+21,콩국수 맛있는 곳 추천해줘.,embedding,embedding,True,False,1.0,True,노량진 수제비 | 태화네칼국수,서민준밀밭 | 태화네칼국수,태화네칼국수,positive_match
+22,혼자 가기 좋은 돈까스집 있어?,embedding,embedding,True,False,0.5,True,카츠디나인 본점,카츠디나인 본점 | 우니꾸 | 유태우스시,카츠디나인 본점,positive_match
+23,회식하기 좋은 고깃집 추천해줘.,embedding,embedding,True,False,0.0,True,마포갈비 | 원조부안집 신대방삼거리역점 | 네모오징어 신대방삼거리역점,마포갈비,마포갈비,positive_match
+24,점심에 먹기 좋은 마라탕집 추천해줘.,embedding,embedding,True,False,0.0,False,마라홀릭 마라탕 신대방점 | 춘리마라탕 신대방삼거리점 | 탕화쿵푸마라탕 대방점,숲 | 소문난포장마차 | 심야식당중도,,positive_match
+25,빵 포장하기 좋은 곳 추천해줘.,embedding,embedding,True,False,0.0,False,상도제빵소 | 찰찰보리식빵 신대방삼거리역점,유태우스시 | 모리식탁 | 우이락 신대방삼거리점 | 소문난포장마차,,positive_match
+26,듀윗에서 프레지에 먹을 수 있어?,fixed,fixed,True,True,1.0,True,듀윗,듀윗,듀윗,positive_match
+27,계림원 누룽지통닭 궁금한데 여기 맞아?,fixed,fixed,True,True,1.0,True,계림원,계림원,계림원,positive_match
+28,네모오징어에서 갑오징어불고기백반 파는지 찾아줘.,fixed,fixed,True,True,1.0,True,네모오징어 신대방삼거리역점,네모오징어 신대방삼거리역점,네모오징어 신대방삼거리역점,positive_match
+29,고유부에서 라볶이 세트 먹을 수 있어?,fixed,fixed,True,False,0.5,True,고유부,고유부,고유부,positive_match
+30,라밥 신대방삼거리점에 뚝배기 떡볶이 있어?,fixed,fixed,True,True,1.0,True,라밥 신대방삼거리점,라밥 신대방삼거리점,라밥 신대방삼거리점,positive_match
+31,마라홀릭 마라탕 신대방점에서 꿔바로우도 팔아?,fixed,fixed,True,True,1.0,True,마라홀릭 마라탕 신대방점,마라홀릭 마라탕 신대방점 | 춘리마라탕 신대방삼거리점 | 탕화쿵푸마라탕 대방점,마라홀릭 마라탕 신대방점,positive_match
+32,돌솥밥 & 생선구이에 모둠생선구이 있나?,fixed,fixed,True,False,0.5,False,돌솥밥 & 생선구이,,,positive_match
+33,대포곱창 메뉴에 한우소곱창 있어?,fixed,fixed,True,True,1.0,True,대포곱창,대포곱창,대포곱창,positive_match
+34,동대문곱창볶음전문에서 곱창볶음이 대표 메뉴야?,fixed,fixed,True,True,1.0,True,동대문곱창볶음전문,동대문곱창볶음전문,동대문곱창볶음전문,positive_match
+35,기계우동에 짜장밥 있나?,fixed,fixed,True,True,1.0,True,기계우동,기계우동,기계우동,positive_match
+36,Fraise가 리뷰 남긴 곳 찾아줘.,fixed,fixed,True,True,1.0,True,듀윗,듀윗,듀윗,positive_match
+37,Jens day가 간 김밥집 어디였지?,fixed,fixed,True,False,1.0,False,라밥 신대방삼거리점,,,positive_match
+38,SSONG이 리뷰한 매운 음식집 뭐였어?,fixed,fixed,True,False,1.0,True,일진아구찜,일진아구찜,일진아구찜,positive_match
+39,Kiikk가 좋아한 부타동 집 알려줘.,fixed,fixed,True,False,1.0,True,스미비부타동 신대방삼거리역점,스미비부타동 신대방삼거리역점,스미비부타동 신대방삼거리역점,positive_match
+40,aa주야aa가 추천한 양은이네 세트 파는 곳 찾아줘.,fixed,fixed,True,False,0.5,True,양은이네 신대방삼거리역직영점,양은이네 신대방삼거리역직영점 | 치킨89 신대방점 | 모리식탁 | 쌍둥이네풍천장어 | 매콤달콤떡볶이 성대시장점,양은이네 신대방삼거리역직영점,positive_match
+41,ChocoJelly가 추천한 갈비집 있어?,fixed,fixed,True,False,1.0,True,마포갈비,마포갈비,마포갈비,positive_match
+42,anne33이 맛있다고 한 마라탕집 뭐야?,fixed,fixed,True,False,1.0,True,탕화쿵푸마라탕 대방점,마라홀릭 마라탕 신대방점 | 춘리마라탕 신대방삼거리점 | 탕화쿵푸마라탕 대방점,탕화쿵푸마라탕 대방점,positive_match
+43,MarkJacob 리뷰 있는 디저트카페 찾아줘.,fixed,fixed,True,True,1.0,True,듀윗,듀윗,듀윗,positive_match
+44,Sang Jin Hong이 술 마시고 아쉬울 때 갔다고 한 곳 어디야?,fixed,fixed,True,False,1.0,True,기계우동,기계우동,기계우동,positive_match
+45,Jens day가 딸기라떼 먹었다고 한 카페 찾아줘.,fixed,fixed,True,False,0.0,False,투썸플레이스 신대방삼거리점,카페 알코브 | 코랄밸리 | 타코야끼&CAFE 신대방삼거리역점 | 카페아에 동작점,,positive_match
+46,BR이 양 푸짐하고 조용하다고 한 곳 뭐였지?,fixed,fixed,True,False,0.0,False,미분당 신대방삼거리점,,,positive_match
+47,Jisu Pyo가 홍차가 아쉽다고 한 디저트카페 뭐야?,fixed,fixed,True,False,1.0,True,듀윗,듀윗,듀윗,positive_match
+48,듀윗에 돈까스 메뉴 있어?,fixed,fixed,True,True,1.0,True,,정송숙12년전통 오렌지김밥 상도동점 | 듀윗 | 라밥 신대방삼거리점,,no_match_or_low_confidence
+49,개별룸 있는 오마카세집 추천해줘.,embedding,embedding,True,False,0.5,True,,일진아구찜 | 신정닭발,,no_match_or_low_confidence
+50,비건 샐러드 전문점 추천해줘.,embedding,embedding,True,False,0.0,True,,모리식탁,,no_match_or_low_confidence

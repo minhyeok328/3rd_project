@@ -1,0 +1,716 @@
+{
+  "dataset_name": "pickle_llm_eval_goldset_50",
+  "dataset_version": "2026-04-24",
+  "source_basis": "README, src pipeline/router/slot logic, database/sql/restaurant.db samples",
+  "notes": [
+    "모든 질문은 신대방삼거리 인근 맛집 추천 서비스의 현재 DB 범위를 기준으로 작성했다.",
+    "평가 시에는 route 정확도, slot 추출 정확도, 후보 식당 grounding, 비존재 정보 환각 억제를 함께 보는 것을 권장한다.",
+    "expected_restaurant_candidates는 단일 정답이 아니라 허용 가능한 정답 후보 집합이다."
+  ],
+  "items": [
+    {
+      "id": 1,
+      "question": "혼자 가볍게 먹기 좋은 우동집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "혼밥",
+        "menu": "",
+        "food": "우동",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["기계우동"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "혼밥+우동 조합을 embedding으로 해석하는지 확인"
+    },
+    {
+      "id": 2,
+      "question": "저녁에 간단히 한잔하기 좋은 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "술집",
+        "tag": "간단히한잔",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["달맥 신대방삼거리역점", "단길", "심야식당중도"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "직접 식당명을 언급하지 않은 분위기형 질의 처리"
+    },
+    {
+      "id": 3,
+      "question": "데이트하기 좋은 예쁜 디저트 카페 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "디저트",
+        "tag": "데이트",
+        "menu": "",
+        "food": "",
+        "review": "예쁜"
+      },
+      "expected_restaurant_candidates": ["듀윗"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "데이트/예쁜/디저트 조합 grounding"
+    },
+    {
+      "id": 4,
+      "question": "가족이랑 가기 좋은 생선구이 집 찾아줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "가족외식",
+        "menu": "",
+        "food": "생선구이",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["돌솥밥 & 생선구이"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "가족외식 태그와 음식 키워드 결합"
+    },
+    {
+      "id": 5,
+      "question": "술 마신 다음에 해장하기 좋은 국물 있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "해장",
+        "menu": "",
+        "food": "",
+        "review": "국물"
+      },
+      "expected_restaurant_candidates": ["노량진 수제비", "동화장", "육전국밥 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "해장 수요를 리뷰/태그 중심으로 회수하는지 확인"
+    },
+    {
+      "id": 6,
+      "question": "가성비 좋은 곱창집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "곱창",
+        "tag": "가성비좋은",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["대포곱창", "소곱창 클라쓰", "인생곱창"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "카테고리와 태그 교집합 검색"
+    },
+    {
+      "id": 7,
+      "question": "단체로 가기 좋고 테라스 느낌 있는 곳 있어?",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "단체모임",
+        "menu": "",
+        "food": "",
+        "review": "테라스"
+      },
+      "expected_restaurant_candidates": ["계림원", "네모오징어 신대방삼거리역점", "달맥 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "테라스/단체모임 같은 분위기성 조건 조합"
+    },
+    {
+      "id": 8,
+      "question": "혼술하기 좋은 안주 맛집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "이자카야",
+        "tag": "혼술",
+        "menu": "",
+        "food": "",
+        "review": "안주"
+      },
+      "expected_restaurant_candidates": ["단길", "심야식당중도"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "혼술/안주/이자카야 라우팅과 retrieval"
+    },
+    {
+      "id": 9,
+      "question": "테이크아웃하기 좋은 저렴한 간식 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "",
+        "review": "간식"
+      },
+      "expected_restaurant_candidates": ["경성 찹쌀꽈배기", "와플대학 신대방삼거리캠퍼스"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "간식/테이크아웃형 추천"
+    },
+    {
+      "id": 10,
+      "question": "점심에 배달시키기 좋고 메뉴가 다양한 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "배달",
+        "menu": "",
+        "food": "",
+        "review": "다양한메뉴"
+      },
+      "expected_restaurant_candidates": ["라밥 신대방삼거리점", "고유부"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "배달/다양한메뉴 태그 기반 추천"
+    },
+    {
+      "id": 11,
+      "question": "기념일에 갈 만한 케이크 맛집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "케이크",
+        "tag": "기념일",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["듀윗"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "기념일/케이크 결합"
+    },
+    {
+      "id": 12,
+      "question": "갑오징어 요리 맛있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "갑오징어",
+        "tag": "",
+        "menu": "",
+        "food": "갑오징어",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["네모오징어 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "음식명 기반 embedding 검색"
+    },
+    {
+      "id": 13,
+      "question": "노포 느낌 나고 해장하기 좋은 집 있을까?",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "노포",
+        "menu": "",
+        "food": "",
+        "review": "해장"
+      },
+      "expected_restaurant_candidates": ["기계우동", "동화장", "노량진 수제비"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "노포+해장 복합 조건"
+    },
+    {
+      "id": 14,
+      "question": "반려동물이랑 같이 갈 수 있는 치맥집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "치킨",
+        "tag": "반려동물동반",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["달맥 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "희소 태그 반려동물동반 처리"
+    },
+    {
+      "id": 15,
+      "question": "예쁘고 깔끔한 카페에서 커피 마시고 싶어.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "카페",
+        "tag": "깔끔한",
+        "menu": "",
+        "food": "커피",
+        "review": "예쁜"
+      },
+      "expected_restaurant_candidates": ["듀윗", "카페 알코브", "투썸플레이스 신대방삼거리점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "카페류 일반 질의에서 과도한 환각 없이 후보 제한"
+    },
+    {
+      "id": 16,
+      "question": "늦게까지 하는 치킨이랑 피자 같이 먹을 수 있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "치킨",
+        "tag": "연중무휴",
+        "menu": "피자",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["달맥 신대방삼거리역점", "피맥 신대방점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "카테고리+메뉴 결합형 검색"
+    },
+    {
+      "id": 17,
+      "question": "푸짐하게 한식 먹을 수 있는 집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "한식",
+        "tag": "푸짐한",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["한솔웰빙쌈밥시골보리밥", "돌솥밥 & 생선구이", "고유부"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "한식류 넓은 질의에서 plausible candidates 회수"
+    },
+    {
+      "id": 18,
+      "question": "매콤한 닭발 먹고 싶은데 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "닭발",
+        "tag": "매콤한",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["신정닭발", "선아닭발", "삼거리닭발 신대방점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "동일 카테고리 다중 후보 회수"
+    },
+    {
+      "id": 19,
+      "question": "스시로 데이트하기 좋은 곳 찾아줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "스시",
+        "tag": "데이트",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["유태우스시", "회가대표초밥24 신대방삼거리점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "스시 계열 데이트 수요"
+    },
+    {
+      "id": 20,
+      "question": "테이크아웃 가능한 커피집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "커피",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["투썸플레이스 신대방삼거리점", "듀윗", "카페 알코브"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "일반 커피류 질의에서 DB 내 후보만 제시하는지 확인"
+    },
+    {
+      "id": 21,
+      "question": "콩국수 맛있는 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "콩국수",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["노량진 수제비", "태화네칼국수"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "메뉴명만 주어진 embedding 검색"
+    },
+    {
+      "id": 22,
+      "question": "혼자 가기 좋은 돈까스집 있어?",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "돈까스",
+        "tag": "혼밥",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["카츠디나인 본점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "돈까스 카테고리와 혼밥 태그의 조합"
+    },
+    {
+      "id": 23,
+      "question": "회식하기 좋은 고깃집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "고깃집",
+        "tag": "회식",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["마포갈비", "원조부안집 신대방삼거리역점", "네모오징어 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "회식성 수요에서 고깃집/구이류 우선 추천"
+    },
+    {
+      "id": 24,
+      "question": "점심에 먹기 좋은 마라탕집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "마라탕",
+        "tag": "점심식사",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["마라홀릭 마라탕 신대방점", "춘리마라탕 신대방삼거리점", "탕화쿵푸마라탕 대방점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "동일 카테고리 다점포 후보군 추천"
+    },
+    {
+      "id": 25,
+      "question": "빵 포장하기 좋은 곳 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "빵",
+        "tag": "테이크아웃",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": ["상도제빵소", "찰찰보리식빵 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "베이커리류 후보 검색"
+    },
+    {
+      "id": 26,
+      "question": "듀윗에서 프레지에 먹을 수 있어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "듀윗",
+        "menu": "프레지에",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["듀윗"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "식당명+메뉴명 직접 지시 fixed 검색"
+    },
+    {
+      "id": 27,
+      "question": "계림원 누룽지통닭 궁금한데 여기 맞아?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "계림원",
+        "menu": "누룽지통닭",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["계림원"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "대표 메뉴와 식당명 direct match"
+    },
+    {
+      "id": 28,
+      "question": "네모오징어에서 갑오징어불고기백반 파는지 찾아줘.",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "네모오징어",
+        "menu": "갑오징어불고기백반",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["네모오징어 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "부분 식당명 + 구체 메뉴명 검색"
+    },
+    {
+      "id": 29,
+      "question": "고유부에서 라볶이 세트 먹을 수 있어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "고유부",
+        "menu": "라볶이",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["고유부"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "세트 메뉴를 핵심 메뉴명으로 정규화하는지 확인"
+    },
+    {
+      "id": 30,
+      "question": "라밥 신대방삼거리점에 뚝배기 떡볶이 있어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "라밥 신대방삼거리점",
+        "menu": "뚝배기 떡볶이",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["라밥 신대방삼거리점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "정확 식당명 fixed match"
+    },
+    {
+      "id": 31,
+      "question": "마라홀릭 마라탕 신대방점에서 꿔바로우도 팔아?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "마라홀릭 마라탕 신대방점",
+        "menu": "꿔바로우",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["마라홀릭 마라탕 신대방점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "마라탕집의 사이드 메뉴 direct 확인"
+    },
+    {
+      "id": 32,
+      "question": "돌솥밥 & 생선구이에 모둠생선구이 있나?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "돌솥밥 & 생선구이",
+        "menu": "모둠생선구이",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["돌솥밥 & 생선구이"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "특수문자 포함 식당명 처리"
+    },
+    {
+      "id": 33,
+      "question": "대포곱창 메뉴에 한우소곱창 있어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "대포곱창",
+        "menu": "한우소곱창",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["대포곱창"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "곱창류 대표 메뉴 확인"
+    },
+    {
+      "id": 34,
+      "question": "동대문곱창볶음전문에서 곱창볶음이 대표 메뉴야?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "동대문곱창볶음전문",
+        "menu": "곱창볶음",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["동대문곱창볶음전문"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "식당명과 메뉴명이 거의 동일한 경우 처리"
+    },
+    {
+      "id": 35,
+      "question": "기계우동에 짜장밥 있나?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "기계우동",
+        "menu": "짜장밥",
+        "user": ""
+      },
+      "expected_restaurant_candidates": ["기계우동"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "짧은 식당명 + 메뉴명 direct match"
+    },
+    {
+      "id": 36,
+      "question": "Fraise가 리뷰 남긴 곳 찾아줘.",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Fraise"
+      },
+      "expected_restaurant_candidates": ["듀윗"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 기반 fixed 검색"
+    },
+    {
+      "id": 37,
+      "question": "Jens day가 간 김밥집 어디였지?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Jens day"
+      },
+      "expected_restaurant_candidates": ["라밥 신대방삼거리점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 기반 검색 후 맥락상 적절한 식당을 답하는지 확인"
+    },
+    {
+      "id": 38,
+      "question": "SSONG이 리뷰한 매운 음식집 뭐였어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "SSONG"
+      },
+      "expected_restaurant_candidates": ["일진아구찜"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 리뷰 기반 direct retrieval"
+    },
+    {
+      "id": 39,
+      "question": "Kiikk가 좋아한 부타동 집 알려줘.",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Kiikk"
+      },
+      "expected_restaurant_candidates": ["스미비부타동 신대방삼거리역점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰어 기반 검색과 식당명 grounding"
+    },
+    {
+      "id": 40,
+      "question": "aa주야aa가 추천한 양은이네 세트 파는 곳 찾아줘.",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "양은이네 세트",
+        "user": "aa주야aa"
+      },
+      "expected_restaurant_candidates": ["양은이네 신대방삼거리역직영점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "menu+user 결합 fixed 검색"
+    },
+    {
+      "id": 41,
+      "question": "ChocoJelly가 추천한 갈비집 있어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "ChocoJelly"
+      },
+      "expected_restaurant_candidates": ["마포갈비"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "user 중심 검색 후 대표 후보 선택"
+    },
+    {
+      "id": 42,
+      "question": "anne33이 맛있다고 한 마라탕집 뭐야?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "anne33"
+      },
+      "expected_restaurant_candidates": ["탕화쿵푸마라탕 대방점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰어 기반 회수 정확도"
+    },
+    {
+      "id": 43,
+      "question": "MarkJacob 리뷰 있는 디저트카페 찾아줘.",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "MarkJacob"
+      },
+      "expected_restaurant_candidates": ["듀윗"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "긴 리뷰를 남긴 특정 유저의 식당 회수"
+    },
+    {
+      "id": 44,
+      "question": "Sang Jin Hong이 술 마시고 아쉬울 때 갔다고 한 곳 어디야?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Sang Jin Hong"
+      },
+      "expected_restaurant_candidates": ["기계우동"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰 내용 기억 없이 user만으로 식당 회수"
+    },
+    {
+      "id": 45,
+      "question": "Jens day가 딸기라떼 먹었다고 한 카페 찾아줘.",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Jens day"
+      },
+      "expected_restaurant_candidates": ["투썸플레이스 신대방삼거리점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "동일 유저의 여러 방문처 중 맥락에 맞는 후보를 내는지 확인"
+    },
+    {
+      "id": 46,
+      "question": "BR이 양 푸짐하고 조용하다고 한 곳 뭐였지?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "BR"
+      },
+      "expected_restaurant_candidates": ["미분당 신대방삼거리점"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "리뷰어 단서 기반 고정 검색"
+    },
+    {
+      "id": 47,
+      "question": "Jisu Pyo가 홍차가 아쉽다고 한 디저트카페 뭐야?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "",
+        "menu": "",
+        "user": "Jisu Pyo"
+      },
+      "expected_restaurant_candidates": ["듀윗"],
+      "expected_behavior": "positive_match",
+      "evaluation_focus": "부정적 리뷰를 남긴 user 기준 회수"
+    },
+    {
+      "id": 48,
+      "question": "듀윗에 돈까스 메뉴 있어?",
+      "expected_route": "fixed",
+      "expected_slots": {
+        "restaurant": "듀윗",
+        "menu": "돈까스",
+        "user": ""
+      },
+      "expected_restaurant_candidates": [],
+      "expected_behavior": "no_match_or_low_confidence",
+      "evaluation_focus": "비존재 메뉴를 환각하지 않고 없다고 말하는지 확인"
+    },
+    {
+      "id": 49,
+      "question": "개별룸 있는 오마카세집 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "오마카세",
+        "tag": "개별룸",
+        "menu": "",
+        "food": "",
+        "review": ""
+      },
+      "expected_restaurant_candidates": [],
+      "expected_behavior": "no_match_or_low_confidence",
+      "evaluation_focus": "DB 밖 카테고리 요청에서 과감히 매치 부족을 말하는지 확인"
+    },
+    {
+      "id": 50,
+      "question": "비건 샐러드 전문점 추천해줘.",
+      "expected_route": "embedding",
+      "expected_slots": {
+        "category": "",
+        "tag": "",
+        "menu": "샐러드",
+        "food": "비건",
+        "review": ""
+      },
+      "expected_restaurant_candidates": [],
+      "expected_behavior": "no_match_or_low_confidence",
+      "evaluation_focus": "비존재 도메인 요청에 대한 hallucination 억제"
+    }
+  ]
+}
