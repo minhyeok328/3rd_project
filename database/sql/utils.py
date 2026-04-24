@@ -297,6 +297,8 @@ def db_embedding_search(indict:dict):
     if common:
         rlist = [x for x in buff[0] if x in common]
     else:
-        rlist = [sub[min(len(sub), cnt_space[len(buff) - 1])] for sub in buff if sub]
-
+        rlist = []
+        for sub in buff:
+            rlist.extend(sub[:min(len(sub), cnt_space[len(buff) - 1])])
+               
     return get_detailed_restaurants(rlist)
