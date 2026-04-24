@@ -1,7 +1,11 @@
+<<<<<<< HEAD
+from __future__ import annotations
+=======
 """최종 응답 생성(Generator).
 
 system prompt + 검색 메타 + 후보 식당 리스트를 LLM에 넘겨
 최종 답변 문장을 생성한다. 세션별 대화 히스토리도 유지.
+>>>>>>> 9c744349523702f48039c2f95a0ef096e4c2681e
 
 ─────────────────────────────────────────────────────────────────────────────
 이 파일이 하는 일
@@ -28,7 +32,12 @@ system prompt + 검색 메타 + 후보 식당 리스트를 LLM에 넘겨
 
 from __future__ import annotations
 import json
+<<<<<<< HEAD
+from typing import Any, Callable
+
+=======
 from typing import Any
+>>>>>>> 9c744349523702f48039c2f95a0ef096e4c2681e
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from .config import SETTINGS
@@ -79,6 +88,7 @@ def get_llm() -> ChatOpenAI:
         temperature=0,
         # OpenAI API Key.
         api_key=SETTINGS.openai_api_key,
+        streaming=True,
     )
 
 
@@ -89,6 +99,8 @@ def generate_response(
     session_id: str = "default",
     route_payload: dict[str, Any] | None = None,
     connector_meta: dict[str, Any] | None = None,
+    stream: bool = False,
+    stream_callback: Callable[[str], None] | None = None,
 ) -> dict[str, Any]:
     """
     최종 답변을 LLM 을 통해 생성하는 핵심 함수.
@@ -186,9 +198,33 @@ def generate_response(
     #    모델이 최종 답변을 돌려준다.
     # -----------------------------------------------------------------
     llm = get_llm()
+<<<<<<< HEAD
+
+    if stream:
+        full_response = ""
+
+        for chunk in llm.stream(messages):
+            piece = chunk.content if hasattr(chunk, "content") else str(chunk)
+            if piece:
+                full_response += piece
+
+                if stream_callback is not None:
+                    stream_callback(full_response)
+                else:
+                    print(piece, end="", flush=True)
+
+        if stream_callback is None:
+            print()
+
+        response = full_response
+    else:
+        result = llm.invoke(messages)
+        response = result.content if hasattr(result, "content") else str(result)
+=======
     result = llm.invoke(messages)
     # result 가 BaseMessage 객체라면 .content 로 꺼내고, 아니면 str 로 강제 변환 (안전장치).
     response = result.content if hasattr(result, "content") else str(result)
+>>>>>>> 9c744349523702f48039c2f95a0ef096e4c2681e
 
     # -----------------------------------------------------------------
     # 7) 히스토리 업데이트

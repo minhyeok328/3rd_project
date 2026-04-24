@@ -71,6 +71,8 @@ class GraphState(TypedDict, total=False):
 
     question: str
     session_id: str
+    stream: bool
+    stream_callback: Any
 
     route: Literal["embedding", "fixed"]
     route_payload: dict[str, str]
@@ -228,6 +230,8 @@ def generate_node(state: GraphState) -> GraphState:
     route = state.get("route", "embedding")
     route_payload = state.get("route_payload", {})
     restaurant_list = state.get("restaurant_list", [])
+    stream = state.get("stream", False)
+    stream_callback = state.get("stream_callback")
 
     # 검색 결과 메타정보. 예: 후보 수를 LLM 에게 알려줘 답변에 반영하게 함.
     connector_meta = {
@@ -244,6 +248,8 @@ def generate_node(state: GraphState) -> GraphState:
         session_id=session_id,
         route_payload=route_payload,
         connector_meta=connector_meta,
+        stream=stream,
+        stream_callback=stream_callback,
     )
 
     # answer 와 used_restaurant_list 를 state 에 반영.
@@ -329,6 +335,8 @@ def get_graph():
 def run_qa(
     question: str,
     session_id: str = "default",
+    stream: bool = False,
+    stream_callback=None,
 ) -> dict[str, Any]:
     """
     외부에서 호출하는 "한 번의 질의응답" 실행 진입점.
@@ -361,6 +369,8 @@ def run_qa(
         {
             "question": question,
             "session_id": session_id,
+            "stream": stream,
+            "stream_callback": stream_callback,
         }
     )
 
