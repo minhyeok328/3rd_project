@@ -288,17 +288,12 @@ def db_embedding_search(indict:dict):
     if not buff:
         return []
     
-    common = set(buff[0])
-    
-    if 1 < len(buff):
-        common = common.intersection(*buff[1:])
-
+    rlist = []
     cnt_space = [5, 3, 2, 1, 1]
-    if common:
-        rlist = [x for x in buff[0] if x in common]
-    else:
-        rlist = []
-        for sub in buff:
-            rlist.extend(sub[:min(len(sub), cnt_space[len(buff) - 1])])
+    for i in range(cnt_space[len(buff)-1]):
+        for b in buff:
+            if len(b) <= i:
+                continue
+            rlist.append(b[i])
                
     return get_detailed_restaurants(rlist)
