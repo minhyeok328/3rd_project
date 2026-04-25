@@ -56,7 +56,7 @@ st.markdown("""
     <div class="hero-inner">
         <div class="hero-logo">🍽</div>
         <div>
-            <p class="hero-title">맛집 추천 · Mini Place</p>
+            <p class="hero-title">PICKLE 맛집 추천</p>
             <p class="hero-subtitle">지도에서 찾아보는 우리 동네 진짜 맛집</p>
         </div>
         <div class="hero-badges">
@@ -933,7 +933,7 @@ def print_search():
     </p>
     <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;">
         <span class="r-chip">#파스타</span>
-        <span class="r-chip">#강남</span>
+        <span class="r-chip">#신대방삼거리</span>
         <span class="r-chip">#데이트</span>
         <span class="r-chip">#분위기</span>
     </div>
@@ -988,7 +988,7 @@ def print_chat():
         자연스럽게 원하는 조건을 얘기해 주세요
     </p>
     <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:420px;">
-        <span class="r-chip">강남역 파스타</span>
+        <span class="r-chip">신대방삼거리역 주변 파스타</span>
         <span class="r-chip">조용한 데이트</span>
         <span class="r-chip">혼밥 좋은 곳</span>
         <span class="r-chip">분위기 좋은 카페</span>
@@ -1325,7 +1325,7 @@ with left_sidebar:
             )
 
             user_input = st.chat_input(
-                "검색어를 입력하세요 (예: 파스타, 강남)",
+                "검색어를 입력하세요 (예: 파스타, 신대방삼거리)",
                 key="search_chat_input",
             )
 
