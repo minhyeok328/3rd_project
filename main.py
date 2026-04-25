@@ -35,8 +35,8 @@ st.markdown("""
 /* 최상단 Hero: columns보다 위에 위치 */
 .hero {
     position: relative;
-    background: linear-gradient(135deg, #03C75A 0%, #06D668 50%, #00A947 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #E3FDF5 0%) !important;
+    color: #4A4A4A;
     padding: 18px 24px;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(3, 199, 90, 0.25), inset 0 1px 0 rgba(255,255,255,0.25);
@@ -47,20 +47,20 @@ st.markdown("""
 .hero::after  { content:""; position:absolute; bottom:-80px; left:30%; width:260px; height:260px; border-radius:50%; background:rgba(255,255,255,0.08); filter:blur(8px); }
 .hero-inner { position:relative; display:flex; align-items:center; gap:14px; z-index:1; }
 .hero-logo { background:rgba(255,255,255,0.22); border:1px solid rgba(255,255,255,0.45); backdrop-filter:blur(6px); color:#fff; width:46px; height:46px; border-radius:14px; display:inline-flex; align-items:center; justify-content:center; font-weight:900; font-size:22px; box-shadow:0 6px 18px rgba(0,0,0,0.10); }
-.hero-title { font-size:22px; font-weight:900; color:#fff; margin:0; letter-spacing:-0.3px; text-shadow:0 1px 2px rgba(0,0,0,0.12); }
-.hero-subtitle { font-size:13px; color:rgba(255,255,255,0.92); margin:2px 0 0 0; }
+.hero-title { font-size:22px; font-weight:900; color:#2C5F50 !important; margin:0; letter-spacing:-0.3px; text-shadow:0 1px 2px rgba(0,0,0,0.12); }
+.hero-subtitle { font-size:13px; color:#5A7D73 !important; margin:2px 0 0 0; }
 .hero-badges { margin-left:auto; display:flex; gap:8px; z-index:1; position:relative; }
-.hero-badge { background:rgba(255,255,255,0.22); border:1px solid rgba(255,255,255,0.4); color:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:600; backdrop-filter:blur(6px); }
+.hero-badge { background:rgba(255,255,255,0.22); border:1px solid rgba(255,255,255,0.4); color:#5A7D73 !important; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:600; backdrop-filter:blur(6px); }
 </style>
 <div class="hero">
     <div class="hero-inner">
         <div class="hero-logo">🍽</div>
         <div>
-            <p class="hero-title">맛집 추천 · Mini Place</p>
+            <p class="hero-title">PICKLE 맛집 추천 </p>
             <p class="hero-subtitle">지도에서 찾아보는 우리 동네 진짜 맛집</p>
         </div>
         <div class="hero-badges">
-            <span class="hero-badge">✨ AI 추천</span>
+            <span class="hero-badge">✨ 피클리 AI 추천</span>
             <span class="hero-badge">📍 실시간 지도</span>
         </div>
     </div>
@@ -356,7 +356,7 @@ st.markdown("""
     --naver-green-dark: #0E8E44;
     --naver-green-light: #06D668;
     --naver-green-glow: rgba(3, 199, 90, 0.25);
-    --line: #E5E7EB;
+    --line: #FFE6FA;
     --line-soft: #F3F4F6;
     --text-main: #111827;
     --text-sub: #6B7280;
@@ -1002,13 +1002,14 @@ fixed_search_options = ["식당이름", "메뉴", "유저명"]
 fixed_search_data_keys = ["restaurant", "menu", "user"]
 
 
-def add_search(intype: str, instr: str):
+def add_search(intype: str, instr: str, price_limit: str="전체"):
     close_restaurant_page()
 
     indict = {
         fixed_search_data_keys[0]: "",
         fixed_search_data_keys[1]: "",
-        fixed_search_data_keys[2]: ""
+        fixed_search_data_keys[2]: "",
+        "price_range": price_limit # 가격 필터 추가
     }
 
     target_key = fixed_search_data_keys[fixed_search_options.index(intype)]
@@ -1125,7 +1126,7 @@ def render_kakao_map(lat, lon, markers=None):
             position: relative;
             padding: {map_shell_padding}px;
             border-radius: 22px;
-            background: linear-gradient(135deg, #03C75A 0%, #06D668 40%, #00A947 100%);
+            background: linear-gradient(135deg, #5A7D73 100%);
             box-shadow:
                 0 20px 40px rgba(3, 199, 90, 0.22),
                 0 4px 12px rgba(17, 24, 39, 0.08);
@@ -1364,9 +1365,15 @@ with left_sidebar:
 """,
                 unsafe_allow_html=True,
             )
+            price_range = st.select_slider(
+                "가격대 설정 (1인분 기준)",
+                options=["전체", "1만원 이하", "2만원대", "3만원대", "4만원 이상"],
+                value="전체",
+                key="price_filter"
+    )
 
             user_input = st.chat_input(
-                "검색어를 입력하세요 (예: 파스타, 강남)",
+                "검색어를 입력하세요 (예: 파스타, 혼밥)",
                 key="search_chat_input",
             )
 
@@ -1378,7 +1385,7 @@ with left_sidebar:
             )
 
             if user_input is not None:
-                add_search(user_input_type, user_input)
+                add_search(user_input_type, user_input, price_range)
 
     ######################################################################
     # 채팅창 탭
