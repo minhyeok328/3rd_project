@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>LLM Evaluation Dashboard</title>
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --panel: #fffdfa;
+      --line: #d9d0c2;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --good: #0f766e;
+      --bad: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px;
+      background: radial-gradient(circle at top left, #efe6d8, #f8f5ef 50%, #fcfbf8 100%);
+      color: var(--text);
+      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+    }
+    .wrap { max-width: 1600px; margin: 0 auto; }
+    h1 { margin: 0 0 10px; font-size: 34px; }
+    h2 { margin: 24px 0 12px; }
+    .meta { color: var(--muted); margin-bottom: 16px; }
+    .cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .card, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+    }
+    .card { padding: 16px; }
+    .panel { padding: 18px; margin-bottom: 18px; overflow-x: auto; }
+    .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .value { font-size: 28px; font-weight: 700; }
+    .value.good { color: var(--good); }
+    .value.bad { color: var(--bad); }
+    .grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    table { width: 100%; border-collapse: collapse; min-width: 920px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; font-size: 14px; }
+    th { background: #f1eadf; position: sticky; top: 0; }
+    .empty { color: var(--muted); }
+    .alert { color: var(--bad); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>LLM Evaluation Dashboard</h1>
+    <div class="meta">Generated: 2026-04-24T16:35:38 | Goldset: C:\MinHyeok\skn26_3rd_3rd\3rd_project\src_test3\llm_goldset.json</div>
+    
+    
+    <section class="cards">
+      <div class="card"><div class="label">Cases</div><div class="value">50</div></div>
+      <div class="card"><div class="label">Passed</div><div class="value good">41</div></div>
+      <div class="card"><div class="label">Failed</div><div class="value bad">9</div></div>
+      <div class="card"><div class="label">Pass Rate</div><div class="value">82.0%</div></div>
+      <div class="card"><div class="label">Average Score</div><div class="value">0.97</div></div>
+    </section>
+    <div class="grid-two">
+      <section class="panel"><h2>Overview</h2><table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Cases</td><td>50</td></tr><tr><td>Passed</td><td>41</td></tr><tr><td>Failed</td><td>9</td></tr><tr><td>Pass Rate</td><td>82.0%</td></tr><tr><td>Average Score</td><td>0.97</td></tr><tr><td>Route Accuracy</td><td>100.0%</td></tr><tr><td>Payload Accuracy</td><td>86.0%</td></tr><tr><td>Target Hit Accuracy</td><td>96.0%</td></tr><tr><td>Answer Accuracy</td><td>100.0%</td></tr><tr><td>Retrieval Accuracy</td><td>100.0%</td></tr></tbody></table></section>
+      <section class="panel"><h2>By Query Type</h2><table><thead><tr><th>Type</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass Rate</th><th>Avg Score</th></tr></thead><tbody><tr><td>embedding</td><td>30</td><td>22</td><td>8</td><td>73.3%</td><td>0.96</td></tr><tr><td>fixed</td><td>20</td><td>19</td><td>1</td><td>95.0%</td><td>0.99</td></tr></tbody></table></section>
+    </div>
+    <section class="panel"><h2>Failed Cases</h2><table><thead><tr><th>Status</th><th>Case ID</th><th>Type</th><th>Score</th><th>Route</th><th>Payload</th><th>Target</th><th>Answer</th><th>Retrieval</th><th>Used</th><th>Reason</th><th>Question</th></tr></thead><tbody><tr><td>FAIL</td><td>embedding_020</td><td>embedding</td><td>0.75</td><td>embedding</td><td>Y</td><td>N</td><td>Y</td><td>Y</td><td>4</td><td>target restaurant not retrieved</td><td>혼밥하기 좋은 기계우동 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_025</td><td>embedding</td><td>0.75</td><td>embedding</td><td>Y</td><td>N</td><td>Y</td><td>Y</td><td>4</td><td>target restaurant not retrieved</td><td>술모임하기 좋은 술집 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_003</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>payload miss: category, food, menu,...</td><td>매콤한 곱창전골 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_005</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>1</td><td>payload miss: category, food, menu,...</td><td>가족외식하기 좋은 아구찜 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_007</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>1</td><td>payload miss: category, food, menu,...</td><td>매콤한 국물닭발 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_010</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>payload miss: category, food, menu,...</td><td>가족외식하기 좋은 돼지갈비 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_013</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>payload miss: category, food, menu,...</td><td>예약 가능한 단팥죽 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_024</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>payload miss: category, food, menu,...</td><td>분위기 좋은 김치닭볶음탕 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>fixed_007_menu</td><td>fixed</td><td>0.88</td><td>fixed</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>payload miss: restaurant, menu</td><td>신정닭발에 숯불 무뼈닭발 있어?</td></tr></tbody></table></section>
+    <section class="panel"><h2>Lowest Score Cases</h2><table><thead><tr><th>Status</th><th>Case ID</th><th>Type</th><th>Score</th><th>Route</th><th>Payload</th><th>Target</th><th>Answer</th><th>Retrieval</th><th>Used</th><th>Reason</th><th>Question</th></tr></thead><tbody><tr><td>FAIL</td><td>embedding_020</td><td>embedding</td><td>0.75</td><td>embedding</td><td>Y</td><td>N</td><td>Y</td><td>Y</td><td>4</td><td>target restaurant not retrieved</td><td>혼밥하기 좋은 기계우동 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_025</td><td>embedding</td><td>0.75</td><td>embedding</td><td>Y</td><td>N</td><td>Y</td><td>Y</td><td>4</td><td>target restaurant not retrieved</td><td>술모임하기 좋은 술집 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_003</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>payload miss: category, food, menu,...</td><td>매콤한 곱창전골 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_005</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>1</td><td>payload miss: category, food, menu,...</td><td>가족외식하기 좋은 아구찜 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_007</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>1</td><td>payload miss: category, food, menu,...</td><td>매콤한 국물닭발 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_010</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>payload miss: category, food, menu,...</td><td>가족외식하기 좋은 돼지갈비 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_013</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>payload miss: category, food, menu,...</td><td>예약 가능한 단팥죽 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>embedding_024</td><td>embedding</td><td>0.88</td><td>embedding</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>payload miss: category, food, menu,...</td><td>분위기 좋은 김치닭볶음탕 맛집 추천해줘</td></tr><tr><td>FAIL</td><td>fixed_007_menu</td><td>fixed</td><td>0.88</td><td>fixed</td><td>N</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>payload miss: restaurant, menu</td><td>신정닭발에 숯불 무뼈닭발 있어?</td></tr><tr><td>PASS</td><td>embedding_001</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>-</td><td>혼밥하기 좋은 스시 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_002</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>2</td><td>-</td><td>데이트하기 좋은 디저트 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_004</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>2</td><td>-</td><td>카공하기 좋은 카페 추천해줘</td></tr><tr><td>PASS</td><td>embedding_006</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>-</td><td>데이트하기 좋은 와플 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_008</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>-</td><td>혼밥하기 좋은 검정콩국수 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_009</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>2</td><td>-</td><td>혼밥하기 좋은 비빔밥 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_011</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>2</td><td>-</td><td>데이트하기 좋은 숙성회 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_012</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>-</td><td>무료주차 가능한 장어 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_014</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>4</td><td>-</td><td>간식 먹기 좋은 떡볶이 추천해줘</td></tr><tr><td>PASS</td><td>embedding_015</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>-</td><td>무료주차 가능한 고기집 맛집 추천해줘</td></tr><tr><td>PASS</td><td>embedding_016</td><td>embedding</td><td>1.00</td><td>embedding</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>3</td><td>-</td><td>데이트하기 좋은 술집 맛집 추천해줘</td></tr></tbody></table></section>
+  </div>
+</body>
+</html>

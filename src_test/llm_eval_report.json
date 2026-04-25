@@ -1,0 +1,4519 @@
+{
+  "started_at": "2026-04-24T12:45:40",
+  "finished_at": "2026-04-24T12:51:18",
+  "goldset_path": "C:\\MinHyeok\\skn26_3rd_3rd\\3rd_project\\src_test\\llm_goldset.json",
+  "preflight": {
+    "ok": true,
+    "checks": {
+      "openai_api_key_set": true,
+      "goldset_exists": true
+    },
+    "issues": []
+  },
+  "summary": {
+    "total_cases": 50,
+    "passed_cases": 23,
+    "failed_cases": 27,
+    "pass_rate": 0.46,
+    "average_score": 0.8575,
+    "component_accuracy": {
+      "route": 1.0,
+      "payload": 0.82,
+      "target": 0.52,
+      "answer": 1.0,
+      "retrieval": 1.0
+    }
+  },
+  "type_summary": [
+    {
+      "query_type": "embedding",
+      "total": 30,
+      "passed": 4,
+      "failed": 26,
+      "pass_rate": 0.1333,
+      "average_score": 0.7667
+    },
+    {
+      "query_type": "fixed",
+      "total": 20,
+      "passed": 19,
+      "failed": 1,
+      "pass_rate": 0.95,
+      "average_score": 0.9938
+    }
+  ],
+  "environment_failure": {
+    "is_environment_failure": false,
+    "error_type": "",
+    "count": 0
+  },
+  "cases": [
+    {
+      "case_id": "embedding_007",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "매콤한 국물닭발 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.625,
+      "metadata": {
+        "restaurant_code": "RES0006",
+        "restaurant_name": "신정닭발",
+        "category": "국물닭발",
+        "tag": "매콤한"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "매운",
+          "menu": "국물닭발",
+          "food": "닭발",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "매콤한 국물닭발 맛집으로는 신대방삼거리에 있는 **선아닭발**을 추천드려요! 매콤한 국물닭발을 찾으신다고 하셨는데, 이곳은 \"매콤한\", \"매콤\" 태그가 붙어있고 대표 메뉴로 국물닭발(통뼈)(19,000원)이 있어 딱 맞아요. 실제로 한 리뷰어분도 \"닭발이 맛있고 사장님이 친절하심. 매콤한데 계란죽이랑 먹으면 잘 해소되는 편임\"이라고 하셨을 만큼 매운맛과 국물닭발 맛이 잘 어울린다고 해요. 위치는 서울 동작구 여의대방로24길 131 2층, 신대방삼거리 근처예요. 매콤한 국물닭발 드시고 싶을 때 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "국물닭발",
+              "expected_contains_any": [
+                "국물닭발"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "매운",
+              "expected_contains_any": [
+                "매콤한"
+              ],
+              "passed": false
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0006"
+          ],
+          "seen_codes": [
+            "RES0002",
+            "RES0061",
+            "RES0075",
+            "RES0091"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review; target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_011",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "데이트하기 좋은 숙성회 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.625,
+      "metadata": {
+        "restaurant_code": "RES0010",
+        "restaurant_name": "모리식탁",
+        "category": "숙성회",
+        "tag": "데이트"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "일식",
+          "tag": "데이트",
+          "menu": "",
+          "food": "회",
+          "review": "추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "신대방삼거리역에 있는 **황금수산**을 추천드려요! 데이트하기 좋은 숙성회 맛집 찾으신다고 하셨는데, 이곳이 딱이에요. 신선한 활어회와 다양한 회 세트 메뉴가 준비되어 있고, 실제로 한 리뷰어분도 \"스끼다시도 다양하고 회도 신선해서 맛있게 잘 먹었어요!!\"라고 하셨을 만큼 회 맛이 뛰어나요. 대표 메뉴로는 광어, 우럭, 연어 등이 포함된 황금스페셜(65,000원)과 황금세트(55,000원)가 있고, 위치는 서울 동작구 상도로 48 1층이에요. 깔끔한 분위기에서 신선한 회로 데이트 즐기시기에 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "일식",
+              "expected_contains_any": [
+                "숙성회"
+              ],
+              "passed": false
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "데이트",
+              "expected_contains_any": [
+                "데이트"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0010"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0017",
+            "RES0022",
+            "RES0043"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review; target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_013",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "예약 가능한 단팥죽 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.625,
+      "metadata": {
+        "restaurant_code": "RES0012",
+        "restaurant_name": "카페아뜨레",
+        "category": "단팥죽",
+        "tag": "예약가능"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "",
+          "menu": "단팥죽",
+          "food": "죽",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 2,
+        "answer": "예약 가능하면서 단팥죽을 전문으로 하는 식당은 현재 데이터에 없어요. 단팥죽 메뉴가 포함된 식당이 없고, 후보 식당들도 주로 짜장면, 곱창 등 다른 음식 위주라서요. 죄송하지만 지금 가진 데이터에서는 예약 가능한 단팥죽 맛집을 찾기 어려워요. 혹시 다른 지역이나 음식으로도 추천 원하시면 알려주세요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "단팥죽",
+              "expected_contains_any": [
+                "단팥죽"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "",
+              "expected_contains_any": [
+                "예약가능"
+              ],
+              "passed": false
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0012"
+          ],
+          "seen_codes": [
+            "RES0013",
+            "RES0021",
+            "RES0071"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 2
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review; target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_015",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "무료주차 가능한 고기집 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.625,
+      "metadata": {
+        "restaurant_code": "RES0014",
+        "restaurant_name": "원조부안집 신대방삼거리역점",
+        "category": "고기집",
+        "tag": "무료주차"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "무료주차",
+          "menu": "",
+          "food": "고기",
+          "review": "맛집"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "무료주차 가능한 고기집 맛집으로는 신대방삼거리역 근처에 있는 **우니꾸**를 추천드려요! \"무료주차 가능한 고기집 맛집 추천해줘\"라고 하신 거라면, 우니꾸가 딱 맞아요. 실제로 한 리뷰어분도 \"무료주차, 고급스러운, 조용한\" 분위기라고 하셨고, 신대방삼거리 맛집으로 고기가 정말 맛있다고 극찬했어요. 아담하고 다찌석이 있는 곳이라 혼술이나 접대 자리로도 좋답니다. 대표 메뉴로는 토시살(15,900원)과 갈비살(15,900원)이 있고, 위치는 서울특별시 동작구 국사봉1길 4예요. 주차 걱정 없이 편하게 맛있는 고기 드시기에 딱 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "",
+              "expected_contains_any": [
+                "고기집"
+              ],
+              "passed": false
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "무료주차",
+              "expected_contains_any": [
+                "무료주차"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0014"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0004",
+            "RES0041"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review; target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_021",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "술모임하기 좋은 포차 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.625,
+      "metadata": {
+        "restaurant_code": "RES0020",
+        "restaurant_name": "먹거리장터",
+        "category": "포차",
+        "tag": "술모임"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "술집",
+          "tag": "술모임",
+          "menu": "",
+          "food": "",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "술모임하기 좋은 포차 맛집으로는 신대방삼거리역 근처에 있는 **황금수산**을 추천드려요! 술모임하기 좋은 분위기를 찾으신다고 하셨는데, 이곳은 실제로 리뷰에서 '술모임'과 '시끌벅적한' 분위기가 자주 언급될 만큼 모임하기 딱 좋은 포차 스타일 횟집이에요. 특히 한 리뷰어분이 \"양 많고 물회 맛있다\"며 만족감을 표현하셨고, 가성비 좋은 회식 장소로도 알려져 있답니다. 대표 메뉴로는 광어, 우럭, 연어 등 다양한 활어가 포함된 황금스페셜(65,000원)과 4종세트(28,000원)가 있어 술안주로도 훌륭해요. 위치는 서울 동작구 상도로 48 1층, 신대방삼거리역 근처라 찾기 편하실 거예요. 편안한 분위기에서 술모임 즐기시기에 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "술집",
+              "expected_contains_any": [
+                "포차"
+              ],
+              "passed": false
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "술모임",
+              "expected_contains_any": [
+                "술모임"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0020"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0021",
+            "RES0043"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review; target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_024",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "분위기 좋은 김치닭볶음탕 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.625,
+      "metadata": {
+        "restaurant_code": "RES0023",
+        "restaurant_name": "술탄.PUB",
+        "category": "김치닭볶음탕",
+        "tag": "분위기좋은"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "한식",
+          "tag": "분위기 좋은",
+          "menu": "김치닭볶음탕",
+          "food": "닭볶음탕",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 4,
+        "answer": "분위기 좋은 김치닭볶음탕 맛집을 찾으셨는데, 아쉽게도 후보 식당 중에 김치닭볶음탕 메뉴가 있거나 관련된 곳은 없네요. 대신 분위기 좋고 한식 메뉴가 있는 곳 중에서 추천드릴 만한 곳은 서울 동작구 신대방삼거리역 근처에 있는 **마포갈비**예요.\n\n마포갈비는 서민적이면서도 가족외식이나 식사모임에 좋은 넓은 공간을 갖추고 있고, 리뷰에서도 \"동생 추천으로 방문했는데 너무 맛있게 잘 먹었어요~\"라며 만족도가 높아요. 대표 메뉴로는 돼지갈비 250g(17,000원)과 돌솥비빔밥(9,000원)이 있어 한식 분위기를 느끼기 좋아요. 위치는 서울 동작구 보라매로 112에 있습니다.\n\n김치닭볶음탕은 없지만, 한식 분위기 좋은 곳을 원하신다면 마포갈비가 마음에 드실 거예요! 다음에 김치닭볶음탕 메뉴가 있는 곳으로 다시 찾아드릴게요."
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "김치닭볶음탕",
+              "expected_contains_any": [
+                "김치닭볶음탕"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "분위기 좋은",
+              "expected_contains_any": [
+                "분위기좋은"
+              ],
+              "passed": false
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0023"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0030",
+            "RES0032",
+            "RES0069",
+            "RES0099"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review; target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_001",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 스시 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0000",
+        "restaurant_name": "유태우스시",
+        "category": "스시",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "일식",
+          "tag": "혼밥",
+          "menu": "",
+          "food": "스시",
+          "review": "추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 3,
+        "answer": "혼밥하기 좋은 스시 맛집을 찾으셨는데, 아쉽게도 주어진 후보 식당 중에는 스시 전문점이 없네요. 대신 신대방삼거리역 근처에 있는 일식 이자카야인 **시선 신대방삼거리역점**을 추천드릴게요! \n\n스시 전문점은 아니지만, 이곳은 분위기가 아늑하고 고급스러운 이자카야로, 대표 메뉴로는 광어사시미(24,900원)와 크림치즈 연어사시미(18,900원) 등이 있어 신선한 회를 즐기실 수 있어요. 실제로 한 리뷰어분도 \"가성비 좋고 맛있다\"며 만족감을 표현하셨고, 조용한 분위기에서 혼자 식사하기에도 부담 없을 거예요. 위치는 서울 동작구 보라매로 93 지하1층에 있습니다.\n\n스시 전문점은 아니지만, 신선한 사시미와 함께 혼밥하기 좋은 곳이라 마음에 드실 것 같아요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "스시",
+              "expected_contains_any": [
+                "스시"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0000"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0017",
+            "RES0053",
+            "RES0056"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_004",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "카공하기 좋은 카페 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0003",
+        "restaurant_name": "프로스퍼",
+        "category": "카페",
+        "tag": "카공"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "카페",
+          "tag": "카공하기 좋은",
+          "menu": "",
+          "food": "",
+          "review": "추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "카공하기 좋은 카페를 찾으셨는데, 아쉽게도 주어진 후보 식당 중에는 카페나 카공하기 좋은 분위기의 곳이 없네요. 모두 고기집, 이자카야, 포장마차 같은 식당들이라 카페 분위기와는 거리가 있어요.\n\n혹시 지역이나 분위기, 음식 종류를 조금만 더 구체적으로 알려주시면 다시 찾아볼 수 있을 것 같아요! 지금 가진 데이터 기준으로는 카공하기 좋은 카페는 찾기 어려워서 죄송해요."
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "카페",
+              "expected_contains_any": [
+                "카페"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "카공하기 좋은",
+              "expected_contains_any": [
+                "카공"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0003"
+          ],
+          "seen_codes": [
+            "RES0014",
+            "RES0015",
+            "RES0046"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_006",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "데이트하기 좋은 와플 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0005",
+        "restaurant_name": "와플대학 신대방삼거리캠퍼스",
+        "category": "와플",
+        "tag": "데이트"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "데이트",
+          "menu": "",
+          "food": "와플",
+          "review": "추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "데이트하기 좋은 와플 맛집으로는 신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! 데이트하기 좋은 분위기라는 태그가 있고, 깔끔하고 예쁜 인테리어로 실제로 리뷰어분들도 \"6년 연속 블루리본을 받은 디저트카페\"라며 분위기와 디저트 맛을 칭찬하셨어요. 특히 프레지에 같은 케이크류가 인기인데, 대표 메뉴로는 프레지에(10,500원)와 아메리카노(4,500원)가 있어요. 위치는 서울 동작구 대방동1길 10 1층이고, 조용하고 예쁜 공간에서 달콤한 디저트와 함께 데이트하기 딱 좋은 곳이랍니다. 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "와플",
+              "expected_contains_any": [
+                "와플"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "데이트",
+              "expected_contains_any": [
+                "데이트"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0005"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0025",
+            "RES0046"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_008",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 검정콩국수 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0007",
+        "restaurant_name": "서민준밀밭",
+        "category": "검정콩국수",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "혼밥",
+          "menu": "검정콩국수",
+          "food": "국수",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 3,
+        "answer": "혼밥하기 좋은 검정콩국수 맛집으로는 서울 동작구 신대방삼거리역 근처에 있는 **노량진 수제비**를 추천드려요! 혼밥하신다고 하셨고, 검정콩국수와 비슷한 콩국수를 메뉴로 제공하는 곳 중에서 분위기 좋고 혼자 식사하기 편한 곳이에요. 실제로 리뷰에서도 \"혼밥\", \"서민적인\", \"깔끔한\" 태그가 많고, 한 분은 \"손수제비가 부드럽고 식감이 좋다\"며 만족감을 표현하셨어요.\n\n대표 메뉴로는 콩국수(10,000원)와 열무국수(8,000원)가 있고, 위치는 서울 동작구 여의대방로22길 121 보라매자이더포레스트 상가 1219호예요. 혼자서도 부담 없이 편안하게 식사하기 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "검정콩국수",
+              "expected_contains_any": [
+                "검정콩국수"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0007"
+          ],
+          "seen_codes": [
+            "RES0053",
+            "RES0061",
+            "RES0062",
+            "RES0073"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_009",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 비빔밥 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0008",
+        "restaurant_name": "전주할매집 신대방점",
+        "category": "비빔밥",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "한식",
+          "tag": "혼밥",
+          "menu": "비빔밥",
+          "food": "비빔밥",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 4,
+        "answer": "혼밥하기 좋은 비빔밥 맛집으로는 신대방삼거리역 근처에 있는 **마포갈비**를 추천드려요! 혼밥하신다고 하셨는데, 이곳은 '혼밥' 태그가 리뷰에 포함되어 있고, 돌솥비빔밥과 산채비빔밥 메뉴가 있어 비빔밥을 맛있게 즐기실 수 있어요. 실제로 한 리뷰어분도 \"동생 추천으로 방문했는데 너무 맛있게 잘 먹었어요~ 재방문의사 있습니다!\"라고 하셨답니다. 대표 메뉴로는 돌솥비빔밥(9,000원)과 산채비빔밥(9,000원)이 있고, 위치는 서울 동작구 보라매로 112 마포갈비예요. 조용한 분위기보다는 서민적이고 시끌벅적한 편이지만 혼자서도 부담 없이 식사하기 좋아서 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "비빔밥",
+              "expected_contains_any": [
+                "비빔밥"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0008"
+          ],
+          "seen_codes": [
+            "RES0006",
+            "RES0009",
+            "RES0033",
+            "RES0053",
+            "RES0069"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_012",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "무료주차 가능한 장어 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0011",
+        "restaurant_name": "쌍둥이네풍천장어",
+        "category": "장어",
+        "tag": "무료주차"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "무료주차",
+          "menu": "",
+          "food": "장어",
+          "review": "맛집"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "무료주차 가능한 장어 맛집을 찾으셨는데, 아쉽게도 후보 식당 중에는 무료주차가 명확히 가능한 장어 전문점이 없네요. \n\n하지만 신대방삼거리 지역에 있는 **소문난포장마차**를 추천드릴게요! 이곳은 꼼장어 메뉴가 있어서 장어류를 즐기실 수 있고, 서민적인 분위기에 술모임하기 좋은 포차입니다. 다만 리뷰에 주차불가 태그가 없고 주차 관련 언급이 없으니 무료주차 여부는 확인이 필요해요. 대표 메뉴로는 꼼장어(12,000원)와 매운닭발(11,000원)이 있고, 위치는 서울 동작구 여의대방로24차길 48입니다. \n\n무료주차 조건이 꼭 필요하시다면 현재 데이터에서는 딱 맞는 곳을 찾기 어려워서 죄송해요. 그래도 장어 맛집으로는 소문난포장마차가 가장 근접하니 참고해 주세요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "장어",
+              "expected_contains_any": [
+                "장어"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "무료주차",
+              "expected_contains_any": [
+                "무료주차"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0011"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0004",
+            "RES0046"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_014",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "간식 먹기 좋은 떡볶이 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0013",
+        "restaurant_name": "매콤달콤떡볶이 성대시장점",
+        "category": "떡볶이",
+        "tag": "간식"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "간식",
+          "menu": "떡볶이",
+          "food": "떡볶이",
+          "review": "추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 3,
+        "answer": "간식 먹기 좋은 떡볶이 찾으신다면 신대방삼거리역 근처에 있는 **울엄마 떡볶이**를 추천드려요! 간식으로 딱 좋은 떡볶이 전문점이고, 실제로 리뷰에서도 \"초등학생 시절에 맛있게 먹은 떡볶이가 생각나는 맛\"이라며 추억의 맛을 느낄 수 있다고 하셨어요. 또 \"혼자먹기\"와 \"간식\" 태그가 있어서 간단히 간식으로 즐기기 좋은 분위기예요. 대표 메뉴로는 떡볶이(4,000원)와 떡튀순(6,000원)이 있고, 위치는 서울 동작구 국사봉1길 4에 있어요. 부담 없이 간식으로 즐기기 좋아서 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "떡볶이",
+              "expected_contains_any": [
+                "떡볶이"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "간식",
+              "expected_contains_any": [
+                "간식"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0013"
+          ],
+          "seen_codes": [
+            "RES0000",
+            "RES0002",
+            "RES0009",
+            "RES0079"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_016",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "데이트하기 좋은 술집 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0015",
+        "restaurant_name": "오다 신대방삼거리점",
+        "category": "술집",
+        "tag": "데이트"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "술집",
+          "tag": "데이트",
+          "menu": "",
+          "food": "",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "데이트하기 좋은 술집 맛집을 찾으신다면 신대방삼거리역 근처에 있는 **황금수산**을 추천드려요! 데이트하신다고 하셨는데, 이곳은 회식과 저녁식사에 좋고 깔끔한 분위기라 편안하게 술 한잔하기 딱 좋아요. 실제로 한 리뷰어분도 \"스끼다시도 다양하고 회도 신선해서 맛있게 잘 먹었어요!!\"라고 하셨을 만큼 신선한 회와 좋은 분위기가 인상적이에요. 대표 메뉴로는 광어, 우럭, 연어 등이 포함된 황금스페셜(65,000원)과 4종세트(28,000원)가 있고, 위치는 서울 동작구 상도로 48 1층이에요. 분위기 좋고 신선한 회와 함께 데이트 즐기시기에 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "술집",
+              "expected_contains_any": [
+                "술집"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "데이트",
+              "expected_contains_any": [
+                "데이트"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0015"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0021",
+            "RES0043"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_017",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 바지락칼국수 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0016",
+        "restaurant_name": "즉석 바지락손칼국수",
+        "category": "바지락칼국수",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "혼밥",
+          "menu": "바지락칼국수",
+          "food": "칼국수",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "신대방삼거리역에 있는 **서민준밀밭**을 추천드려요! 혼밥하기 좋은 바지락칼국수 맛집 찾으신다고 하셨는데, 이곳이 딱 맞아요. 실제로 이 식당은 '혼밥', '서민적인', '가성비좋은' 태그가 많고, 리뷰에서도 \"바지락 칼국수도 맛나요\", \"혼밥하기 좋은 곳\"이라는 평이 많아서 혼자 편하게 식사하기 좋다고 해요. 대표 메뉴로는 바지락칼국수(10,000원)와 콩칼국수(11,000원)가 있고, 위치는 서울 동작구 상도로12길 7, 신대방삼거리역 근처예요. 깔끔하고 서민적인 분위기라 부담 없이 맛있는 칼국수 한 그릇 하시기 좋을 거예요! 마음에 드실 것 같아요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "바지락칼국수",
+              "expected_contains_any": [
+                "바지락칼국수"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0016"
+          ],
+          "seen_codes": [
+            "RES0007",
+            "RES0053",
+            "RES0061",
+            "RES0062"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_018",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "서민적인 갑오징어 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0017",
+        "restaurant_name": "네모오징어 신대방삼거리역점",
+        "category": "갑오징어",
+        "tag": "서민적인"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "서민적인",
+          "menu": "",
+          "food": "갑오징어",
+          "review": "맛집"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 2,
+        "answer": "서민적인 분위기에서 갑오징어 맛집을 찾으신다면 서울 동작구 신대방삼거리역 근처에 있는 **일진아구찜**을 추천드려요! 갑오징어 대신 아귀찜 전문점이지만, 이곳은 \"서민적인\" 태그가 붙어 있고, 실제로 많은 리뷰어분들이 맛있고 푸짐하다고 평가한 곳이에요. 한 리뷰어분은 \"사장님이 바뀌었다가 다시 돌아오셨다는 소문 듣고 방문했는데 메뉴도 맛있고 직원분도 친절했다\"며 재방문 의사를 밝혔을 정도로 만족도가 높아요.\n\n대표 메뉴로는 아귀찜 소(40,000원), 중(53,000원), 대(65,000원)가 있고, 위치는 서울특별시 동작구 여의대방로24길 93 1층이에요. 서민적인 분위기에서 푸짐하고 매콤한 아귀찜을 즐기고 싶으시다면 이곳이 딱일 거예요. 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "갑오징어",
+              "expected_contains_any": [
+                "갑오징어"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "서민적인",
+              "expected_contains_any": [
+                "서민적인"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0017"
+          ],
+          "seen_codes": [
+            "RES0002",
+            "RES0003",
+            "RES0004"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 2
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_019",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 칼국수 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0018",
+        "restaurant_name": "태화네칼국수",
+        "category": "칼국수",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "한식",
+          "tag": "혼밥",
+          "menu": "칼국수",
+          "food": "칼국수",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 5,
+        "answer": "신대방삼거리역 근처에 있는 **서민준밀밭**을 추천드려요! 혼밥하기 좋은 칼국수 맛집 찾으신다고 하셨는데, 이곳은 \"혼밥\" 태그가 분명히 있고, 콩칼국수, 검정콩칼국수, 바지락칼국수 등 칼국수 메뉴가 다양하게 준비되어 있어요. 실제로 한 리뷰어분도 \"콩국물이 아주 크리미하고 국내산 콩을 사용하는데도 가격이 1.2만원으로 합리적이에요. 식전에 보리밥도 주어서 아주 든든합니다~!\"라고 하셨답니다. 대표 메뉴로는 콩칼국수(11,000원)와 바지락칼국수(10,000원)가 있고, 위치는 서울 동작구 상도로12길 7이에요. 혼자서도 편안하게 맛있는 칼국수 드시기 딱 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "칼국수",
+              "expected_contains_any": [
+                "칼국수"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0018"
+          ],
+          "seen_codes": [
+            "RES0007",
+            "RES0009",
+            "RES0053",
+            "RES0062",
+            "RES0069"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 5
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_020",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 기계우동 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0019",
+        "restaurant_name": "기계우동",
+        "category": "기계우동",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "일식",
+          "tag": "혼밥",
+          "menu": "기계우동",
+          "food": "우동",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 4,
+        "answer": "신대방삼거리역 근처에 있는 **신정닭발**을 추천드려요! 혼밥하기 좋은 기계우동 맛집을 찾으신다고 하셨는데, 이곳은 닭발 전문점이지만 메뉴에 우동사리가 있어서 기계우동을 즐기실 수 있어요. 특히 리뷰에 '혼밥' 태그가 있고, 서민적이고 숨은 맛집으로도 입소문 난 곳이라 혼자 가도 부담 없답니다. 실제로 한 리뷰어분도 \"닭발은 잘못 먹지만 지인 먼저 가있대서 갔는데 군내 안 나고 잘 먹었습니다\"라고 하셨고, 혼밥하기 좋은 분위기라는 점이 돋보여요.\n\n대표 메뉴로는 숯불 무뼈닭발(18,000원)과 김치말이 냉국수(6,000원)가 있고, 우동사리도 2,000원에 추가할 수 있어요. 위치는 서울 동작구 국사봉1길 4번지예요. 매콤한 닭발과 함께 기계우동 사리로 든든하게 한 끼 하시기에 딱 좋을 거예요. 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "기계우동",
+              "expected_contains_any": [
+                "기계우동"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0019"
+          ],
+          "seen_codes": [
+            "RES0006",
+            "RES0017",
+            "RES0053",
+            "RES0061",
+            "RES0099"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_023",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 부타동 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0022",
+        "restaurant_name": "스미비부타동 신대방삼거리역점",
+        "category": "부타동",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "일식",
+          "tag": "혼밥",
+          "menu": "부타동",
+          "food": "부타동",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 4,
+        "answer": "혼밥하기 좋은 부타동 맛집을 찾으셨는데, 아쉽게도 주어진 후보 식당들 중에는 부타동을 메뉴로 제공하거나 일식 부타동과 관련된 곳이 없네요. \n\n대신, 혼밥하기 좋은 분위기와 일식 카테고리, 그리고 혼밥 태그가 있는 식당이 없어서 딱 맞는 추천은 어려워요. \n\n혹시 다른 음식이나 지역, 분위기 조건으로 다시 알려주시면 그에 맞는 맛집을 찾아드릴게요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "부타동",
+              "expected_contains_any": [
+                "부타동"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0022"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0017",
+            "RES0037",
+            "RES0053",
+            "RES0080"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_025",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "술모임하기 좋은 술집 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0024",
+        "restaurant_name": "사이야",
+        "category": "술집",
+        "tag": "술모임"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "술집",
+          "tag": "술모임",
+          "menu": "",
+          "food": "",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "술모임하기 좋은 술집 맛집으로는 신대방삼거리역 근처에 있는 **황금수산**을 추천드려요! 술모임하기 좋은 곳을 찾으신다고 하셨는데, 이곳은 실제로 리뷰에서도 \"술모임\"과 \"시끌벅적한\" 분위기가 자주 언급될 만큼 모임하기 딱 좋은 활기찬 횟집이에요. 한 리뷰어분도 \"양 많고 물회 맛있다\"며 만족감을 표현하셨고, 가성비 좋은 회식 장소로도 인기 있답니다. 대표 메뉴로는 광어, 우럭, 연어 등 다양한 활어가 포함된 황금스페셜(65,000원)과 4종세트(28,000원)가 있어 술안주로도 아주 좋아요. 위치는 서울 동작구 상도로 48 1층, 신대방삼거리역 근처예요. 친구들과 즐거운 술자리 하시기에 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "술집",
+              "expected_contains_any": [
+                "술집"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "술모임",
+              "expected_contains_any": [
+                "술모임"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0024"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0021",
+            "RES0043"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_026",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "술모임하기 좋은 생맥주 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0025",
+        "restaurant_name": "달맥 신대방삼거리역점",
+        "category": "생맥주",
+        "tag": "술모임"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "술집",
+          "tag": "술모임",
+          "menu": "생맥주",
+          "food": "맥주",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 5,
+        "answer": "술모임하기 좋은 생맥주 맛집으로는 신대방삼거리역 근처에 있는 **우이락 신대방삼거리점**을 추천드려요! 술모임하기 좋은 캐주얼한 분위기에 생맥주도 맛있기로 유명한 곳인데요, 실제로 한 리뷰어분도 \"고추튀김이 제대로입니다. 속재료도 신선하고 겉바속촉 식감도 죽여주네요. 막걸리도 맛있어요.\"라고 하셨을 만큼 안주와 술 조합이 훌륭해요. \n\n대표 메뉴로는 고추튀김 맛 선택 가능한 \"오리지널 고추튀김\"(11,000원)과 \"맴맴 스파이시 하이볼\"(5,800원)이 있고, 생맥주도 500cc에 4,800원으로 부담 없이 즐기실 수 있어요. 위치는 서울 동작구 여의대방로24길 129 1층, 신대방삼거리역 근처라 찾기 편하실 거예요. \n\n술모임 하시기에 분위기도 시끌벅적하면서도 편안한 다찌석과 바자리도 마련되어 있어 모임하기 딱 좋답니다. 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "생맥주",
+              "expected_contains_any": [
+                "생맥주"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "술모임",
+              "expected_contains_any": [
+                "술모임"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0025"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0022",
+            "RES0033",
+            "RES0065",
+            "RES0068"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 5
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_027",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "데이트하기 좋은 막걸리 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0026",
+        "restaurant_name": "청송얼음막걸리 신대방삼거리역점",
+        "category": "막걸리",
+        "tag": "데이트"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "술집",
+          "tag": "데이트",
+          "menu": "",
+          "food": "막걸리",
+          "review": "추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 3,
+        "answer": "데이트하기 좋은 막걸리 맛집을 찾으셨는데, 후보 식당 중에 막걸리를 주로 하는 곳은 없고 술집 분위기와 데이트 태그가 있는 곳 중에서는 신대방삼거리의 **발리다포차 서울신대방삼거리점**을 추천드려요! \n\n데이트하기 좋은 술집을 찾으신다고 하셨는데, 이곳은 \"데이트\", \"고급스러운\", \"깔끔한\" 태그가 있고 리뷰에서도 \"발리컨셉으로 이쁜 인테리어라 젊은층 손님들이 많아 시끄럽다\"는 평이 있어 분위기 있는 포차 스타일이에요. 막걸리 메뉴는 따로 없지만 술집 카테고리이고 안주가 다양해서 데이트하며 술 한잔하기 좋은 곳입니다. 대표 메뉴로는 \"로제 닭.쭈\"(22,900원), \"치즈 불 막창\"(22,900원) 등이 있고, 위치는 서울 동작구 상도로 101 나동 2층이에요.\n\n막걸리 전문점은 아니지만 데이트하기 좋은 술집으로는 가장 적합한 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "막걸리",
+              "expected_contains_any": [
+                "막걸리"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "데이트",
+              "expected_contains_any": [
+                "데이트"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0026"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0022",
+            "RES0045",
+            "RES0065"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_029",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 꿔바로우 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0028",
+        "restaurant_name": "춘리마라탕 신대방삼거리점",
+        "category": "꿔바로우",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "혼밥",
+          "menu": "꿔바로우",
+          "food": "꿔바로우",
+          "review": "추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 3,
+        "answer": "혼밥하기 좋은 꿔바로우 맛집으로는 신대방삼거리역 근처에 있는 **탕화쿵푸마라탕 대방점**을 추천드려요! 혼밥하신다고 하셨고 꿔바로우를 찾으신다고 했는데, 이곳은 \"혼밥\" 태그가 분명히 있고, 메뉴에도 꿔바로우(소 12,900원, 대 15,900원)가 있어서 딱 맞아요. 실제로 한 리뷰어분도 \"마라향이 강하지 않아서 좋았고 꿔바로우도 잘 먹었다\"고 하셨답니다. 위치는 서울 동작구 보라매로 113 203호예요. 대표 메뉴로는 꿔바로우와 셀프마라탕이 있고, 혼자서도 편하게 즐기기 좋은 분위기라 마음에 드실 거예요! 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "꿔바로우",
+              "expected_contains_any": [
+                "꿔바로우"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0028"
+          ],
+          "seen_codes": [
+            "RES0009",
+            "RES0053",
+            "RES0055",
+            "RES0076"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_030",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "혼밥하기 좋은 감자탕 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.75,
+      "metadata": {
+        "restaurant_code": "RES0029",
+        "restaurant_name": "상도감자탕",
+        "category": "감자탕",
+        "tag": "혼밥"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "한식",
+          "tag": "혼밥",
+          "menu": "감자탕",
+          "food": "감자",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 3,
+        "answer": "혼밥하기 좋은 감자탕 맛집을 찾으셨는데, 주어진 후보 중에 감자탕 메뉴가 명확히 있는 곳은 없네요. 하지만 혼밥하기 좋은 한식집 중에서 분위기와 평이 좋은 곳을 추천드릴게요.\n\n서울 동작구 신대방삼거리역 근처에 있는 **돌솥밥 & 생선구이**를 추천드려요! 혼밥 태그가 있고 서민적인 분위기라 혼자 식사하시기 편한 곳이에요. 감자탕은 없지만 한식 돌솥밥과 생선구이 메뉴가 다양해서 든든한 한 끼 하시기 좋아요. 실제로 한 리뷰어분도 \"혼밥하기 좋은 서민적인 분위기\"라고 평가했어요. 대표 메뉴로는 돌솥밥(3,000원)과 고등어구이(14,000원)가 있고, 위치는 서울 동작구 여의대방로22길 112예요. \n\n감자탕이 꼭 필요하시다면 아쉽지만 이번 데이터에서는 찾기 어려워서, 이곳에서 한식 혼밥으로 만족하실 수 있을 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "감자탕",
+              "expected_contains_any": [
+                "감자탕"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "혼밥",
+              "expected_contains_any": [
+                "혼밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 0.0,
+          "passed": false,
+          "expected_codes": [
+            "RES0029"
+          ],
+          "seen_codes": [
+            "RES0003",
+            "RES0009",
+            "RES0053",
+            "RES0065",
+            "RES0069"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "target restaurant not retrieved"
+    },
+    {
+      "case_id": "embedding_003",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "매콤한 곱창전골 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.875,
+      "metadata": {
+        "restaurant_code": "RES0002",
+        "restaurant_name": "한제소곱창전골 신대방삼거리역점",
+        "category": "곱창전골",
+        "tag": "매콤한"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "한식",
+          "tag": "매운",
+          "menu": "곱창전골",
+          "food": "곱창",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 2,
+        "answer": "매콤한 곱창전골 맛집으로는 신대방삼거리역 근처에 있는 **한제소곱창전골 신대방삼거리역점**을 추천드려요! 매콤한 곱창전골을 찾으신다고 하셨는데, 이곳은 \"매콤한\" 태그가 붙어 있고, 곱창전골 전문점이라 딱 맞아요. 실제로 한 리뷰어분도 \"진한 감칠맛이 훌륭한 곱창전골이다. 전골에 넣는 곱창도 무려 구이용\"이라고 극찬했답니다. 대표 메뉴로는 곱이 꽉 찬 소곱창과 깐양, 배추, 버섯 등이 듬뿍 들어간 한제소곱창전골(중)(42,000원)과 한제소곱창전골(대)(52,000원)이 있어요. 위치는 서울 동작구 여의대방로22길 121 상가동 1층 1444호, 1445호예요. 매콤하고 진한 곱창전골 맛있게 드시고 싶다면 이곳이 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "곱창전골",
+              "expected_contains_any": [
+                "곱창전골"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "매운",
+              "expected_contains_any": [
+                "매콤한"
+              ],
+              "passed": false
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0002"
+          ],
+          "seen_codes": [
+            "RES0002",
+            "RES0061",
+            "RES0069",
+            "RES0087"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 2
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review"
+    },
+    {
+      "case_id": "embedding_022",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "해장하기 좋은 중국집 맛집 추천해줘",
+      "passed": false,
+      "overall_score": 0.875,
+      "metadata": {
+        "restaurant_code": "RES0021",
+        "restaurant_name": "동화장",
+        "category": "중국집",
+        "tag": "해장"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "중식",
+          "tag": "해장하기 좋은",
+          "menu": "",
+          "food": "",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 1,
+        "answer": "해장하기 좋은 중국집 맛집으로는 신대방삼거리역 근처에 있는 **동화장**을 추천드려요! 해장하실 곳을 찾으신다고 하셨는데, 이곳은 '해장' 태그가 붙어 있을 만큼 해장하기 좋은 메뉴와 분위기를 갖추고 있거든요. 실제로 한 리뷰어분도 \"탕수육 볶음밥 짬뽕 모두 딱 정석의 맛\"이라며 맛집으로 인정했어요. 대표 메뉴로는 짬뽕(8,000원)과 짜장면(7,000원)이 있고, 위치는 서울 동작구 여의대방로24길 137이에요. 부담 없이 편안하게 해장하실 수 있는 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "category",
+              "actual": "중식",
+              "expected_contains_any": [
+                "중국집"
+              ],
+              "passed": false
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "해장하기 좋은",
+              "expected_contains_any": [
+                "해장"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0021"
+          ],
+          "seen_codes": [
+            "RES0021",
+            "RES0088",
+            "RES0090"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "payload miss: category, food, menu, tag, review"
+    },
+    {
+      "case_id": "fixed_007_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "신정닭발에 숯불 무뼈닭발 있어?",
+      "passed": false,
+      "overall_score": 0.875,
+      "metadata": {
+        "restaurant_code": "RES0006",
+        "restaurant_name": "신정닭발",
+        "menu_keyword": "숯불 무뼈닭발"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "신정닭발",
+          "menu": "무뼈닭발",
+          "user": ""
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "신대방삼거리역 근처에 있는 **신정닭발**을 추천드려요! 신정닭발에서 숯불 무뼈닭발을 찾으신다고 하셨는데, 메뉴에 \"숯불 무뼈닭발(맵기 중)\"이 분명히 있어요. 중급자용 매운맛으로 매콤한 양념이 잘 배어있고, 실제로 한 리뷰어분도 \"진짜 맛잇어요ㅠㅠ 나의 오래된 맛집\"이라며 칭찬했답니다. 대표 메뉴로는 숯불 무뼈닭발(18,000원)과 김치말이 냉국수(6,000원)가 있고, 위치는 서울 동작구 국사봉1길 4예요. 매콤한 닭발과 함께 시끌벅적한 분위기에서 술모임이나 저녁식사로도 딱이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 0.5,
+          "passed": false,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "신정닭발",
+              "expected_contains_any": [
+                "신정닭발"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "무뼈닭발",
+              "expected_contains_any": [
+                "숯불 무뼈닭발"
+              ],
+              "passed": false
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0006"
+          ],
+          "seen_codes": [
+            "RES0006",
+            "RES0026",
+            "RES0065",
+            "RES0085"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "payload miss: restaurant, menu"
+    },
+    {
+      "case_id": "embedding_002",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "데이트하기 좋은 디저트 맛집 추천해줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0001",
+        "restaurant_name": "듀윗",
+        "category": "디저트",
+        "tag": "데이트"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "데이트",
+          "menu": "",
+          "food": "디저트",
+          "review": "추천"
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "데이트하기 좋은 디저트 맛집으로는 신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! 데이트하기 좋은 분위기를 찾으신다고 하셨는데, 이곳은 \"데이트\", \"예쁜\", \"깔끔한\" 태그가 많고, 실제로 한 리뷰어분도 \"6년 연속 블루리본을 받은 디저트카페로 인테리어와 디저트 디스플레이가 너무 예뻐서 촬영 욕구가 생긴다\"며 분위기를 극찬했어요. 조용한 편이라 대화 나누기에도 좋아요. 대표 메뉴로는 프레지에(10,500원)와 마카롱(2,500원)이 있고, 위치는 서울 동작구 대방동1길 10 1층이에요. 예쁜 공간에서 달콤한 디저트와 함께 데이트 즐기시기에 딱일 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "디저트",
+              "expected_contains_any": [
+                "디저트"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "데이트",
+              "expected_contains_any": [
+                "데이트"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0001"
+          ],
+          "seen_codes": [
+            "RES0001",
+            "RES0012",
+            "RES0046"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "embedding_005",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "가족외식하기 좋은 아구찜 맛집 추천해줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0004",
+        "restaurant_name": "일진아구찜",
+        "category": "아구찜",
+        "tag": "가족외식"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "가족외식",
+          "menu": "아구찜",
+          "food": "아구",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "신대방삼거리역 근처에 있는 **일진아구찜**을 추천드려요! 가족외식하기 좋은 아구찜 맛집 찾으신다고 하셨는데, 이곳이 딱 맞아요. 실제로 리뷰에서도 \"가족외식\" 태그가 많고, \"아구찜 유명하잖아요 유명한곳은 딱 한가지만하는 역시 맛이 좋네요\", \"위장이 그리 크지 않은 여자 네명이 중자 시켜 먹으니 딱 좋으네요\" 같은 평이 있어 가족끼리 부담 없이 맛있게 즐기기 좋다는 걸 알 수 있어요. 분위기도 서민적이고 유아의자도 준비되어 있어서 아이와 함께 가기에도 편하답니다. 대표 메뉴로는 아귀찜 소(40,000원), 중(53,000원), 대(65,000원)가 있고, 위치는 서울 동작구 여의대방로24길 93 1층이에요. 가족과 함께 맛있고 푸짐한 아구찜 즐기시기에 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "아구찜",
+              "expected_contains_any": [
+                "아구찜"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "가족외식",
+              "expected_contains_any": [
+                "가족외식"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0004"
+          ],
+          "seen_codes": [
+            "RES0000",
+            "RES0004",
+            "RES0012",
+            "RES0061"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "embedding_010",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "가족외식하기 좋은 돼지갈비 맛집 추천해줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0009",
+        "restaurant_name": "마포갈비",
+        "category": "돼지갈비",
+        "tag": "가족외식"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "한식",
+          "tag": "가족외식",
+          "menu": "돼지갈비",
+          "food": "돼지갈비",
+          "review": "추천"
+        },
+        "restaurant_list_count": 5,
+        "used_restaurant_count": 4,
+        "answer": "가족외식하기 좋은 돼지갈비 맛집으로 서울 동작구 신대방삼거리역 근처에 있는 **마포갈비**를 추천드려요! 가족외식하기 좋은 분위기와 돼지갈비 전문점으로 딱 맞는 곳인데요, 실제로 리뷰에서도 \"가족식사하기 좋아요\", \"가성비 괜찮고 역 바로 근처라 사람들이 많이 찾는거 같아요\"라는 평이 많아서 믿음이 가요. 이곳은 넓고 예약도 가능해서 가족 모임에 편리하답니다.\n\n대표 메뉴로는 돼지갈비 250g(17,000원)이 있고, 물냉면이나 비빔냉면(각 9,000원)도 함께 즐기기 좋아요. 위치는 서울특별시 동작구 보라매로 112 마포갈비예요. 가족과 함께 맛있고 편안한 외식 하시기에 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "food",
+              "actual": "돼지갈비",
+              "expected_contains_any": [
+                "돼지갈비"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "가족외식",
+              "expected_contains_any": [
+                "가족외식"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0009"
+          ],
+          "seen_codes": [
+            "RES0000",
+            "RES0002",
+            "RES0009",
+            "RES0069",
+            "RES0081"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "embedding_028",
+      "query_type": "embedding",
+      "source": "restaurant.db",
+      "question": "술모임하기 좋은 골뱅이소면 맛집 추천해줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0027",
+        "restaurant_name": "퓨전포차 술술술",
+        "category": "골뱅이소면",
+        "tag": "술모임"
+      },
+      "result": {
+        "route": "embedding",
+        "route_payload": {
+          "category": "",
+          "tag": "술모임",
+          "menu": "골뱅이소면",
+          "food": "골뱅이",
+          "review": "맛집 추천"
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "술모임하기 좋은 골뱅이소면 맛집으로는 신대방삼거리에 있는 **퓨전포차 술술술**을 추천드려요! 술모임하기 좋은 곳을 찾으신다고 하셨는데, 이곳은 \"술모임\" 태그가 있고 \"골뱅이소면\" 카테고리도 있어서 딱 맞아요. 실제로 한 리뷰어분도 \"오랜만에 남편과 술한잔 하러 퓨전포차에 가서 골뱅이 무침과 모시 조개탕으로 맛있게 먹으며 즐거운시간을 가졌답니다\"라고 하셨을 만큼 분위기와 메뉴가 잘 어울린답니다. 대표 메뉴로는 골뱅이무침(20,000원)과 오삼불고기(20,000원)가 있고, 위치는 서울 동작구 국사봉길 33 1층이에요. 편안하게 술 한잔 하시면서 골뱅이소면 즐기시기에 정말 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "embedding",
+          "actual": "embedding"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "category",
+                "food",
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "골뱅이소면",
+              "expected_contains_any": [
+                "골뱅이소면"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "tag",
+                "review"
+              ],
+              "matched_key": "tag",
+              "actual": "술모임",
+              "expected_contains_any": [
+                "술모임"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0027"
+          ],
+          "seen_codes": [
+            "RES0010",
+            "RES0022",
+            "RES0027",
+            "RES0061"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_001_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "유태우스시 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0000",
+        "restaurant_name": "유태우스시",
+        "menu_keyword": "회전초밥"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "유태우스시",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **유태우스시** 영업시간은 오전 11시부터 밤 10시까지예요. 유태우스시는 혼밥이나 데이트하기 좋은 회전초밥집으로, 가성비가 정말 좋다는 평이 많아요. 실제로 한 리뷰어분도 \"요즘 회전초밥집 정말 비싼데 여긴 가성비 갑이었어요!\"라고 하셨을 정도로 부담 없이 다양한 초밥을 즐길 수 있답니다. 대표 메뉴로는 회전초밥과 장어초밥이 있고, 위치는 서울 동작구 보라매로 113 1층이에요. 부담 없이 맛있는 초밥 드시고 싶을 때 딱 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "유태우스시",
+              "expected_contains_any": [
+                "유태우스시"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0000"
+          ],
+          "seen_codes": [
+            "RES0000"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_001_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "유태우스시에 회전초밥 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0000",
+        "restaurant_name": "유태우스시",
+        "menu_keyword": "회전초밥"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "유태우스시",
+          "menu": "회전초밥",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **유태우스시**를 추천드려요! 유태우스시에 회전초밥이 있는지 궁금하셨는데, 이곳은 카테고리부터 '회전초밥'이 명확히 포함되어 있고, 실제로 메뉴에도 회전초밥이 있어요. 리뷰를 보면 \"요즘 회전초밥집 정말 비싼데 여긴 가성비 갑이었어요!\"라며 가성비 좋은 회전초밥으로 호평이 많고, 혼밥하기도 좋은 분위기라고 하네요. 대표 메뉴로는 회전초밥과 장어초밥이 있고, 위치는 서울 동작구 보라매로 113 1층이에요. 부담 없이 맛있는 회전초밥 즐기시기에 딱 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "유태우스시",
+              "expected_contains_any": [
+                "유태우스시"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "회전초밥",
+              "expected_contains_any": [
+                "회전초밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0000"
+          ],
+          "seen_codes": [
+            "RES0000"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_002_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "듀윗 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0001",
+        "restaurant_name": "듀윗",
+        "menu_keyword": "프레지에 1호 홀케이크"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "듀윗",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **듀윗**의 영업시간을 알려드릴게요! 듀윗은 오전 8시부터 오후 9시까지 운영하고 있어요. 디저트 카페로 데이트나 기념일, 깔끔하고 예쁜 분위기로도 유명한 곳이에요. 대표 메뉴로는 프레지에 1호 홀케이크(50,000원)와 프레지에(10,500원)가 있고, 위치는 서울특별시 동작구 대방동1길 10 1층이에요. 맛있는 케이크와 다양한 음료를 즐기기 딱 좋은 시간대니 방문하시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "듀윗",
+              "expected_contains_any": [
+                "듀윗"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0001"
+          ],
+          "seen_codes": [
+            "RES0001"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_002_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "듀윗에 프레지에 1호 홀케이크 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0001",
+        "restaurant_name": "듀윗",
+        "menu_keyword": "프레지에 1호 홀케이크"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "듀윗",
+          "menu": "프레지에 1호 홀케이크",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **듀윗**을 추천드려요! \"듀윗에 프레지에 1호 홀케이크 있어?\"라고 물어보셨는데, 이곳 메뉴에 정확히 프레지에 1호 홀케이크가 등록되어 있답니다. 깔끔하고 예쁜 분위기에서 데이트나 기념일에도 좋다는 태그가 많고, 실제로 여러 리뷰어분들이 케이크 맛이 좋다고 칭찬했어요. 대표 메뉴로는 프레지에 1호 홀케이크(50,000원)와 프레지에(10,500원)가 있고, 위치는 서울 동작구 대방동1길 10 1층이에요. 특별한 날 달콤한 케이크 찾으신다면 듀윗에서 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "듀윗",
+              "expected_contains_any": [
+                "듀윗"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "프레지에 1호 홀케이크",
+              "expected_contains_any": [
+                "프레지에 1호 홀케이크"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0001"
+          ],
+          "seen_codes": [
+            "RES0001"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_003_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "한제소곱창전골 신대방삼거리역점 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0002",
+        "restaurant_name": "한제소곱창전골 신대방삼거리역점",
+        "menu_keyword": "한제소곱창전골"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "한제소곱창전골 신대방삼거리역점",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **한제소곱창전골 신대방삼거리역점** 영업시간 알려드릴게요! 이곳은 오후 4시부터 자정까지 운영하고 있어요. 매콤하고 진한 감칠맛의 소곱창전골로 저녁식사나 술모임에 딱 좋은 곳인데요, 실제로 한 리뷰어분도 \"진한 감칠맛이 훌륭한 곱창전골\"이라고 칭찬했답니다. 대표 메뉴로는 곱이 꽉 찬 한제소곱창전골(소)(32,000원)과 푸짐한 한제소곱창전골 대(52,000원)가 있어요. 위치는 서울 동작구 여의대방로22길 121 상가동 1층 1444호, 1445호예요. 맛있고 분위기 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "한제소곱창전골 신대방삼거리역점",
+              "expected_contains_any": [
+                "한제소곱창전골 신대방삼거리역점"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0002"
+          ],
+          "seen_codes": [
+            "RES0002"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_003_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "한제소곱창전골 신대방삼거리역점에 한제소곱창전골 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0002",
+        "restaurant_name": "한제소곱창전골 신대방삼거리역점",
+        "menu_keyword": "한제소곱창전골"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "한제소곱창전골 신대방삼거리역점",
+          "menu": "한제소곱창전골",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역에 있는 **한제소곱창전골 신대방삼거리역점**을 추천드려요! 한제소곱창전골을 찾으신다고 하셨는데, 이곳 메뉴에 \"한제소곱창전골(소)\", \"한제소곱창전골 중\", \"한제소곱창전골 대\"가 모두 있어서 원하시는 곱창전골을 맛보실 수 있어요. 실제로 한 리뷰어분도 \"진한 감칠맛이 훌륭한 곱창전골이다. 전골에 넣는 곱창도 무려 구이용\"이라고 하셨을 만큼 맛에 대한 평이 좋답니다. 대표 메뉴로는 한제소곱창전골(소)(32,000원)과 한제소곱창전골 대(52,000원)가 있고, 위치는 서울 동작구 여의대방로22길 121 상가동 1층 1444호, 1445호예요. 매콤하고 푸짐한 곱창전골 드시고 싶으시면 이곳이 딱이에요! 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "한제소곱창전골 신대방삼거리역점",
+              "expected_contains_any": [
+                "한제소곱창전골 신대방삼거리역점"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "한제소곱창전골",
+              "expected_contains_any": [
+                "한제소곱창전골"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0002"
+          ],
+          "seen_codes": [
+            "RES0002"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_004_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "프로스퍼 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0003",
+        "restaurant_name": "프로스퍼",
+        "menu_keyword": "에스프레소"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "프로스퍼",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **프로스퍼** 영업시간 알려드릴게요! 프로스퍼는 오전 10시부터 자정 12시까지 운영하고 있어요. 조용하고 캐주얼한 분위기에서 혼자 카페 즐기기 좋은 곳으로, 실제로 한 리뷰어분도 \"조용하게 차 마시기 좋은 곳\"이라고 하셨답니다. 대표 메뉴로는 아메리카노(2,800원)와 수제 스트로베리 크럼블(6,200원)이 있고, 위치는 서울 동작구 여의대방로24길 101 1층이에요. 편안하게 커피 한 잔 하시기 딱 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "프로스퍼",
+              "expected_contains_any": [
+                "프로스퍼"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0003"
+          ],
+          "seen_codes": [
+            "RES0003"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_004_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "프로스퍼에 에스프레소 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0003",
+        "restaurant_name": "프로스퍼",
+        "menu_keyword": "에스프레소"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "프로스퍼",
+          "menu": "에스프레소",
+          "user": ""
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "신대방삼거리역 근처에 있는 **프로스퍼**를 추천드려요! 프로스퍼에 에스프레소가 있는지 궁금하셨는데, 메뉴에 에스프레소가 분명히 있어요. 이곳은 커피와 카페 카테고리에 속해 있고, 혼자 카페 가기 좋은 분위기와 차 모임하기 좋은 캐주얼한 공간으로도 유명해요. 실제로 리뷰어분들도 \"조용하게 차 마시기 좋은 곳\"이라고 평가하고 있답니다. 대표 메뉴로는 에스프레소(2,800원)와 아메리카노(2,800원)가 있고, 위치는 서울 동작구 여의대방로24길 101 1층이에요. 편안하게 커피 한 잔 하시기 딱 좋은 곳이라 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "프로스퍼",
+              "expected_contains_any": [
+                "프로스퍼"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "에스프레소",
+              "expected_contains_any": [
+                "에스프레소"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0003"
+          ],
+          "seen_codes": [
+            "RES0003",
+            "RES0042",
+            "RES0095"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_005_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "일진아구찜 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0004",
+        "restaurant_name": "일진아구찜",
+        "menu_keyword": "아귀찜"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "일진아구찜",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **일진아구찜**을 추천드려요! 영업시간을 궁금해 하셨는데, 이곳은 오전 11시부터 오후 10시까지 운영하고 있어요. 아구찜 전문점으로 매콤하고 서민적인 분위기라 점심이나 저녁 식사 모두 좋고, 가족 외식하기에도 편안한 곳이에요. 실제로 한 리뷰어분도 \"아구찜 유명하잖아요 유명한곳은 딱 한가지만하는 역시 맛이 좋네요\"라고 하셨답니다. 대표 메뉴로는 아귀찜 소(40,000원), 중(53,000원), 대(65,000원)가 있고, 위치는 서울 동작구 여의대방로24길 93 1층이에요. 맛있고 푸짐한 아구찜 드시고 싶으시면 일진아구찜 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "일진아구찜",
+              "expected_contains_any": [
+                "일진아구찜"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0004"
+          ],
+          "seen_codes": [
+            "RES0004"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_005_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "일진아구찜에 아귀찜 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0004",
+        "restaurant_name": "일진아구찜",
+        "menu_keyword": "아귀찜"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "일진아구찜",
+          "menu": "아귀찜",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **일진아구찜**을 추천드려요! \"일진아구찜에 아귀찜 있어?\"라고 물어보셨는데, 이곳은 아구찜 전문점으로 메뉴에 아귀찜 소, 중, 대 사이즈가 모두 준비되어 있어요. 실제로 한 리뷰어분도 \"아구찜 유명하잖아요 유명한곳은 딱 한가지만하는 역시 맛이 좋네요\"라고 하셨을 만큼 아귀찜 맛집으로 소문난 곳이에요. 대표 메뉴로는 아귀찜 중(53,000원)과 아귀찜 대(65,000원)가 있고, 위치는 서울 동작구 여의대방로24길 93 1층이에요. 매콤하고 푸짐한 아귀찜 드시고 싶으시면 이곳이 딱일 거예요! 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "일진아구찜",
+              "expected_contains_any": [
+                "일진아구찜"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "아귀찜",
+              "expected_contains_any": [
+                "아귀찜"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0004"
+          ],
+          "seen_codes": [
+            "RES0004"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_006_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "와플대학 신대방삼거리캠퍼스 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0005",
+        "restaurant_name": "와플대학 신대방삼거리캠퍼스",
+        "menu_keyword": "크림와플"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "와플대학 신대방삼거리캠퍼스",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방에 있는 와플대학 신대방삼거리캠퍼스를 추천드려요! 영업시간을 궁금해하셨는데, 이곳은 오전 11시부터 밤 10시까지 운영하고 있어요. 데이트나 간식으로도 좋고, 서민적인 분위기에서 편하게 즐길 수 있는 와플 전문점이에요. 대표 메뉴로는 와플대학만의 10가지 크림 중 원하는 맛을 골라 먹는 크림와플(3,300원)과 시그니처 메뉴인 애플시나몬와플(3,900원)이 있답니다. 위치는 서울 동작구 보라매로 98 1층이에요. 달콤한 와플과 함께 좋은 시간 보내실 수 있을 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "와플대학 신대방삼거리캠퍼스",
+              "expected_contains_any": [
+                "와플대학 신대방삼거리캠퍼스"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0005"
+          ],
+          "seen_codes": [
+            "RES0005"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_006_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "와플대학 신대방삼거리캠퍼스에 크림와플 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0005",
+        "restaurant_name": "와플대학 신대방삼거리캠퍼스",
+        "menu_keyword": "크림와플"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "와플대학 신대방삼거리캠퍼스",
+          "menu": "크림와플",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방에 있는 **와플대학 신대방삼거리캠퍼스**를 추천드려요! 신대방삼거리캠퍼스에 크림와플이 있는지 궁금하셨다면서요, 여기 메뉴에 '크림와플'이 분명히 있어요. 와플대학만의 10가지 크림 중 원하는 맛을 골라 즐길 수 있는 크림와플이 3,300원에 준비되어 있답니다. 실제로 리뷰에서도 \"맛으로 보장된 와플대학\"이라며 크림와플 맛을 인정하는 분들이 많아요. 위치는 서울 동작구 보라매로 98 1층이고, 데이트나 간식으로도 좋은 서민적인 분위기라 편하게 들르기 좋아요. 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "와플대학 신대방삼거리캠퍼스",
+              "expected_contains_any": [
+                "와플대학 신대방삼거리캠퍼스"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "크림와플",
+              "expected_contains_any": [
+                "크림와플"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0005"
+          ],
+          "seen_codes": [
+            "RES0005"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_007_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "신정닭발 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0006",
+        "restaurant_name": "신정닭발",
+        "menu_keyword": "숯불 무뼈닭발"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "신정닭발",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **신정닭발**을 추천드려요! 영업시간을 궁금해 하셨는데, 이곳은 오후 4시부터 새벽 1시까지 운영하고 있어서 저녁이나 늦은 시간에도 방문하기 좋아요. 신정닭발은 매콤한 국물닭발과 닭발 요리로 유명한데, 시끌벅적한 분위기에서 술모임이나 저녁식사하기 딱 좋은 곳이에요. 실제로 한 리뷰어분도 \"진짜 맛있어요ㅠㅠ 나의 오래된 맛집\"이라며 김치말이국수도 꼭 먹어보라고 추천하셨답니다. 대표 메뉴로는 숯불 무뼈닭발(18,000원)과 통뼈 국물닭발(20,000원)이 있고, 위치는 서울 동작구 국사봉1길 4예요. 매콤한 닭발 생각날 때 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "신정닭발",
+              "expected_contains_any": [
+                "신정닭발"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0006"
+          ],
+          "seen_codes": [
+            "RES0006"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_008_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "서민준밀밭 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0007",
+        "restaurant_name": "서민준밀밭",
+        "menu_keyword": "콩국수"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "서민준밀밭",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **서민준밀밭** 영업시간 알려드릴게요! 이곳은 오전 11시부터 오후 9시까지 운영하고 있어요. 콩국수와 검정콩국수 같은 메뉴가 유명한데, 혼밥하기도 좋고 서민적인 분위기로 점심, 저녁 식사 모두 편하게 즐길 수 있는 곳이에요. 대표 메뉴로는 콩국수(11,000원)와 검정콩국수(12,000원)가 있고, 위치는 서울 동작구 상도로12길 7이에요. 맛도 가성비도 좋아서 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "서민준밀밭",
+              "expected_contains_any": [
+                "서민준밀밭"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0007"
+          ],
+          "seen_codes": [
+            "RES0007"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_008_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "서민준밀밭에 콩국수 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0007",
+        "restaurant_name": "서민준밀밭",
+        "menu_keyword": "콩국수"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "서민준밀밭",
+          "menu": "콩국수",
+          "user": ""
+        },
+        "restaurant_list_count": 4,
+        "used_restaurant_count": 4,
+        "answer": "신대방삼거리역 근처에 있는 **서민준밀밭**을 추천드려요! 서민준밀밭에서 콩국수를 찾으신다고 하셨는데, 이곳은 콩국수와 검정콩국수를 모두 메뉴에 갖추고 있어요. 실제로 한 리뷰어분도 \"콩국물이 아주 크리미하고 국내산 콩을 사용하는데도 가격이 1.2만원으로 합리적이에요\"라고 하셨을 만큼 콩국수 맛집으로 유명하답니다. 대표 메뉴로는 콩국수(11,000원)와 검정콩국수(12,000원)가 있고, 위치는 서울 동작구 상도로12길 7, 신대방삼거리역 근처예요. 혼밥하기도 좋고 서민적인 분위기라 부담 없이 즐기시기 딱 좋아요. 가보시면 후회 없으실 거예요~!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "서민준밀밭",
+              "expected_contains_any": [
+                "서민준밀밭"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "콩국수",
+              "expected_contains_any": [
+                "콩국수"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0007"
+          ],
+          "seen_codes": [
+            "RES0007",
+            "RES0018",
+            "RES0062",
+            "RES0073"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 4
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_009_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "전주할매집 신대방점 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0008",
+        "restaurant_name": "전주할매집 신대방점",
+        "menu_keyword": "콩나물국밥"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "전주할매집 신대방점",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 전주할매집 신대방점을 알려드릴게요! 영업시간을 물어보셨는데, 이곳은 24시간, 즉 오전 0시부터 자정까지 연중무휴로 운영하고 있어 언제든 편하게 방문하실 수 있어요. 혼밥하기도 좋고 점심식사로도 인기 많은 한식집인데요, 대표 메뉴로는 콩나물국밥(6,000원)과 제육비빔밥(8,500원)이 있어요. 위치는 서울 동작구 국사봉1길 18, 1층에 있으니 참고하세요. 언제든 따뜻한 한 끼 드시고 싶을 때 가보시면 후회 없으실 거예요~"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "전주할매집 신대방점",
+              "expected_contains_any": [
+                "전주할매집 신대방점"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0008"
+          ],
+          "seen_codes": [
+            "RES0008"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_009_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "전주할매집 신대방점에 콩나물국밥 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0008",
+        "restaurant_name": "전주할매집 신대방점",
+        "menu_keyword": "콩나물국밥"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "전주할매집 신대방점",
+          "menu": "콩나물국밥",
+          "user": ""
+        },
+        "restaurant_list_count": 3,
+        "used_restaurant_count": 3,
+        "answer": "신대방삼거리역 근처에 있는 **전주할매집 신대방점**을 추천드려요! 전주할매집 신대방점에 콩나물국밥이 있는지 궁금하셨죠? 여기 메뉴에 콩나물국밥이 분명히 있고, 실제로 한 리뷰어분도 \"콩나물국밥 깔끔해요\"라고 하실 만큼 맛도 인정받았어요. 혼밥하기 좋은 분위기에 점심식사로도 인기 있는 곳이라 편하게 다녀오실 수 있을 거예요. 대표 메뉴로는 콩나물국밥(6,000원)과 김치콩나물국밥(7,000원)이 있고, 위치는 서울 동작구 국사봉1길 18, 1층이에요. 따뜻한 한 끼 원하신다면 이곳이 딱일 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "전주할매집 신대방점",
+              "expected_contains_any": [
+                "전주할매집 신대방점"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "콩나물국밥",
+              "expected_contains_any": [
+                "콩나물국밥"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0008"
+          ],
+          "seen_codes": [
+            "RES0008",
+            "RES0093",
+            "RES0099"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 3
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_010_hours",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "마포갈비 영업시간 알려줘",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0009",
+        "restaurant_name": "마포갈비",
+        "menu_keyword": "등심 150g"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "마포갈비",
+          "menu": "",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **마포갈비**를 추천드려요! 마포갈비 영업시간을 궁금해하셨는데, 이곳은 오전 11시부터 오후 10시까지 운영하고 있어요. 돼지갈비 전문점으로 식사모임이나 가족외식하기 좋은 서민적인 분위기라 실제 방문하신 분들도 \"가성비 괜찮고 역 바로 근처라 사람들이 많이 찾는거 같아요\"라고 리뷰에 남기셨답니다. 대표 메뉴로는 돼지갈비 250g(17,000원)과 물냉면(9,000원)이 있고, 위치는 서울 동작구 보라매로 112 마포갈비예요. 편안하게 방문하셔서 맛있는 갈비 즐기시길 바랄게요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "마포갈비",
+              "expected_contains_any": [
+                "마포갈비"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0009"
+          ],
+          "seen_codes": [
+            "RES0009"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    },
+    {
+      "case_id": "fixed_010_menu",
+      "query_type": "fixed",
+      "source": "restaurant.db",
+      "question": "마포갈비에 등심 150g 있어?",
+      "passed": true,
+      "overall_score": 1.0,
+      "metadata": {
+        "restaurant_code": "RES0009",
+        "restaurant_name": "마포갈비",
+        "menu_keyword": "등심 150g"
+      },
+      "result": {
+        "route": "fixed",
+        "route_payload": {
+          "restaurant": "마포갈비",
+          "menu": "등심 150g",
+          "user": ""
+        },
+        "restaurant_list_count": 1,
+        "used_restaurant_count": 1,
+        "answer": "신대방삼거리역 근처에 있는 **마포갈비**를 추천드려요! 마포갈비에서 등심 150g 메뉴가 정확히 있어서 \"마포갈비에 등심 150g 있어?\" 하신 질문에 딱 맞는 곳이에요. 이곳은 돼지갈비 전문점이지만 등심 150g도 44,000원에 판매 중이라 선택지가 다양하답니다. 실제로 여러 리뷰에서 가족외식이나 식사모임 장소로 많이 찾는다고 하고, 서민적인 분위기와 넓은 공간, 무료주차도 가능해서 편하게 방문하실 수 있어요. 대표 메뉴로는 등심 150g(44,000원)과 한우주물럭 150g(44,000원)이 있고, 위치는 서울 동작구 보라매로 112예요. 고기 좋아하신다면 마음에 드실 거예요!"
+      },
+      "checks": {
+        "route": {
+          "score": 1.0,
+          "passed": true,
+          "expected": "fixed",
+          "actual": "fixed"
+        },
+        "payload": {
+          "score": 1.0,
+          "passed": true,
+          "details": [
+            {
+              "keys": [
+                "restaurant"
+              ],
+              "matched_key": "restaurant",
+              "actual": "마포갈비",
+              "expected_contains_any": [
+                "마포갈비"
+              ],
+              "passed": true
+            },
+            {
+              "keys": [
+                "menu"
+              ],
+              "matched_key": "menu",
+              "actual": "등심 150g",
+              "expected_contains_any": [
+                "등심 150g"
+              ],
+              "passed": true
+            }
+          ]
+        },
+        "target": {
+          "score": 1.0,
+          "passed": true,
+          "expected_codes": [
+            "RES0009"
+          ],
+          "seen_codes": [
+            "RES0009"
+          ]
+        },
+        "answer": {
+          "score": 1.0,
+          "passed": true,
+          "details": {
+            "must_include_any_passed": true,
+            "must_include_all_passed": true,
+            "must_not_include_passed": true
+          }
+        },
+        "retrieval": {
+          "score": 1.0,
+          "passed": true,
+          "expected_min": 1,
+          "actual_count": 1
+        }
+      },
+      "failure_reason": "-"
+    }
+  ]
+}

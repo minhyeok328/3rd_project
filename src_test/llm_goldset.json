@@ -1,0 +1,2432 @@
+[
+  {
+    "case_id": "fixed_001_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "유태우스시 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "유태우스시"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0000"
+      ],
+      "restaurant_names": [
+        "유태우스시"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "유태우스시",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0000",
+      "restaurant_name": "유태우스시",
+      "menu_keyword": "회전초밥"
+    }
+  },
+  {
+    "case_id": "fixed_001_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "유태우스시에 회전초밥 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "유태우스시"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "회전초밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0000"
+      ],
+      "restaurant_names": [
+        "유태우스시"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "유태우스시",
+        "회전초밥"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0000",
+      "restaurant_name": "유태우스시",
+      "menu_keyword": "회전초밥"
+    }
+  },
+  {
+    "case_id": "fixed_002_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "듀윗 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "듀윗"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0001"
+      ],
+      "restaurant_names": [
+        "듀윗"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "듀윗",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0001",
+      "restaurant_name": "듀윗",
+      "menu_keyword": "프레지에 1호 홀케이크"
+    }
+  },
+  {
+    "case_id": "fixed_002_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "듀윗에 프레지에 1호 홀케이크 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "듀윗"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "프레지에 1호 홀케이크"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0001"
+      ],
+      "restaurant_names": [
+        "듀윗"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "듀윗",
+        "프레지에 1호 홀케이크"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0001",
+      "restaurant_name": "듀윗",
+      "menu_keyword": "프레지에 1호 홀케이크"
+    }
+  },
+  {
+    "case_id": "fixed_003_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "한제소곱창전골 신대방삼거리역점 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "한제소곱창전골 신대방삼거리역점"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0002"
+      ],
+      "restaurant_names": [
+        "한제소곱창전골 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "한제소곱창전골 신대방삼거리역점",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0002",
+      "restaurant_name": "한제소곱창전골 신대방삼거리역점",
+      "menu_keyword": "한제소곱창전골"
+    }
+  },
+  {
+    "case_id": "fixed_003_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "한제소곱창전골 신대방삼거리역점에 한제소곱창전골 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "한제소곱창전골 신대방삼거리역점"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "한제소곱창전골"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0002"
+      ],
+      "restaurant_names": [
+        "한제소곱창전골 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "한제소곱창전골 신대방삼거리역점",
+        "한제소곱창전골"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0002",
+      "restaurant_name": "한제소곱창전골 신대방삼거리역점",
+      "menu_keyword": "한제소곱창전골"
+    }
+  },
+  {
+    "case_id": "fixed_004_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "프로스퍼 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "프로스퍼"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0003"
+      ],
+      "restaurant_names": [
+        "프로스퍼"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "프로스퍼",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0003",
+      "restaurant_name": "프로스퍼",
+      "menu_keyword": "에스프레소"
+    }
+  },
+  {
+    "case_id": "fixed_004_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "프로스퍼에 에스프레소 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "프로스퍼"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "에스프레소"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0003"
+      ],
+      "restaurant_names": [
+        "프로스퍼"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "프로스퍼",
+        "에스프레소"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0003",
+      "restaurant_name": "프로스퍼",
+      "menu_keyword": "에스프레소"
+    }
+  },
+  {
+    "case_id": "fixed_005_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "일진아구찜 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "일진아구찜"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0004"
+      ],
+      "restaurant_names": [
+        "일진아구찜"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "일진아구찜",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0004",
+      "restaurant_name": "일진아구찜",
+      "menu_keyword": "아귀찜"
+    }
+  },
+  {
+    "case_id": "fixed_005_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "일진아구찜에 아귀찜 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "일진아구찜"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "아귀찜"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0004"
+      ],
+      "restaurant_names": [
+        "일진아구찜"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "일진아구찜",
+        "아귀찜"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0004",
+      "restaurant_name": "일진아구찜",
+      "menu_keyword": "아귀찜"
+    }
+  },
+  {
+    "case_id": "fixed_006_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "와플대학 신대방삼거리캠퍼스 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "와플대학 신대방삼거리캠퍼스"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0005"
+      ],
+      "restaurant_names": [
+        "와플대학 신대방삼거리캠퍼스"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "와플대학 신대방삼거리캠퍼스",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0005",
+      "restaurant_name": "와플대학 신대방삼거리캠퍼스",
+      "menu_keyword": "크림와플"
+    }
+  },
+  {
+    "case_id": "fixed_006_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "와플대학 신대방삼거리캠퍼스에 크림와플 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "와플대학 신대방삼거리캠퍼스"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "크림와플"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0005"
+      ],
+      "restaurant_names": [
+        "와플대학 신대방삼거리캠퍼스"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "와플대학 신대방삼거리캠퍼스",
+        "크림와플"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0005",
+      "restaurant_name": "와플대학 신대방삼거리캠퍼스",
+      "menu_keyword": "크림와플"
+    }
+  },
+  {
+    "case_id": "fixed_007_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "신정닭발 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "신정닭발"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0006"
+      ],
+      "restaurant_names": [
+        "신정닭발"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "신정닭발",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0006",
+      "restaurant_name": "신정닭발",
+      "menu_keyword": "숯불 무뼈닭발"
+    }
+  },
+  {
+    "case_id": "fixed_007_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "신정닭발에 숯불 무뼈닭발 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "신정닭발"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "숯불 무뼈닭발"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0006"
+      ],
+      "restaurant_names": [
+        "신정닭발"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "신정닭발",
+        "숯불 무뼈닭발"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0006",
+      "restaurant_name": "신정닭발",
+      "menu_keyword": "숯불 무뼈닭발"
+    }
+  },
+  {
+    "case_id": "fixed_008_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "서민준밀밭 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "서민준밀밭"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0007"
+      ],
+      "restaurant_names": [
+        "서민준밀밭"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "서민준밀밭",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0007",
+      "restaurant_name": "서민준밀밭",
+      "menu_keyword": "콩국수"
+    }
+  },
+  {
+    "case_id": "fixed_008_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "서민준밀밭에 콩국수 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "서민준밀밭"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "콩국수"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0007"
+      ],
+      "restaurant_names": [
+        "서민준밀밭"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "서민준밀밭",
+        "콩국수"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0007",
+      "restaurant_name": "서민준밀밭",
+      "menu_keyword": "콩국수"
+    }
+  },
+  {
+    "case_id": "fixed_009_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "전주할매집 신대방점 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "전주할매집 신대방점"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0008"
+      ],
+      "restaurant_names": [
+        "전주할매집 신대방점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "전주할매집 신대방점",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0008",
+      "restaurant_name": "전주할매집 신대방점",
+      "menu_keyword": "콩나물국밥"
+    }
+  },
+  {
+    "case_id": "fixed_009_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "전주할매집 신대방점에 콩나물국밥 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "전주할매집 신대방점"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "콩나물국밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0008"
+      ],
+      "restaurant_names": [
+        "전주할매집 신대방점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "전주할매집 신대방점",
+        "콩나물국밥"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0008",
+      "restaurant_name": "전주할매집 신대방점",
+      "menu_keyword": "콩나물국밥"
+    }
+  },
+  {
+    "case_id": "fixed_010_hours",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "마포갈비 영업시간 알려줘",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "마포갈비"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0009"
+      ],
+      "restaurant_names": [
+        "마포갈비"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "마포갈비",
+        "영업",
+        "시간"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0009",
+      "restaurant_name": "마포갈비",
+      "menu_keyword": "등심 150g"
+    }
+  },
+  {
+    "case_id": "fixed_010_menu",
+    "source": "restaurant.db",
+    "query_type": "fixed",
+    "question": "마포갈비에 등심 150g 있어?",
+    "expected_route": "fixed",
+    "payload_checks": [
+      {
+        "keys": [
+          "restaurant"
+        ],
+        "contains_any": [
+          "마포갈비"
+        ]
+      },
+      {
+        "keys": [
+          "menu"
+        ],
+        "contains_any": [
+          "등심 150g"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0009"
+      ],
+      "restaurant_names": [
+        "마포갈비"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "마포갈비",
+        "등심 150g"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0009",
+      "restaurant_name": "마포갈비",
+      "menu_keyword": "등심 150g"
+    }
+  },
+  {
+    "case_id": "embedding_001",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 스시 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "스시"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0000"
+      ],
+      "restaurant_names": [
+        "유태우스시"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "유태우스시",
+        "스시"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0000",
+      "restaurant_name": "유태우스시",
+      "category": "스시",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_002",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "데이트하기 좋은 디저트 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "디저트"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "데이트"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0001"
+      ],
+      "restaurant_names": [
+        "듀윗"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "듀윗",
+        "디저트"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0001",
+      "restaurant_name": "듀윗",
+      "category": "디저트",
+      "tag": "데이트"
+    }
+  },
+  {
+    "case_id": "embedding_003",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "매콤한 곱창전골 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "곱창전골"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "매콤한"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0002"
+      ],
+      "restaurant_names": [
+        "한제소곱창전골 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "한제소곱창전골 신대방삼거리역점",
+        "곱창전골"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0002",
+      "restaurant_name": "한제소곱창전골 신대방삼거리역점",
+      "category": "곱창전골",
+      "tag": "매콤한"
+    }
+  },
+  {
+    "case_id": "embedding_004",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "카공하기 좋은 카페 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "카페"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "카공"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0003"
+      ],
+      "restaurant_names": [
+        "프로스퍼"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "프로스퍼",
+        "카페"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0003",
+      "restaurant_name": "프로스퍼",
+      "category": "카페",
+      "tag": "카공"
+    }
+  },
+  {
+    "case_id": "embedding_005",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "가족외식하기 좋은 아구찜 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "아구찜"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "가족외식"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0004"
+      ],
+      "restaurant_names": [
+        "일진아구찜"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "일진아구찜",
+        "아구찜"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0004",
+      "restaurant_name": "일진아구찜",
+      "category": "아구찜",
+      "tag": "가족외식"
+    }
+  },
+  {
+    "case_id": "embedding_006",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "데이트하기 좋은 와플 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "와플"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "데이트"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0005"
+      ],
+      "restaurant_names": [
+        "와플대학 신대방삼거리캠퍼스"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "와플대학 신대방삼거리캠퍼스",
+        "와플"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0005",
+      "restaurant_name": "와플대학 신대방삼거리캠퍼스",
+      "category": "와플",
+      "tag": "데이트"
+    }
+  },
+  {
+    "case_id": "embedding_007",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "매콤한 국물닭발 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "국물닭발"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "매콤한"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0006"
+      ],
+      "restaurant_names": [
+        "신정닭발"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "신정닭발",
+        "국물닭발"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0006",
+      "restaurant_name": "신정닭발",
+      "category": "국물닭발",
+      "tag": "매콤한"
+    }
+  },
+  {
+    "case_id": "embedding_008",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 검정콩국수 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "검정콩국수"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0007"
+      ],
+      "restaurant_names": [
+        "서민준밀밭"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "서민준밀밭",
+        "검정콩국수"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0007",
+      "restaurant_name": "서민준밀밭",
+      "category": "검정콩국수",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_009",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 비빔밥 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "비빔밥"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0008"
+      ],
+      "restaurant_names": [
+        "전주할매집 신대방점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "전주할매집 신대방점",
+        "비빔밥"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0008",
+      "restaurant_name": "전주할매집 신대방점",
+      "category": "비빔밥",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_010",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "가족외식하기 좋은 돼지갈비 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "돼지갈비"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "가족외식"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0009"
+      ],
+      "restaurant_names": [
+        "마포갈비"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "마포갈비",
+        "돼지갈비"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0009",
+      "restaurant_name": "마포갈비",
+      "category": "돼지갈비",
+      "tag": "가족외식"
+    }
+  },
+  {
+    "case_id": "embedding_011",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "데이트하기 좋은 숙성회 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "숙성회"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "데이트"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0010"
+      ],
+      "restaurant_names": [
+        "모리식탁"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "모리식탁",
+        "숙성회"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0010",
+      "restaurant_name": "모리식탁",
+      "category": "숙성회",
+      "tag": "데이트"
+    }
+  },
+  {
+    "case_id": "embedding_012",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "무료주차 가능한 장어 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "장어"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "무료주차"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0011"
+      ],
+      "restaurant_names": [
+        "쌍둥이네풍천장어"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "쌍둥이네풍천장어",
+        "장어"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0011",
+      "restaurant_name": "쌍둥이네풍천장어",
+      "category": "장어",
+      "tag": "무료주차"
+    }
+  },
+  {
+    "case_id": "embedding_013",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "예약 가능한 단팥죽 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "단팥죽"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "예약가능"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0012"
+      ],
+      "restaurant_names": [
+        "카페아뜨레"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "카페아뜨레",
+        "단팥죽"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0012",
+      "restaurant_name": "카페아뜨레",
+      "category": "단팥죽",
+      "tag": "예약가능"
+    }
+  },
+  {
+    "case_id": "embedding_014",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "간식 먹기 좋은 떡볶이 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "떡볶이"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "간식"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0013"
+      ],
+      "restaurant_names": [
+        "매콤달콤떡볶이 성대시장점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "매콤달콤떡볶이 성대시장점",
+        "떡볶이"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0013",
+      "restaurant_name": "매콤달콤떡볶이 성대시장점",
+      "category": "떡볶이",
+      "tag": "간식"
+    }
+  },
+  {
+    "case_id": "embedding_015",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "무료주차 가능한 고기집 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "고기집"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "무료주차"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0014"
+      ],
+      "restaurant_names": [
+        "원조부안집 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "원조부안집 신대방삼거리역점",
+        "고기집"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0014",
+      "restaurant_name": "원조부안집 신대방삼거리역점",
+      "category": "고기집",
+      "tag": "무료주차"
+    }
+  },
+  {
+    "case_id": "embedding_016",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "데이트하기 좋은 술집 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "술집"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "데이트"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0015"
+      ],
+      "restaurant_names": [
+        "오다 신대방삼거리점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "오다 신대방삼거리점",
+        "술집"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0015",
+      "restaurant_name": "오다 신대방삼거리점",
+      "category": "술집",
+      "tag": "데이트"
+    }
+  },
+  {
+    "case_id": "embedding_017",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 바지락칼국수 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "바지락칼국수"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0016"
+      ],
+      "restaurant_names": [
+        "즉석 바지락손칼국수"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "즉석 바지락손칼국수",
+        "바지락칼국수"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0016",
+      "restaurant_name": "즉석 바지락손칼국수",
+      "category": "바지락칼국수",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_018",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "서민적인 갑오징어 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "갑오징어"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "서민적인"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0017"
+      ],
+      "restaurant_names": [
+        "네모오징어 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "네모오징어 신대방삼거리역점",
+        "갑오징어"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0017",
+      "restaurant_name": "네모오징어 신대방삼거리역점",
+      "category": "갑오징어",
+      "tag": "서민적인"
+    }
+  },
+  {
+    "case_id": "embedding_019",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 칼국수 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "칼국수"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0018"
+      ],
+      "restaurant_names": [
+        "태화네칼국수"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "태화네칼국수",
+        "칼국수"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0018",
+      "restaurant_name": "태화네칼국수",
+      "category": "칼국수",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_020",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 기계우동 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "기계우동"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0019"
+      ],
+      "restaurant_names": [
+        "기계우동"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "기계우동",
+        "기계우동"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0019",
+      "restaurant_name": "기계우동",
+      "category": "기계우동",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_021",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "술모임하기 좋은 포차 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "포차"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "술모임"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0020"
+      ],
+      "restaurant_names": [
+        "먹거리장터"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "먹거리장터",
+        "포차"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0020",
+      "restaurant_name": "먹거리장터",
+      "category": "포차",
+      "tag": "술모임"
+    }
+  },
+  {
+    "case_id": "embedding_022",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "해장하기 좋은 중국집 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "중국집"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "해장"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0021"
+      ],
+      "restaurant_names": [
+        "동화장"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "동화장",
+        "중국집"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0021",
+      "restaurant_name": "동화장",
+      "category": "중국집",
+      "tag": "해장"
+    }
+  },
+  {
+    "case_id": "embedding_023",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 부타동 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "부타동"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0022"
+      ],
+      "restaurant_names": [
+        "스미비부타동 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "스미비부타동 신대방삼거리역점",
+        "부타동"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0022",
+      "restaurant_name": "스미비부타동 신대방삼거리역점",
+      "category": "부타동",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_024",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "분위기 좋은 김치닭볶음탕 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "김치닭볶음탕"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "분위기좋은"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0023"
+      ],
+      "restaurant_names": [
+        "술탄.PUB"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "술탄.PUB",
+        "김치닭볶음탕"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0023",
+      "restaurant_name": "술탄.PUB",
+      "category": "김치닭볶음탕",
+      "tag": "분위기좋은"
+    }
+  },
+  {
+    "case_id": "embedding_025",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "술모임하기 좋은 술집 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "술집"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "술모임"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0024"
+      ],
+      "restaurant_names": [
+        "사이야"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "사이야",
+        "술집"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0024",
+      "restaurant_name": "사이야",
+      "category": "술집",
+      "tag": "술모임"
+    }
+  },
+  {
+    "case_id": "embedding_026",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "술모임하기 좋은 생맥주 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "생맥주"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "술모임"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0025"
+      ],
+      "restaurant_names": [
+        "달맥 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "달맥 신대방삼거리역점",
+        "생맥주"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0025",
+      "restaurant_name": "달맥 신대방삼거리역점",
+      "category": "생맥주",
+      "tag": "술모임"
+    }
+  },
+  {
+    "case_id": "embedding_027",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "데이트하기 좋은 막걸리 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "막걸리"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "데이트"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0026"
+      ],
+      "restaurant_names": [
+        "청송얼음막걸리 신대방삼거리역점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "청송얼음막걸리 신대방삼거리역점",
+        "막걸리"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0026",
+      "restaurant_name": "청송얼음막걸리 신대방삼거리역점",
+      "category": "막걸리",
+      "tag": "데이트"
+    }
+  },
+  {
+    "case_id": "embedding_028",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "술모임하기 좋은 골뱅이소면 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "골뱅이소면"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "술모임"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0027"
+      ],
+      "restaurant_names": [
+        "퓨전포차 술술술"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "퓨전포차 술술술",
+        "골뱅이소면"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0027",
+      "restaurant_name": "퓨전포차 술술술",
+      "category": "골뱅이소면",
+      "tag": "술모임"
+    }
+  },
+  {
+    "case_id": "embedding_029",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 꿔바로우 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "꿔바로우"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0028"
+      ],
+      "restaurant_names": [
+        "춘리마라탕 신대방삼거리점"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "춘리마라탕 신대방삼거리점",
+        "꿔바로우"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0028",
+      "restaurant_name": "춘리마라탕 신대방삼거리점",
+      "category": "꿔바로우",
+      "tag": "혼밥"
+    }
+  },
+  {
+    "case_id": "embedding_030",
+    "source": "restaurant.db",
+    "query_type": "embedding",
+    "question": "혼밥하기 좋은 감자탕 맛집 추천해줘",
+    "expected_route": "embedding",
+    "payload_checks": [
+      {
+        "keys": [
+          "category",
+          "food",
+          "menu"
+        ],
+        "contains_any": [
+          "감자탕"
+        ]
+      },
+      {
+        "keys": [
+          "tag",
+          "review"
+        ],
+        "contains_any": [
+          "혼밥"
+        ]
+      }
+    ],
+    "expected_targets": {
+      "restaurant_codes": [
+        "RES0029"
+      ],
+      "restaurant_names": [
+        "상도감자탕"
+      ]
+    },
+    "answer_checks": {
+      "must_include_any": [
+        "추천",
+        "상도감자탕",
+        "감자탕"
+      ],
+      "must_include_all": [],
+      "must_not_include": []
+    },
+    "min_used_restaurants": 1,
+    "metadata": {
+      "restaurant_code": "RES0029",
+      "restaurant_name": "상도감자탕",
+      "category": "감자탕",
+      "tag": "혼밥"
+    }
+  }
+]
