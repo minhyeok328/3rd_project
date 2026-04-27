@@ -510,3 +510,9 @@ python src_test3\evaluate_llm.py
 - **추천 대상 확장**: 식당 중심 추천에서 카페, 술집, 문화시설 등으로 확장하여 로컬 라이프 전반을 아우르는 추천 플랫폼으로 발전
 
 ---
+
+## 14. Output
+- **시스템 및 LLM 아키텍처**: https://www.notion.so/LLM-34c229ee8c458020a50fc2b48b1eb155?source=copy_link
+- **수집된 데이터 및 전처리 문서**: https://www.notion.so/34c229ee8c4580cca67be3eb6b45868a?source=copy_link
+- **RAG기반 LLM과 벡터데이터베이스 연동 구현 코드**: https://www.notion.so/RAG-LLM-34c229ee8c4580f9a8e1f5d3651dcd37?source=copy_link
+- **테스트 계획 및 결과 보고서**: https://www.notion.so/34c229ee8c4580bab0a9dc3682241835?source=copy_link
