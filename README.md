@@ -214,6 +214,14 @@ embedding_slot  fixed_slot              (JSON Schema 강제 슬롯 추출)
  answer (Markdown 대화체) + used_restaurant_list (지도 마커·카드 렌더)
 ```
 
+### 5.5 시스템 및 LLM 아키텍처
+
+#### 시스템 아키텍처
+<img src="https://github.com/SKN26-3rd-3rd/.github/blob/main/png/system.png?raw=true" width="1100px;" /><br />
+
+#### LLM 아키텍처처
+<img src="https://github.com/SKN26-3rd-3rd/.github/blob/main/png/llm.png?raw=true" width="1100px;" /><br />
+
 ---
 
 ## 6. Database Schema
@@ -354,6 +362,247 @@ result = run_qa(
 print(result["answer"])
 print(result["used_restaurant_list"][0]["name"])
 ```
+
+### 8.4 RAG 기반 LLM·벡터DB 연동 구현 코드
+
+#### (1) 파이프라인 진입점 — `run_qa()` & LangGraph 조립
+
+```python
+# 335:385:src/pipeline.py
+def run_qa(
+    question: str,
+    session_id: str = "default",
+    stream: bool = False,
+    stream_callback=None,
+) -> dict[str, Any]:
+    # 컴파일된 그래프 준비 (최초 1회만 실제 빌드).
+    graph = get_graph()
+
+    # 그래프에 초기 state 를 넣어 실행.
+    # 내부적으로 노드들이 순서대로 호출되며 state 가 채워진다.
+    result = graph.invoke(
+        {
+            "question": question,
+            "session_id": session_id,
+            "stream": stream,
+            "stream_callback": stream_callback,
+        }
+    )
+
+    # 외부에 돌려줄 표준 포맷으로 정리.
+    return {
+        "question": question,
+        "route": result.get("route"),
+        "route_payload": result.get("route_payload", {}),
+        "restaurant_list": result.get("restaurant_list", []),
+        "used_restaurant_list": result.get("used_restaurant_list", []),
+        "answer": result.get("answer", ""),
+    }
+```
+
+```python
+# 297:317:src/pipeline.py
+    # 시작점 → route_node 로 들어간다.
+    graph.add_edge(START, "route_node")
+
+    # route_node 이후 조건부 분기:
+    #   route_condition() 가 반환하는 문자열에 따라 목적지 노드가 달라진다.
+    graph.add_conditional_edges(
+        "route_node",
+        route_condition,
+        {
+            "embedding": "embedding_slot_node",
+            "fixed": "fixed_slot_node",
+        },
+    )
+
+    # 슬롯 추출 결과는 둘 다 connector_search_node 로 수렴.
+    graph.add_edge("embedding_slot_node", "connector_search_node")
+    graph.add_edge("fixed_slot_node", "connector_search_node")
+
+    # DB 조회 → 최종 답변 생성 → 종료.
+    graph.add_edge("connector_search_node", "generate_node")
+    graph.add_edge("generate_node", END)
+```
+
+#### (2) 라우팅 — 질문을 `embedding` / `fixed` 로 분기
+
+```python
+# 45:62:src/router.py
+    llm = ChatOpenAI(
+        model=SETTINGS.router_model,
+        temperature=0,
+        api_key=SETTINGS.openai_api_key,
+    )
+
+    raw = llm.invoke(ROUTER_PROMPT.replace("{question}", question)).content.strip().lower()
+    if "fixed" in raw:
+        return "fixed"
+    return "embedding"
+```
+
+#### (3) 슬롯 추출 — JSON Schema 강제로 구조화된 슬롯 획득
+
+```python
+# 172:204:src/slot_extractor.py
+    completion = get_openai_client().chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "developer", "content": EMBEDDING_SLOT_PROMPT},
+            {"role": "user", "content": instr},
+        ],
+        response_format={
+            "type": "json_schema",
+            "json_schema": {
+                "name": "embedding_slot_result",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "category": {"type": "string"},
+                        "tag": {"type": "string"},
+                        "menu": {"type": "string"},
+                        "food": {"type": "string"},
+                        "review": {"type": "string"},
+                    },
+                    "required": ["category", "tag", "menu", "food", "review"],
+                    "additionalProperties": False,
+                },
+            },
+        },
+        temperature=0,
+        max_completion_tokens=120,
+        top_p=1,
+    )
+```
+
+#### (4) 벡터DB 연동 핵심 — SQLite에 저장된 base64 임베딩으로 코사인 유사도 검색
+
+```python
+# 18:33:database/sql/utils.py
+def get_embedding(text: str):
+    if not text or not text.strip():
+        text = " "
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=text
+    )
+    return np.array(response.data[0].embedding, dtype=np.float32)
+
+def decode_embedding(encoded_str: str):
+    if not encoded_str:
+        return None
+    try:
+        return np.frombuffer(base64.b64decode(encoded_str), dtype=np.float32)
+    except:
+        return None
+```
+
+```python
+# 45:78:database/sql/utils.py
+def search_embedding(table_name: str, query_text: str, top_n: int = 5):
+    t_name = table_name if table_name != "users" else table_name[:-1]
+
+    query_vec = get_embedding(query_text)
+
+    # 임베딩이 존재하는 review 테이블에서 데이터 로드
+    rows_df = query_sender(f"SELECT {t_name}_code, embedding FROM {table_name}")
+    if rows_df.empty:
+        return []
+
+    rows_df = rows_df.dropna(subset=['embedding'])
+    codes = rows_df[t_name + "_code"].tolist()
+    embs = [decode_embedding(b) for b in rows_df["embedding"].tolist()]
+
+    valid_indices = [i for i, v in enumerate(embs) if v is not None]
+    if not valid_indices:
+        return []
+
+    filtered_codes = [codes[i] for i in valid_indices]
+    filtered_embs = np.array([embs[i] for i in valid_indices])
+
+    # 유사도 계산 및 중복 식당 제외
+    similarities = cosine_similarity(query_vec.reshape(1, -1), filtered_embs)[0]
+    top_indices = similarities.argsort()[::-1]
+
+    unique_codes = []
+    for idx in top_indices:
+        c = filtered_codes[idx]
+        if c not in unique_codes:
+            unique_codes.append(c)
+        if len(unique_codes) >= top_n:
+            break
+
+    return unique_codes
+```
+
+```python
+# 272:299:database/sql/utils.py
+embedding_search_keys = ["category", "tag", "menu", "food", "review"]
+def db_embedding_search(indict:dict):
+    if not all(k in indict for k in embedding_search_keys):
+        return []
+
+    buff = []
+    for k in embedding_search_keys:
+        if indict[k] == "":
+            continue
+
+        codes = search_embedding(k, indict[k], 8)
+        rcodes = search_table(k, codes)
+        if not rcodes:
+            continue
+        buff.append(rcodes)
+
+    if not buff:
+        return []
+
+    rlist = []
+    cnt_space = [5, 3, 2, 1, 1]
+    for i in range(cnt_space[len(buff)-1]):
+        for b in buff:
+            if len(b) <= i:
+                continue
+            rlist.append(b[i])
+
+    return get_detailed_restaurants(rlist)
+```
+
+#### (5) RAG 답변 생성 — system prompt + 후보 리스트 + 세션 히스토리
+
+```python
+# 151:186:src/generator.py
+    system_prompt = f"""
+{prompt_rules}
+
+[Search Route]
+{route}
+
+[Search Payload]
+{json.dumps(route_payload, ensure_ascii=False, indent=2)}
+
+[Connector Meta]
+{json.dumps(connector_meta, ensure_ascii=False, indent=2)}
+""".strip()
+
+    rag_input = {
+        "question": question,
+        "restaurant_list": retrieved_restaurants,
+    }
+
+    messages: list[BaseMessage] = [
+        SystemMessage(content=system_prompt),
+        *history,
+        HumanMessage(content=json.dumps(rag_input, ensure_ascii=False, indent=2)),
+    ]
+```
+
+#### (6) 보조 모듈
+
+- **후보 재랭킹**: `src/retriever.py` — `simple_retrieve_restaurants()` 가 질문 토큰과 식당 키워드(카테고리/태그/메뉴/리뷰 태그) 매칭으로 top-k 추출.
+- **프롬프트 / 규칙**:
+  - `src/prompts.py` — `ROUTER_PROMPT`, `EMBEDDING_SLOT_PROMPT`, `FIXED_SEARCH_PROMPT`, `load_system_prompt()`
+  - `prompts/system_prompt.txt` — 최종 답변 시 LLM 의 “DB 밖 정보 생성 금지” 등 출력 규칙
 
 ---
 
