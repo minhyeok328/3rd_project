@@ -219,7 +219,7 @@ embedding_slot  fixed_slot              (JSON Schema 강제 슬롯 추출)
 #### 시스템 아키텍처
 <img src="https://github.com/SKN26-3rd-3rd/.github/blob/main/png/system.png?raw=true" width="1100px;" /><br />
 
-#### LLM 아키텍처처
+#### LLM 아키텍처
 <img src="https://github.com/SKN26-3rd-3rd/.github/blob/main/png/llm.png?raw=true" width="1100px;" /><br />
 
 ---
