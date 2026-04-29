@@ -765,3 +765,261 @@ python src_test3\evaluate_llm.py
 - **수집된 데이터 및 전처리 문서**: https://www.notion.so/34c229ee8c4580cca67be3eb6b45868a?source=copy_link
 - **RAG기반 LLM과 벡터데이터베이스 연동 구현 코드**: https://www.notion.so/RAG-LLM-34c229ee8c4580f9a8e1f5d3651dcd37?source=copy_link
 - **테스트 계획 및 결과 보고서**: https://www.notion.so/34c229ee8c4580bab0a9dc3682241835?source=copy_link
+
+---
+## 15. 프로젝트 회고
+
+### 개인 회고
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 20%; border: 1px solid #ddd; padding: 10px;">이름</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">박기은</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">위도, 경도 API 매핑과 데이터 전처리를 담당하며 서비스 품질은 데이터 신뢰도에서 시작된다는 것을 배웠습니다. 또한 사용자 화면 구현까지 참여하며 서비스가 실제 사용자에게 전달되는 과정을 경험할 수 있었습니다. 좌표 변환 과정에서 발생하는 예외 데이터를 처리하는 과정을 좀 더 꼼꼼하게 수행해야 겠다는 점을 배웠습니다. 이번 프로젝트 경험을 바탕으로, 앞으로는 단순한 위치 표시를 넘어 실시간 경로 최적화나 공간 클러스터링 기반의 추천 등 더 심화된 모빌리티 서비스 구현에 도전해보고 싶습니다.
+</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">이번 프로젝트에서는 LLM 시스템 설계와 프론트엔드 구현을 함께 담당하며, 모델 중심 기능을 실제 서비스 형태로 연결하는 역할을 수행했다. 초기에는 LangChain 기반 구조를 설계하고, 이후 LangGraph로 전환하며 RAG 기반 워크플로우를 보다 구조화된 형태로 구현했다. 특히 사용자 질의부터 데이터 검색, 응답 생성까지 이어지는 전체 흐름을 하나의 파이프라인으로 구성하는 데 집중했고, 프롬프트 엔지니어링을 통해 응답 품질을 개선했다.
+
+동시에 프론트엔드 개발에도 참여하여 LLM 결과가 사용자에게 어떻게 전달되는지를 고려하며 UI 구조를 설계했다. 초안 형태의 프론트 구조를 먼저 잡고 팀원들과 공유하면서, 기능 구현이 일관된 방향으로 진행될 수 있도록 기반을 마련했다. 또한 GitHub 세팅, README 작성, 개발 환경 정리 등을 통해 협업과 개발 흐름을 정리하는 역할도 함께 수행했다.
+
+이번 프로젝트를 통해 몇 가지 중요한 점을 깨달을 수 있었다. 먼저 LLM 시스템은 단순히 기능을 구현하는 것이 아니라, 초기에 구조를 얼마나 명확하게 설계하느냐에 따라 전체 개발 난이도가 크게 달라진다는 점을 느꼈다. 실제로 구조 설계가 충분하지 않은 상태에서 개발을 병행하다 보니, 이후 수정과 보완에 많은 시간이 소요되었다.
+
+또한 프로젝트 초기에 아키텍처와 기술 스택을 보다 구체적으로 정의하고, 개발 과정에서 각자의 진행 상황을 지속적으로 공유하는 것이 전체 완성도를 좌우한다는 것을 알게 되었다. 이번 경험을 통해 단순 구현을 넘어, 구조 설계와 협업 방식까지 함께 고려하는 개발의 중요성을 배울 수 있었다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터 영역에서 데이터 크롤링을 활용한 수집과 전처리, vector db 구축, LLM의 Langraph 구조 기초, 프론트의 streamlit 구축을 맡게 되었다. streamlit에 html 코드를 넣을 때 자동으로 들어가는 padding을 처리하는데에 시간이 많이 뺏겼었고 시간에 쫓겨 프로젝트의 구조 설계와 개발을 동시에 진행하는 식이 되어 버렸던 점이 아쉬웠던 것 같다.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">윤정연</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">이번 프로젝트에서 프론트엔드와 데이터 전처리를 담당하며, 유연한 문제 해결 능력을 기를 수 있었습니다. 초기에는 네이버 지도 API로 구현을 마쳤으나 예상치 못한 엄격한 정책 제약에 부딪혔고, 마감 기한을 고려해 빠르게 카카오 Map API로 전환하는 '플랜 B' 결단을 내렸습니다. 이 경험을 통해 완벽한 기술적 구현만큼이나, 외부 변수에 유연하게 대처하고 빠른 의사결정을 내리는 것이 중요하다는 점을 깊이 배웠습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">이레</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">llm을 평소에 직접 다뤄보고 싶었고, 필요성도 느끼고 있던 분야라 스스로 제안한 주제로 프로젝트를 진행하게 되어 더욱 열정을 가지고 임하였다. 
+기존의 프로젝트들과는 달리 낯선 개념을 실제 프로젝트에 적용하는 과정에서 확실히 프로젝트 난이도가 올라간 것을 체감할 수 있었다. 배운 내용을 적극적으로 활용해보고자 llm 파트를 맡았는데, 진행하면서 tool과 state 같은 구조가 어떻게 작동하는지 이해할 수 있었고 그 필요성도 느낄 수 있었다. 또한 모델을 직접 만들고 평가를 진행하면서 성능이 개선되는 과정을 확인할 때 큰 성취감과 흥미를 느꼈다.
+프로젝트 초반에는 소통이 부족해 동료 간 의견 충돌이 발생하거나 업무가 겹치는 상황도 있었다. 이를 통해 역할을 명확히 나누고 산출물을 공유하며, 각자가 어떤 작업을 진행 중인지 지속적으로 소통하는 것이 프로젝트 진행에 매우 중요하다는 점을 깨달았다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">정영일</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">이번 프로젝트를 통해 LLM 기반 서비스는 단순히 AI 모델을 연결하는 기술 구현이 아니라, 사용자 문제를 정의하고 이를 어떤 서비스 가치와 사업 전략으로 발전시킬지 고민하는 과정이라는 점을 느꼈다. 초반에는 RAG, 임베딩, DB connector 등 기술 구조를 이해하는 데 어려움이 있었지만, 프로젝트가 진행되면서 맛집 검색 서비스를 하나의 사업 아이템처럼 바라보게 되었고, 기존 맛집 검색에서 사용자가 느끼는 불편함, 리뷰 기반 추천의 필요성, AI 추천이 줄 수 있는 차별점, MVP 범위와 기능 우선순위 등을 고민할 수 있었다. 특히 단순히 “맛집을 추천한다”는 기능보다, 사용자가 왜 이 서비스를 써야 하는지와 어떤 경험을 제공해야 경쟁력이 생길지를 생각하며 사업 기획에 대한 심층적인 고민을 하게 되었다. 또한 DB 구축, 임베딩 검색, LLM 연동, 화면 구현이 각각 따로 존재하는 것이 아니라 하나의 사용자 경험과 서비스 구조 안에서 연결되어야 한다는 점을 배웠다. 앞으로는 기술 구현뿐 아니라 서비스 방향성, 사용자 가치, 사업 전략까지 함께 고려하며 프로젝트에 더 적극적으로 기여하고 싶다.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+---
+
+
+### 팀원 회고
+
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 30px;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">대상자</th>
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">작성자</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">박기은</td>
+            <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">지도 기능 구현과 데이터 활용 구조 측면에서 안정적인 역할을 수행했다. Kakao Map API를 빠르게 코드화하여 초기 개발 속도를 끌어올렸고, 위경도 좌표 가공과 컬럼 설계 등 데이터 정제 단계에서도 기여도가 높았다. 또한 embedding 기반 유사도 검색 SQL 작성으로 LLM과 데이터 연결 구조를 보완했으며, 프론트엔드 디자인에도 참여해 사용자 경험 개선까지 신경 쓴 점이 인상적이었다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">Kakao Map API를 주어진 조건에 맞게 빠르게 코드 형태로 가공해 팀원들과 공유하며 개발 초기 속도를 높였고, 동시에 DB embedding 기반 유사도 검색 SQL을 작성해 데이터 활용 구조 구축에도 기여했다. 또한 프론트엔드 디자인에도 참여하며 사용자 경험 개선에 힘썼고, 전반적으로 구현과 협업 모두에서 안정적인 역할을 수행했다.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">윤정연</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">카카오 Map API를 활용하여 지도 기능을 안정적으로 구현했을 뿐만 아니라, 위치 기반 데이터의 정밀도를 높이기 위해 위경도 좌표 데이터를 가공하고 전용 컬럼을 추가하는 등 데이터 설계 단계부터 중추적인 역할을 수행해 주셨습니다. 또한, 프론트엔드 디자인을 도맡아 진행하며 사용자 편의성을 고려한 최적의 인터페이스를 완성하는 데 결정적인 기여를 해 주셨습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">이레</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터 전처리와 커넥터 코드를 안정적으로 구현하여 LLM 파트와의 연동을 원활하게 만들었습니다. 또한 감각적인 디자인으로 노션 기록과 프론트엔드 구현을 맡아 프로젝트 완성도를 높였습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">정영일</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">
+            Notion을 구성하고 팀원들을 초대하여 작업 자료와 진행 상황을 정리할 수 있는 협업 기반을 마련하였다. Kakao API를 활용해 음식점 데이터에 위도·경도 좌표를 추가한 파일을 공유했고, 추가 수정 요청도 반영하여 데이터 완성도를 높이는 데 기여하였다. 이후 지도/API 연동 작업에도 참여하며 서비스 구현에 필요한 기능적 요소를 담당하였다.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 30px;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">대상자</th>
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">작성자</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">서민혁</td>
+            <td style="text-align: center; border: 1px solid #ddd;">박기은</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">모델링뿐만 아니라 유저가 직접 마주하는 프론트엔드 영역까지 동시에 핸들링하며 서비스의 인터페이스를 구축했습니다. 백엔드 로직이 사용자 화면에 어떻게 구현되어야 하는지에 대한 높은 이해도를 보여주었습니다. 프론트와 모델링이라는 서로 다른 영역 사이에서 균형을 잡으며, 서비스의 전체적인 UI/UX 품질을 안정적으로 관리해준 덕분에 완성도 높은 프로젝트가 될 수 있었습니다.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">LLM LangGraph 기반 tool 코딩을 수행하며 기능 구현에 기여하였고 프롬프트 엔지니어링을 통해 모델 응답 품질을 개선하였음. 동시에 프론트엔드 구축에도 참여하여 작성한 초안을 다른 팀원에게 제공해서 프론트 개발을 체계적으로 할 수 있게 했다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">윤정연</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트의 핵심 엔진인 LLM 시스템 구축 전반을 주도하였으며, 특히 LangGraph를 활용하여 고도화된 RAG 기반 워크플로우를 설계 및 구현해 주셨습니다. 단순히 모델을 연결하는 수준을 넘어 프론트엔드 개발 과정에도 깊이 참여하였으며, 정교한 프롬프트 엔지니어링을 통해 AI 응답과 인터페이스의 완성도를 극대화함으로써 프로젝트의 결과물을 한 단계 끌어올리는 데 결정적인 역할을 수행하셨습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">이레</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트에 적극적으로 참여하며 LLM 파트에서 초기 랭체인 구조를 설계해 랭그래프로의 전환에 큰 기여를 했습니다. 또한 프론트엔드 구현 과정에서도 팀원의 요구를 반영해 완성도를 높였습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">정영일</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">디스코드 서버 개설을 통해 팀의 소통 및 기록 환경을 마련하고, 프로젝트 초반 기술 탐색 과정에서 RAG 구조와 LLM 관련 자료를 공유하며 팀원들의 이해를 돕는 데 기여하였다. 또한 GitHub 초기 세팅을 정리하고 README를 지속적으로 업데이트하며 프로젝트 전반의 코드 관리와 문서화 기반을 구축하였다. requirements 파일을 공유해 개발 환경을 맞추는 데에도 도움을 주었으며, LLM 모델 선정 및 활용 방향에 대해서도 의견을 제시하며 관련 구현 흐름을 이해하는 데 기여하였다. 프로젝트 진행 중에는 프론트엔드 구현 방식에 대해서도 방향을 제시하고 관련 도구를 검토하는 등 UI 구성 측면에서도 참여하였다. 전반적으로 필요한 자료와 방향을 먼저 제시하며 팀이 작업을 이어갈 수 있도록 기반을 정리하는 역할을 수행하였다.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 30px;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">대상자</th>
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">작성자</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">유동현</td>
+            <td style="text-align: center; border: 1px solid #ddd;">박기은</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">팀의 구심점으로 프로젝트의 전체적인 아키텍처를 설계하고 크롤링부터 프론트엔드까지 전 과정을 조율하며 프로젝트의 방향성을 잡아주었습니다. 또한 에러가 발생할 때마다 해결책을 제시하는 뛰어난 문제 해결 능력을 보여주셨습니다. 복잡한 시스템의 흐름을 한눈에 파악하는 통찰력과, 데이터 전처리부터 유저 인터페이스까지 책임지는 폭넓은 기술 스펙트럼이 매우 인상적이었습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트 전반의 파이프라인을 설계하고 데이터 수집·전처리·vector DB 구축까지 핵심 기반을 주도적으로 구축했다. 또한 Streamlit 기반 프론트 초기 구조를 잡으며 개발 방향성을 제시했고, 다양한 기술 스택 사이의 공백을 메우며 전체 흐름이 끊기지 않도록 조율하는 역할을 수행했다. 실질적으로 프로젝트의 구조와 실행 흐름을 만들어낸 중심 축에 가까운 역할이었다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">윤정연</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">모든 영역을 총괄하며 팀의 중심을 잡아주셨습니다. 웹 크롤링을 통한 기초 데이터 수집과 전처리, 그리고 원활한 서비스 연동을 위한 데이터베이스 조회 및 관리 업무를 수행하며 프로젝트의 뼈대를 구축하였을 뿐만 아니라, 프론트엔드의 초기 기틀을 직접 설계하여 개발의 가이드라인을 제시해 주셨습니다. 프로젝트 전반의 기술적 공백을 파악하고 메우며, 팀원들의 업무가 유기적으로 진행될 수 있도록 모든 파트에서 중추적인 역할을 수행해 주셨습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">이레</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트 주제에 맞게 전체 파이프라인을 설계하고, 체계적인 데이터 처리와 프론트 구축으로 초기 구현에 큰 도움을 주었습니다. 또한 프로젝트 진행 중 다양한 상황에서도 침착하게 대응하며 안정적인 분위기를 유지해주었습니다.
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">정영일</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트 초반부터 주제 방향과 기능 구현 범위를 구체적으로 정리하며 팀원들이 같은 목표를 바라볼 수 있도록 도와주었다. 데이터 전처리 파일, 최종 CSV, DB 파일, mock data 등을 지속적으로 공유하며 개발에 필요한 기반 자료를 마련하였고, 임베딩 벡터 저장 방식과 DB 세팅 방법, connector 사용 방법까지 상세히 안내하였다. 전반적으로 프로젝트의 데이터 구조와 개발 흐름을 주도적으로 잡아준 핵심적인 팀원이었다.</td>
+        </tr>
+    </tbody>
+</table>
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 30px;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">대상자</th>
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">작성자</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">윤정연</td>
+            <td style="text-align: center; border: 1px solid #ddd;">박기은</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트의 기초가 되는 벡터 데이터셋을 준비해주신 덕분에 이후 단계의 작업들이 원활하게 진행될 수 있었습니다. 또한 데이터베이스 테이블에 접근하여 필요한 정보를추출하고, 이를 후속 공정에서 활용하기 좋은 리스트 형태로 반환하는 효율적인 함수 코드를 만들어주셨습니다.
+</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터 전처리와 DB 활용 측면에서 안정적인 지원 역할을 수행했다. 벡터 데이터셋 구축을 통해 LLM 활용 기반을 마련했고, DB 접근 및 데이터 추출 로직을 함수 단위로 정리하여 후속 단계에서 재사용 가능하도록 구현한 점이 좋았다. 또한 API 구조 분석 및 정리 과정을 통해 팀원들의 이해도를 높이는 데에도 기여했다./td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터 전처리 파트에서 벡터 DB를 더하는 역할을 하여 모델 활용을 위한 기반을 마련했으며, Kakao Map API 구조를 팀원들과 함께 분석한 뒤 이를 이해하기 쉽게 정리해 공유했다. 또한 DB 검색어 기반 SQL을 작성해 데이터 조회 기능을 구현하였다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">이레</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">기한 내에 정확한 데이터 처리를 수행하는 성실한 모습을 보여주었으며, 다양한 역할을 맡아 적극적으로 수행했습니다. 또한 API 연동을 통해 프론트에 필요한 데이터를 효과적으로 제공하며 프로젝트 완성도에 기여했습니다..</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">정영일</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">프로젝트 초반부터 팀원들과의 소통에 참여하며 아이디어 공유 과정에 함께하였다. Figma 작업 참여 의사를 보이며 화면 구성 단계에도 관심을 보였고, 임베딩 작업에서는 사용한 모델 정보를 공유하여 팀 전체가 동일한 기준으로 작업할 수 있도록 도왔다. 또한 category 관련 파일을 제출하며 데이터 처리 과정에도 기여하였
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 30px;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">대상자</th>
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">작성자</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">이레</td>
+            <td style="text-align: center; border: 1px solid #ddd;">박기은</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">서비스의 핵심인 LLM 모델링에 집중하여 사용자의 질문 의도를 정확하게 파악하는 추천 엔진을 구현했습니다. 프롬프트 엔지니어링과 RAG 로직 최적화를 통해 답변의 품질을 상승시켰습니다. 덕분에 데이터 출력의 정확도가 높아질 수 있었습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">LLM 파트로 역할을 전환한 이후 빠르게 적응하며 핵심 기능 구현에 집중했다. LangGraph 기반 워크플로우 설계에 참여해 시스템 구조를 구체화했고, embedding 및 데이터 전처리를 통해 모델 응답 품질 향상에 기여했다. 또한 팀 내에서 필요한 데이터 및 작업 결과를 꾸준히 공유하며 협업 흐름을 유지하는 데에도 역할을 했다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터의 embedding vector DB 구축에 기여를 함. LLM 구축 팀에 참여를 하여 LLM LangGraph 구조 설계를 주도적으로 이끌어 시스템의 핵심 아키텍처를 구축했고, 팀원이 구축한 tool을 활용해 답변을 생성하는 LLM 모델을 구현하여 프로젝트의 중심 기능을 완성했다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">윤정연</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">본래 프론트엔드 개발을 담당할 계획이었으나, 프로젝트의 핵심 동력인 LLM 파트로 역할을 전환하여 뛰어난 기술적 적응력과 역량을 증명해 주셨습니다. RAG 시스템의 답변 품질을 좌우하는 LLM 맞춤형 데이터 전처리 과정을 세밀하게 수행하여 서비스의 신뢰성을 확보하였고, LangGraph 기반의 정교한 워크플로우를 설계 및 구축함으로써 프로젝트의 기술적 완성도를 비약적으로 높여 주셨습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">정영일</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">
+                회의 일정과 그라운드룰 논의 등 팀 운영 과정에 적극적으로 참여하며 협업 흐름을 유지하는 데 도움을 주었다. food, menu 관련 데이터 파일을 공유하고 base64 변환 작업을 수행했으며, DB connector를 LLM src와 연동해 push하는 등 실제 구현 작업에도 성실히 참여하였다. 작업 완료 상황을 꾸준히 공유하여 팀원들이 진행 상태를 파악하는 데 기여하였다.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 30px;">
+    <thead>
+        <tr style="background-color: #f8f9fa;">
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">대상자</th>
+            <th style="width: 15%; border: 1px solid #ddd; padding: 10px;">작성자</th>
+            <th style="border: 1px solid #ddd; padding: 10px;">회고 내용</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">정영일</td>
+            <td style="text-align: center; border: 1px solid #ddd;">박기은</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">한 기획 단계에서는 서비스의 확장성이나 캐릭터화 방향 등 비즈니스 관점의 아이디어를 제시하고, 사용자 유입을 고려한 전략을 함께 고민하면서 기술과 기획을 자연스럽게 연결하는데 기여하셨습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터 적재 및 DB 구축을 체계적으로 수행하며 프로젝트의 데이터 안정성을 확보했다. SQL 기반 처리 흐름을 정리해 데이터 활용 기반을 안정적으로 마련했으며, LLM tool 개발에도 일부 기여했다. 특히 기획 단계에서 서비스 확장성과 캐릭터화 전략 등 비즈니스 관점의 아이디어를 제시하며 기술과 기획을 연결하려는 시도가 의미 있었다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">SQL을 활용해 DB를 구축하고 데이터를 적재하는 과정을 체계적으로 담당했으며, LLM tool 개발에 기여하였음. 특히 기획 단계에서 사업적 확장 가능성과 캐릭터화 전략 등 서비스 측면의 아이디어와 고객 유치 전략 아이디어를 구상하며 기술과 기획을 연결하는 데 의미 있는 기여를 했다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">윤정연</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">SQL을 활용하여 방대한 데이터를 효율적으로 DB에 적재함으로써 프로젝트의 데이터 안정성을 확보하는 데 크게 기여해 주셨습니다. 또한, 생성형 AI 기반의 마스코트 브랜딩을 통해 발표의 몰입감을 높였으며, 발표자로서 프로젝트의 핵심 메시지를 친숙하고 짜임새 있게 시각화하여 효과적으로 전달해 주셨으며, 프로젝트의 대외적인 완성도를 한층 더 끌어올려 주셨습니다.</td>
+        </tr>
+        <tr>
+            <td style="text-align: center; border: 1px solid #ddd;">이레</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">데이터 처리를 깔끔하게 수행하고 기한을 철저히 준수하여 프로젝트가 원활하게 진행될 수 있도록 기여했습니다. 또한 안정적인 발표 실력으로 준비한 내용을 명확하게 전달해주었습니다.</td>
+        </tr>
+    </tbody>
+</table>
