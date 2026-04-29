@@ -831,7 +831,7 @@ python src_test3\evaluate_llm.py
         <tr>
             <td rowspan="5" style="text-align: center; font-weight: bold; border: 1px solid #ddd;">박기은</td>
             <td style="text-align: center; border: 1px solid #ddd;">서민혁</td>
-            <td style="border: 1px solid #ddd; padding: 10px;">지도 기능 구현과 데이터 활용 구조 측면에서 안정적인 역할을 수행했다. Kakao Map API를 빠르게 코드화하여 초기 개발 속도를 끌어올렸고, 위경도 좌표 가공과 컬럼 설계 등 데이터 정제 단계에서도 기여도가 높았다. 또한 embedding 기반 유사도 검색 SQL 작성으로 LLM과 데이터 연결 구조를 보완했으며, 프론트엔드 디자인에도 참여해 사용자 경험 개선까지 신경 쓴 점이 인상적이었다.</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">지도 기능 구현과 데이터 활용 구조 측면에서 안정적인 역할을 수행했다. Kakao Map API를 빠르게 코드화하여 초기 개발 속도를 끌어올렸고, 위경도 좌표 가공과 컬럼 설계 등 데이터 정제 단계에서도 기여도가 높았다. 또한 프론트엔드 디자인에도 참여해 사용자 경험 개선까지 신경 쓴 점이 인상적이었다.</td>
         </tr>
         <tr>
             <td style="text-align: center; border: 1px solid #ddd;">유동현</td>
