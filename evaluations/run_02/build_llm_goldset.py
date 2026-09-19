@@ -7,7 +7,7 @@ from typing import Any
 
 
 SRC_TEST_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SRC_TEST_DIR.parent
+PROJECT_ROOT = SRC_TEST_DIR.parent.parent
 DB_PATH = PROJECT_ROOT / "database" / "sql" / "restaurant.db"
 OUTPUT_PATH = SRC_TEST_DIR / "llm_goldset.json"
 
